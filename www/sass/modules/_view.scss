@@ -1,0 +1,30 @@
+
+.view {
+  position: relative;
+  background: $grey_bg;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+
+  .header {
+    height: $header_height;
+    background: $white;
+    @include box-shadow();
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+
+  .content {
+    position: absolute;
+    top: $header_height;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+}

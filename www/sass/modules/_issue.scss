@@ -1,0 +1,11 @@
+
+.issue {
+
+  &.thumb {
+    background: $white;
+    padding: $list_margin;
+    @include box-shadow();
+    @include border-radius();
+  }
+
+}

@@ -1,0 +1,28 @@
+body {
+  font-family: $font_normal;
+}
+
+h1 {
+  text-align: center;
+  font-size: $header_h1_size;
+  height: $header_h1_size;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-top: -10pt;
+  top: 50%;
+  color: $grey_blue;
+}
+
+h2 {
+  color: $blue;
+  font-size: $header_h2_size;
+  font-family: $font_light;
+  font-weight: 100;
+  margin-bottom: $list_margin/2;
+}
+
+p {
+  color: $grey;
+  font-size: $p_size;
+}

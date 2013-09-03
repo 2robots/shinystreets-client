@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="shinystreets" version="2.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Shinystreets</name>
+    <description>
+        A sample Apache Cordova application that responds to the deviceready event.
+    </description>
+    <author email="callback-dev@incubator.apache.org" href="http://cordova.io">
+        Kristina Haidinger, Franz Wilding
+    </author>
+    <feature name="http://api.phonegap.com/1.0/device" />
+    <preference name="phonegap-version" value="2.9.0" />
+    <preference name="orientation" value="default" />
+    <preference name="target-device" value="universal" />
+    <preference name="fullscreen" value="false" />
+    <access origin="*" />
+</widget>
