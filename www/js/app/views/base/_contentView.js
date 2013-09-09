@@ -1,14 +1,9 @@
-define(['iscroll'], function() {
-  return Backbone.View.extend({
+define(['views/_view', 'text!templates/blank.tpl', 'iscroll'], function(_view, Template) {
+  return _view.extend({
 
     id: 'scroll',
     className: 'content',
-
-    render: function() {
-      this.$el.html();
-
-      return this;
-    },
+    template: _.template(Template),
 
     afterRender: function() {
       this.scroll = new iScroll(this.id);

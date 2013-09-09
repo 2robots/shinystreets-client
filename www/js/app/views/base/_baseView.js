@@ -1,14 +1,29 @@
-define(['views/base/_headerView', 'views/base/_contentView', 'AppScroll'], function(_headerView, _contentView) {
-  return Backbone.View.extend({
+define(['views/_view', 'views/base/_headerView', 'views/base/_contentView', 'AppScroll'], function(_view, _headerView, _contentView) {
+  return _view.extend({
 
-    className: 'view',
+    defaults: {
+      header: {
+        title: "View"
+      },
+      content: {
+        models: []
+      }
+    },
 
     render: function() {
 
       var t = this;
 
-      t.header = new _headerView;
-      t.content = new _contentView;
+      if(typeof(this.options.header.view) == "undefined") {
+        this.options.header.view = _headerView;
+      }
+
+      if(typeof(this.options.content.view) == "undefined") {
+        this.options.content.view = _contentView;
+      }
+
+      t.header = new this.options.header.view(this.options.header);
+      t.content = new this.options.content.view(this.options.content);
 
       this.$el.append(t.header.render().$el);
       this.$el.append(t.content.render().$el);
@@ -18,13 +33,7 @@ define(['views/base/_headerView', 'views/base/_contentView', 'AppScroll'], funct
         scroller: t.content.$el[0]
       });
 
-      this.renderContent();
-
       return this;
-    },
-
-    renderContent: function() {
-
     },
 
     afterRender: function() {

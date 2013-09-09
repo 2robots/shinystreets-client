@@ -1,18 +1,10 @@
-define(['text!templates/base/headerView.tpl'], function(Template) {
-  return Backbone.View.extend({
+define(['views/_view', 'text!templates/base/headerView.tpl'], function(_view, Template) {
+  return _view.extend({
 
     className: 'header',
-    title: "View",
     template: _.template(Template),
-
-    render: function() {
-      this.$el.html(this.template({ title: this.title }));
-
-      return this;
-    },
-
-    afterRender: function() {
-
+    defaults: {
+      title: "View"
     }
 
   });

@@ -1,9 +1,23 @@
-define(['backbone'], function() {
+define(['models/config', 'collections/areas', 'backbone'], function(config, areas) {
   return Backbone.View.extend({
 
     id: 'main',
     currentView: undefined,
     lastView: undefined,
+    config: undefined,
+
+    initialize: function() {
+
+      // create config
+      this.config = new config({}, this);
+
+      // create areas collection
+      this.areas = new areas([], this);
+      this.areas.fetch();
+
+      // init test config
+      this.config.set("default_area", this.areas.first());
+    },
 
     render: function() {
       this.$el.html();
@@ -12,12 +26,12 @@ define(['backbone'], function() {
 
     afterRender: function() {
 
-      // open issues View
-      this.openView('listViews/issuesView');
+      // open issues View on start
+      this.openView('listViews/areaView', this.config.get("default_area"));
 
     },
 
-    openView: function(key, transition) {
+    openView: function(key, model, transition) {
 
       var t = this;
 
@@ -29,7 +43,7 @@ define(['backbone'], function() {
           t.lastView = t.currentView;
 
           // create new View
-          t.currentView = new view();
+          t.currentView = new view({app: t, model: model});
 
           // append new View to content
           t.$el.append(t.currentView.render().$el);

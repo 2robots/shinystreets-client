@@ -1,11 +1,16 @@
-define(['views/base/_baseView', 'text!templates/listViews/issuesView.tpl'], function(_baseView, Template) {
+define(['views/base/_baseView', 'views/base/_contentListView', 'text!templates/listViews/issuesView.tpl'], function(_baseView, _contentListView, Template) {
   return _baseView.extend({
 
     className: 'view issues',
-    template: _.template(Template),
-
-    renderContent: function() {
-      this.content.$el.html(this.template());
+    defaults: {
+      header: {
+        title: "Issues"
+      },
+      content: {
+        view: _contentListView,
+        template: _.template(Template),
+        models: []
+      }
     }
   });
 });
