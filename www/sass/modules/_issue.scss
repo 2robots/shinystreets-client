@@ -6,6 +6,54 @@
     padding: $list_margin;
     @include box-shadow();
     @include border-radius();
+
+    .meta {
+
+      border-top: 1px solid $grey_bg;
+      margin-top: 10px;
+      padding-top: 10px;
+
+      .comments {
+        float: left;
+        padding-left: 10px;
+        border-left: 2px solid $grey;
+      }
+    }
   }
 
+  &.detail {
+    padding: $list_margin;
+
+    .meta {
+      margin-bottom: $list_margin;
+    }
+  }
+
+  .meta {
+    position: relative;
+
+    strong {
+      color: $blue;
+    }
+
+    .avatar {
+      float: left;
+      height: 30px;
+      margin-right: 5px;
+    }
+
+    .date {
+      float: left;
+      margin-left: 5px;
+      font-size: $p_size_small;
+      margin-top: 10px;
+    }
+
+    .comments {
+      float: right;
+      margin-left: 10px;
+      font-size: $p_size_small;
+      margin-top: 10px;
+    }
+  }
 }

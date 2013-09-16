@@ -17,6 +17,30 @@
     left: 0;
     right: 0;
     width: 100%;
+
+    .button_left, .button_right {
+      top: 0;
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      width: 60px;
+      z-index: 15;
+      text-align: center;
+
+      .icn {
+        position: absolute;
+        top: 50%;
+        margin-top: -14px;
+        left: 50%;
+        margin-left: -14px;
+      }
+    }
+
+    .button_right {
+      right: 0;
+      left: auto;
+      z-index: 15;
+    }
   }
 
   .content {

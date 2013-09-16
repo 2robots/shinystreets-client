@@ -3389,6 +3389,92 @@ p {
   font-size: 11pt;
 }
 
+/* line 30, /Users/franzwilding/Sites/shinystreets-client/www/sass/base/_defaults.scss */
+.c {
+  height: 0;
+  margin: 0;
+  padding: 0;
+  clear: both;
+}
+
+/* line 37, /Users/franzwilding/Sites/shinystreets-client/www/sass/base/_defaults.scss */
+strong {
+  font-weight: bold;
+}
+
+/* default icons */
+/* line 3, /Users/franzwilding/Sites/shinystreets-client/www/sass/base/_icons.scss */
+.icn {
+  height: 28px;
+  width: 28px;
+  display: -moz-inline-box;
+  -moz-box-orient: vertical;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  overflow: hidden;
+  text-indent: -9999px;
+}
+/* line 7, /Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/css3/_inline-block.scss */
+.icn {
+  *display: inline;
+}
+
+/* line 11, /Users/franzwilding/Sites/shinystreets-client/www/sass/base/_icons.scss */
+.icn.settings {
+  background: url("icons/settings.png") no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+
+/* line 16, /Users/franzwilding/Sites/shinystreets-client/www/sass/base/_icons.scss */
+.icn.back {
+  background: url("icons/back.png") no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+
+/* line 21, /Users/franzwilding/Sites/shinystreets-client/www/sass/base/_icons.scss */
+.icn.login {
+  background: url("icons/login.png") no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+
+/* small inline icons */
+/* line 28, /Users/franzwilding/Sites/shinystreets-client/www/sass/base/_icons.scss */
+.icn.time, .icn.comment {
+  height: 12px;
+  width: 12px;
+  display: inline-block;
+  margin-top: -4px;
+  margin-right: 3px;
+}
+
+/* line 36, /Users/franzwilding/Sites/shinystreets-client/www/sass/base/_icons.scss */
+.icn.time {
+  background: url("icons/time.png") no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+
+/* line 41, /Users/franzwilding/Sites/shinystreets-client/www/sass/base/_icons.scss */
+.icn.comment {
+  background: url("icons/comment.png") no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+
 /* basic view UI */
 /* line 2, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_view.scss */
 .view {
@@ -3413,7 +3499,31 @@ p {
   right: 0;
   width: 100%;
 }
-/* line 22, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_view.scss */
+/* line 21, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_view.scss */
+.view .header .button_left, .view .header .button_right {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  width: 60px;
+  z-index: 15;
+  text-align: center;
+}
+/* line 30, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_view.scss */
+.view .header .button_left .icn, .view .header .button_right .icn {
+  position: absolute;
+  top: 50%;
+  margin-top: -14px;
+  left: 50%;
+  margin-left: -14px;
+}
+/* line 39, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_view.scss */
+.view .header .button_right {
+  right: 0;
+  left: auto;
+  z-index: 15;
+}
+/* line 46, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_view.scss */
 .view .content {
   position: absolute;
   top: 44pt;
@@ -3447,4 +3557,52 @@ ul.list li, ol.list li {
   -ms-border-radius: 2pt;
   -o-border-radius: 2pt;
   border-radius: 2pt;
+}
+/* line 10, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
+.issue.thumb .meta {
+  border-top: 1px solid #ecf0f6;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+/* line 16, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
+.issue.thumb .meta .comments {
+  float: left;
+  padding-left: 10px;
+  border-left: 2px solid #7e7e7e;
+}
+/* line 24, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
+.issue.detail {
+  padding: 10pt;
+}
+/* line 27, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
+.issue.detail .meta {
+  margin-bottom: 10pt;
+}
+/* line 32, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
+.issue .meta {
+  position: relative;
+}
+/* line 35, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
+.issue .meta strong {
+  color: #2c4172;
+}
+/* line 39, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
+.issue .meta .avatar {
+  float: left;
+  height: 30px;
+  margin-right: 5px;
+}
+/* line 45, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
+.issue .meta .date {
+  float: left;
+  margin-left: 5px;
+  font-size: 10pt;
+  margin-top: 10px;
+}
+/* line 52, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
+.issue .meta .comments {
+  float: right;
+  margin-left: 10px;
+  font-size: 10pt;
+  margin-top: 10px;
 }

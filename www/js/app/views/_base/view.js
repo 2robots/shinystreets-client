@@ -3,14 +3,10 @@ define(function() {
 
     className: 'view',
     defaults: {
-      header: {},
-      content: {}
     },
 
     initialize: function() {
-
-      this.options.header = _.extend({}, this.defaults.header, this.options.header);
-      this.options.content = _.extend({}, this.defaults.content, this.options.content);
+      this.options = _.extend({}, this.defaults, this.options);
       this.afterInitialize();
     },
 

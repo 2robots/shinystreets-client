@@ -1,4 +1,4 @@
-define(['models/_model']function(_model) {
+define(['models/_model'], function(_model) {
   return _model.extend({
 
   });

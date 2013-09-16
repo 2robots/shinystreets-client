@@ -9,7 +9,7 @@ requirejs.config({
   }
 });
 
-require(['jquery', 'underscore', 'fastclick', 'views/base/mainView'], function(jquery, underscore, Fastclick, mainView){
+require(['jquery', 'underscore', 'fastclick', 'views/mainView'], function(jquery, underscore, Fastclick, mainView){
 
   jQuery(document).ready(function(){
     $(document).on("deviceready", function(){

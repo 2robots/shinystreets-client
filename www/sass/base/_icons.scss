@@ -1,0 +1,44 @@
+
+/* default icons */
+.icn {
+  height: 28px;
+  width: 28px;
+  @include inline-block;
+  overflow: hidden;
+  text-indent: -9999px;
+}
+
+.icn.settings {
+  background: url("icons/settings.png") no-repeat center center;
+  @include background-size(contain);
+}
+
+.icn.back {
+  background: url("icons/back.png") no-repeat center center;
+  @include background-size(contain);
+}
+
+.icn.login {
+  background: url("icons/login.png") no-repeat center center;
+  @include background-size(contain);
+}
+
+
+/* small inline icons */
+.icn.time, .icn.comment {
+  height: 12px;
+  width: 12px;
+  display: inline-block;
+  margin-top: -4px;
+  margin-right: 3px;
+}
+
+.icn.time {
+  background: url("icons/time.png") no-repeat center center;
+  @include background-size(contain);
+}
+
+.icn.comment {
+  background: url("icons/comment.png") no-repeat center center;
+  @include background-size(contain);
+}
