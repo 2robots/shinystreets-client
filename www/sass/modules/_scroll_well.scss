@@ -1,0 +1,14 @@
+
+.scroll_well {
+  overflow: auto;
+  white-space: nowrap;
+  text-align: center;
+
+  .scroll_list {
+    > li {
+      @include inline-block;
+      width: auto;
+      margin: 1pt 0;
+    }
+  }
+}

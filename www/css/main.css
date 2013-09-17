@@ -83,6 +83,183 @@ html, body {
   width: 100%;
 }
 
+/*
+ * photoswipe.css
+ * Copyright (c) %%year%% by Code Computerlove (http://www.codecomputerlove.com)
+ * Licensed under the MIT license
+ *
+ * Default styles for PhotoSwipe
+ * Avoid any position or dimension based styles
+ * where possible, unless specified already here.
+ * The gallery automatically works out gallery item
+ * positions etc.
+ */
+/* line 15, /Users/franzwilding/Sites/shinystreets-client/www/sass/lib/_photoswipe.scss */
+body.ps-active, body.ps-building, div.ps-active, div.ps-building {
+  background: #000;
+  overflow: hidden;
+}
+
+/* line 20, /Users/franzwilding/Sites/shinystreets-client/www/sass/lib/_photoswipe.scss */
+body.ps-active *, div.ps-active * {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  display: none;
+}
+
+/* line 25, /Users/franzwilding/Sites/shinystreets-client/www/sass/lib/_photoswipe.scss */
+body.ps-active *:focus, div.ps-active *:focus {
+  outline: 0;
+}
+
+/* Document overlay */
+/* line 32, /Users/franzwilding/Sites/shinystreets-client/www/sass/lib/_photoswipe.scss */
+div.ps-document-overlay {
+  background: #000;
+}
+
+/* UILayer */
+/* line 38, /Users/franzwilding/Sites/shinystreets-client/www/sass/lib/_photoswipe.scss */
+div.ps-uilayer {
+  background: #000;
+  cursor: pointer;
+}
+
+/* Zoom/pan/rotate layer */
+/* line 47, /Users/franzwilding/Sites/shinystreets-client/www/sass/lib/_photoswipe.scss */
+div.ps-zoom-pan-rotate {
+  background: #000;
+}
+
+/* line 50, /Users/franzwilding/Sites/shinystreets-client/www/sass/lib/_photoswipe.scss */
+div.ps-zoom-pan-rotate * {
+  display: block;
+}
+
+/* Carousel */
+/* line 55, /Users/franzwilding/Sites/shinystreets-client/www/sass/lib/_photoswipe.scss */
+div.ps-carousel-item-loading {
+  background: url(img/photoswipe/loader.gif) no-repeat center center;
+}
+
+/* line 60, /Users/franzwilding/Sites/shinystreets-client/www/sass/lib/_photoswipe.scss */
+div.ps-carousel-item-error {
+  background: url(img/photoswipe/error.gif) no-repeat center center;
+}
+
+/* Caption */
+/* line 67, /Users/franzwilding/Sites/shinystreets-client/www/sass/lib/_photoswipe.scss */
+div.ps-caption {
+  background: #000000;
+  background: -moz-linear-gradient(top, #303130 0%, #000101 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #303130), color-stop(100%, #000101));
+  border-bottom: 1px solid #42403f;
+  color: #ffffff;
+  font-size: 13px;
+  font-family: "Lucida Grande", Helvetica, Arial,Verdana, sans-serif;
+  text-align: center;
+}
+
+/* line 77, /Users/franzwilding/Sites/shinystreets-client/www/sass/lib/_photoswipe.scss */
+div.ps-caption * {
+  display: inline;
+}
+
+/* line 80, /Users/franzwilding/Sites/shinystreets-client/www/sass/lib/_photoswipe.scss */
+div.ps-caption-bottom {
+  border-top: 1px solid #42403f;
+  border-bottom: none;
+  min-height: 44px;
+}
+
+/* line 87, /Users/franzwilding/Sites/shinystreets-client/www/sass/lib/_photoswipe.scss */
+div.ps-caption-content {
+  padding: 13px;
+  display: block;
+}
+
+/* Toolbar */
+/* line 95, /Users/franzwilding/Sites/shinystreets-client/www/sass/lib/_photoswipe.scss */
+div.ps-toolbar {
+  background: #000000;
+  background: -moz-linear-gradient(top, #303130 0%, #000101 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #303130), color-stop(100%, #000101));
+  border-top: 1px solid #42403f;
+  color: #ffffff;
+  font-size: 13px;
+  font-family: "Lucida Grande", Helvetica, Arial,Verdana, sans-serif;
+  text-align: center;
+  height: 44px;
+  display: table;
+  table-layout: fixed;
+}
+
+/* line 108, /Users/franzwilding/Sites/shinystreets-client/www/sass/lib/_photoswipe.scss */
+div.ps-toolbar * {
+  display: block;
+}
+
+/* line 113, /Users/franzwilding/Sites/shinystreets-client/www/sass/lib/_photoswipe.scss */
+div.ps-toolbar-top {
+  border-bottom: 1px solid #42403f;
+  border-top: none;
+}
+
+/* line 119, /Users/franzwilding/Sites/shinystreets-client/www/sass/lib/_photoswipe.scss */
+div.ps-toolbar-close, div.ps-toolbar-previous, div.ps-toolbar-next, div.ps-toolbar-play {
+  cursor: pointer;
+  display: table-cell;
+}
+
+/* line 125, /Users/franzwilding/Sites/shinystreets-client/www/sass/lib/_photoswipe.scss */
+div.ps-toolbar div div.ps-toolbar-content {
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 0;
+  background-image: url(img/photoswipe/icons.png);
+  background-repeat: no-repeat;
+}
+
+/* line 134, /Users/franzwilding/Sites/shinystreets-client/www/sass/lib/_photoswipe.scss */
+div.ps-toolbar-close div.ps-toolbar-content {
+  background-position: 0 0;
+}
+
+/* line 139, /Users/franzwilding/Sites/shinystreets-client/www/sass/lib/_photoswipe.scss */
+div.ps-toolbar-previous div.ps-toolbar-content {
+  background-position: -44px 0;
+}
+
+/* line 144, /Users/franzwilding/Sites/shinystreets-client/www/sass/lib/_photoswipe.scss */
+div.ps-toolbar-previous-disabled div.ps-toolbar-content {
+  background-position: -44px -44px;
+}
+
+/* line 149, /Users/franzwilding/Sites/shinystreets-client/www/sass/lib/_photoswipe.scss */
+div.ps-toolbar-next div.ps-toolbar-content {
+  background-position: -132px 0;
+}
+
+/* line 154, /Users/franzwilding/Sites/shinystreets-client/www/sass/lib/_photoswipe.scss */
+div.ps-toolbar-next-disabled div.ps-toolbar-content {
+  background-position: -132px -44px;
+}
+
+/* line 159, /Users/franzwilding/Sites/shinystreets-client/www/sass/lib/_photoswipe.scss */
+div.ps-toolbar-play div.ps-toolbar-content {
+  background-position: -88px 0;
+}
+
+/* Hi-res display */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 240dpi) {
+  /* line 169, /Users/franzwilding/Sites/shinystreets-client/www/sass/lib/_photoswipe.scss */
+  div.ps-toolbar div div.ps-toolbar-content {
+    -moz-background-size: 176px 88px;
+    -o-background-size: 176px 88px;
+    -webkit-background-size: 176px 88px;
+    background-size: 176px 88px;
+    background-image: url(img/photoswipe/icons@2x.png);
+  }
+}
 /* by http://www.codrops.com */
 /* animation sets */
 /* move from / to  */
@@ -3369,7 +3546,7 @@ h1 {
   position: absolute;
   left: 0;
   right: 0;
-  margin-top: -10pt;
+  margin-top: -8pt;
   top: 50%;
   color: #505b6b;
 }
@@ -3380,16 +3557,17 @@ h2 {
   font-size: 20pt;
   font-family: "HelveticaNeue-UltraLight", "Helvetica Neue", Helvetica, Arial;
   font-weight: 100;
-  margin-bottom: 5pt;
+  margin-bottom: 10pt;
 }
 
 /* line 25, /Users/franzwilding/Sites/shinystreets-client/www/sass/base/_defaults.scss */
 p {
   color: #7e7e7e;
   font-size: 11pt;
+  line-height: 140%;
 }
 
-/* line 30, /Users/franzwilding/Sites/shinystreets-client/www/sass/base/_defaults.scss */
+/* line 31, /Users/franzwilding/Sites/shinystreets-client/www/sass/base/_defaults.scss */
 .c {
   height: 0;
   margin: 0;
@@ -3397,7 +3575,7 @@ p {
   clear: both;
 }
 
-/* line 37, /Users/franzwilding/Sites/shinystreets-client/www/sass/base/_defaults.scss */
+/* line 38, /Users/franzwilding/Sites/shinystreets-client/www/sass/base/_defaults.scss */
 strong {
   font-weight: bold;
 }
@@ -3447,17 +3625,7 @@ strong {
   background-size: contain;
 }
 
-/* small inline icons */
-/* line 28, /Users/franzwilding/Sites/shinystreets-client/www/sass/base/_icons.scss */
-.icn.time, .icn.comment {
-  height: 12px;
-  width: 12px;
-  display: inline-block;
-  margin-top: -4px;
-  margin-right: 3px;
-}
-
-/* line 36, /Users/franzwilding/Sites/shinystreets-client/www/sass/base/_icons.scss */
+/* line 26, /Users/franzwilding/Sites/shinystreets-client/www/sass/base/_icons.scss */
 .icn.time {
   background: url("icons/time.png") no-repeat center center;
   -webkit-background-size: contain;
@@ -3466,9 +3634,18 @@ strong {
   background-size: contain;
 }
 
-/* line 41, /Users/franzwilding/Sites/shinystreets-client/www/sass/base/_icons.scss */
+/* line 31, /Users/franzwilding/Sites/shinystreets-client/www/sass/base/_icons.scss */
 .icn.comment {
   background: url("icons/comment.png") no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+
+/* line 36, /Users/franzwilding/Sites/shinystreets-client/www/sass/base/_icons.scss */
+.icn.solution {
+  background: url("icons/solution.png") no-repeat center center;
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;
@@ -3489,9 +3666,9 @@ strong {
 .view .header {
   height: 44pt;
   background: white;
-  -webkit-box-shadow: 0px 0px 2pt rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0px 0px 2pt rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 0px 2pt rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 0px 4pt rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 0px 4pt rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 0px 4pt rgba(0, 0, 0, 0.15);
   position: absolute;
   z-index: 10;
   top: 0;
@@ -3523,7 +3700,15 @@ strong {
   left: auto;
   z-index: 15;
 }
-/* line 46, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_view.scss */
+/* line 45, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_view.scss */
+.view .header h1 {
+  left: 60px;
+  right: 60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* line 54, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_view.scss */
 .view .content {
   position: absolute;
   top: 44pt;
@@ -3545,13 +3730,35 @@ ul.list li, ol.list li {
   margin-bottom: 10pt;
 }
 
+/* line 2, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_scroll_well.scss */
+.scroll_well {
+  overflow: auto;
+  white-space: nowrap;
+  text-align: center;
+}
+/* line 8, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_scroll_well.scss */
+.scroll_well .scroll_list > li {
+  display: -moz-inline-box;
+  -moz-box-orient: vertical;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  width: auto;
+  margin: 1pt 0;
+}
+/* line 7, /Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/css3/_inline-block.scss */
+.scroll_well .scroll_list > li {
+  *display: inline;
+}
+
+/* custom model views */
 /* line 4, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
 .issue.thumb {
   background: white;
   padding: 10pt;
-  -webkit-box-shadow: 0px 0px 2pt rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0px 0px 2pt rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 0px 2pt rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 0px 4pt rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 0px 4pt rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 0px 4pt rgba(0, 0, 0, 0.15);
   -webkit-border-radius: 2pt;
   -moz-border-radius: 2pt;
   -ms-border-radius: 2pt;
@@ -3559,50 +3766,105 @@ ul.list li, ol.list li {
   border-radius: 2pt;
 }
 /* line 10, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
+.issue.thumb.new {
+  border-top: 2px solid #6394ff;
+}
+/* line 14, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
 .issue.thumb .meta {
   border-top: 1px solid #ecf0f6;
-  margin-top: 10px;
-  padding-top: 10px;
+  margin-top: 10pt;
+  padding-top: 10pt;
 }
-/* line 16, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
+/* line 20, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
 .issue.thumb .meta .comments {
   float: left;
-  padding-left: 10px;
+  padding-left: 10pt;
   border-left: 2px solid #7e7e7e;
 }
-/* line 24, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
+/* line 28, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
 .issue.detail {
   padding: 10pt;
 }
-/* line 27, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
+/* line 31, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
 .issue.detail .meta {
   margin-bottom: 10pt;
 }
-/* line 32, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
+/* line 35, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
+.issue.detail .media {
+  background: white;
+}
+/* line 40, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
 .issue .meta {
   position: relative;
+  /* small inline icons */
 }
-/* line 35, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
+/* line 43, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
 .issue .meta strong {
   color: #2c4172;
 }
-/* line 39, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
+/* line 48, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
+.issue .meta .icn {
+  height: 12px;
+  width: 12px;
+  display: inline-block;
+  margin-top: -4px;
+  margin-right: 3px;
+}
+/* line 56, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
 .issue .meta .avatar {
   float: left;
-  height: 30px;
-  margin-right: 5px;
+  height: 24px;
+  margin-right: 5pt;
+  -webkit-border-radius: 2pt;
+  -moz-border-radius: 2pt;
+  -ms-border-radius: 2pt;
+  -o-border-radius: 2pt;
+  border-radius: 2pt;
 }
-/* line 45, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
+/* line 63, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
 .issue .meta .date {
   float: left;
-  margin-left: 5px;
-  font-size: 10pt;
-  margin-top: 10px;
+  margin-left: 5pt;
+  font-size: 9pt;
+  margin-top: 8px;
+  line-height: 100%;
 }
-/* line 52, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
+/* line 71, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
 .issue .meta .comments {
   float: right;
-  margin-left: 10px;
-  font-size: 10pt;
-  margin-top: 10px;
+  margin-left: 10pt;
+  font-size: 9pt;
+  margin-top: 8px;
+  line-height: 100%;
+}
+/* line 79, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
+.issue .meta .solutions {
+  float: right;
+  margin-left: 10pt;
+  font-size: 9pt;
+  margin-top: 8px;
+  color: #417e0a;
+  line-height: 100%;
+}
+/* line 87, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
+.issue .meta .solutions strong {
+  color: #417e0a;
+}
+/* line 93, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
+.issue .media {
+  background: #ecf0f6;
+  width: 100%;
+  margin: 5pt -10pt;
+  padding: 10pt;
+}
+/* line 99, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
+.issue .media .images li {
+  height: 110px;
+}
+/* line 103, /Users/franzwilding/Sites/shinystreets-client/www/sass/modules/_issue.scss */
+.issue .media .images li img {
+  display: block;
+  height: 110px;
+  min-width: 50px;
+  width: auto;
 }

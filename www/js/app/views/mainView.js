@@ -1,4 +1,4 @@
-define(['models/config', 'collections/areas', 'collections/issues', 'collections/routes', 'backbone'], function(config, areas, issues, routes) {
+define(['models/config', 'collections/areas', 'collections/users', 'collections/issues', 'collections/comments', 'collections/solutions', 'collections/routes', 'moment', 'backbone'], function(config, areas, users, issues, comments, solutions, routes, moment) {
   return Backbone.View.extend({
 
     id: 'main',
@@ -15,12 +15,27 @@ define(['models/config', 'collections/areas', 'collections/issues', 'collections
       this.areas = new areas([], this);
       this.areas.fetch();
 
+      // create users collection
+      this.users = new users([], this);
+      this.users.fetch();
+
       // create issues collection
       this.issues = new issues([], this);
       this.issues.fetch();
 
+      // create comments collection
+      this.comments = new comments([], this);
+      this.comments.fetch();
+
+      // create solutions collection
+      this.solutions = new solutions([], this);
+      this.solutions.fetch();
+
       // init test config
       this.config.set("default_area", this.areas.first());
+      this.config.set("lang", "de");
+
+      moment.lang(this.config.get("lang"));
 
       // create routes
       this.routes = new routes([], this);

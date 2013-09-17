@@ -6,6 +6,7 @@
 
 /* libs */
 @import "lib/snap";
+@import "lib/photoswipe";
 @import "lib/animations";
 
 /* base */
@@ -20,4 +21,7 @@
 /* list styles */
 @import "modules/list";
 
+@import "modules/scroll_well";
+
+/* custom model views */
 @import "modules/issue";

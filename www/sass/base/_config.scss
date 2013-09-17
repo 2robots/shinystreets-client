@@ -17,11 +17,13 @@ $header_h1_size: 16pt;
 $header_h2_size: 20pt;
 
 $p_size: 11pt;
-$p_size_small: 10pt;
+$p_size_small: 9pt;
+
+$thumb_img_height: 110px;
 
 /* BOX SHADOW */
-$default-box-shadow-color: rgba(0, 0, 0, 0.3);
-$default-box-shadow-blur: 2pt;
+$default-box-shadow-color: rgba(0, 0, 0, 0.15);
+$default-box-shadow-blur: 4pt;
 
 /* BORDER RADIUS */
 $default-border-radius: 2pt;
@@ -29,3 +31,5 @@ $default-border-radius: 2pt;
 /* FONTS */
 $font_normal: "Helvetica Neue", Helvetica, Arial;
 $font_light: "HelveticaNeue-UltraLight", "Helvetica Neue", Helvetica, Arial;
+
+$line_height: 140%;

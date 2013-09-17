@@ -1,1 +1,1 @@
-<p><%= model.get("description") %></p>
+<p class="desc"><%= model.get("description") %></p>

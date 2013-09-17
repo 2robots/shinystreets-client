@@ -5,7 +5,9 @@ requirejs.config({
     views: '../app/views',
     templates: '../app/templates',
     models: '../app/models',
-    collections: '../app/collections'
+    collections: '../app/collections',
+    moment: "moment_langs.min",
+    photoswipe: "code.photoswipe.jquery-3.0.5.min"
   }
 });
 
@@ -32,6 +34,3 @@ require(['jquery', 'underscore', 'fastclick', 'views/mainView'], function(jquery
     }
   });
 });
-
-
-

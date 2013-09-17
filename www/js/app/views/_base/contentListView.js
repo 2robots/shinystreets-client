@@ -34,6 +34,14 @@ define(['views/_base/contentView'], function(contentView) {
 
         myListItemView = t.options.listItemView;
       }
+    },
+
+    afterRender: function() {
+      this.initIScroll();
+
+      _.each(this.list_items, function(i){
+        i.afterRender();
+      });
     }
   });
 });

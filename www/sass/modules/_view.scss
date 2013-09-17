@@ -41,6 +41,14 @@
       left: auto;
       z-index: 15;
     }
+
+    h1 {
+      left: 60px;
+      right: 60px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
   }
 
   .content {

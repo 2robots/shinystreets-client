@@ -23,16 +23,6 @@
   @include background-size(contain);
 }
 
-
-/* small inline icons */
-.icn.time, .icn.comment {
-  height: 12px;
-  width: 12px;
-  display: inline-block;
-  margin-top: -4px;
-  margin-right: 3px;
-}
-
 .icn.time {
   background: url("icons/time.png") no-repeat center center;
   @include background-size(contain);
@@ -40,5 +30,10 @@
 
 .icn.comment {
   background: url("icons/comment.png") no-repeat center center;
+  @include background-size(contain);
+}
+
+.icn.solution {
+  background: url("icons/solution.png") no-repeat center center;
   @include background-size(contain);
 }
