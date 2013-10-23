@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>0BF1DA1F-B6AC-4D68-A6A6-A83F983ECDBD</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Shinystreets</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>59E1106E-7A6C-4FB1-9B46-CA2C46825C0E</key>
+		<string>ssh://github.com/2robots/shinystreets-client.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>platforms/ios/Shinystreets.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>59E1106E-7A6C-4FB1-9B46-CA2C46825C0E</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/2robots/shinystreets-client.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>59E1106E-7A6C-4FB1-9B46-CA2C46825C0E</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>59E1106E-7A6C-4FB1-9B46-CA2C46825C0E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>shinystreets-client</string>
+		</dict>
+	</array>
+</dict>
+</plist>
