@@ -1,0 +1,36 @@
+
+.user-header {
+  text-align: center;
+  padding: 20px;
+  background: #eee;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.user-header h1 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.badge
+{
+  background: radial-gradient( center -9px, circle closest-side, white 0, #587397 26px );
+  background: -moz-radial-gradient( center -9px, circle closest-side, white 0, #587397 26px );
+  background: -ms-radial-gradient( center -9px, circle closest-side, white 0, #587397 26px );
+  background: -o-radial-gradient( center -9px, circle closest-side, white 0, #587397 26px );
+  background: -webkit-radial-gradient( center -9px, circle closest-side, white 0, #587397 26px );
+  background-color: #587397;
+  border: 2px solid white;
+  border-radius: 12px;
+  box-shadow: 1px 1px 1px black;
+  color: white;
+  font: bold 17px/15px Helvetica;
+  height: 18px;
+  padding-top: 2px;
+  padding-right: 2px;
+  text-align: center;
+  width: 20px;
+  position: relative;
+  float: left;
+  margin-right: 20px;
+}

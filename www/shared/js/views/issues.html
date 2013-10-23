@@ -1,0 +1,7 @@
+<div data-options="dxView : { name: 'issues' } " >
+  <div data-options="dxContent : { targetPlaceholder: 'content' } " >
+    <div data-bind="dxList: { dataSource: dataSource, pullRefreshEnabled: true }">
+      <div data-options="dxTemplate : { name: 'item' }" data-bind="text: title, dxAction: '#issue/{id}'" ></div>
+    </div>
+  </div>
+</div>
