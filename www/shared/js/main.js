@@ -1,6 +1,9 @@
 
 window.shinystreets = {
 
+  baseUrl: "http://localhost/shinystreets-client/json",
+  defaultDataType: "json",
+
   registerRoutes: function() {
     shinystreets.app.router.register(":view", {view: "issues"});
     shinystreets.app.router.register(":view/:id", {view: "issue", id: undefined});

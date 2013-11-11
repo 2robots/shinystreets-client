@@ -1,44 +1,22 @@
 
 
 shinystreets.issues = function(params) {
-  var viewModel = {
-    dataSource: DevExpress.data.createDataSource({
-      load: function(loadOptions) {
-        var dfd = new $.Deferred();
 
-        if(loadOptions.refresh) {
-          var items = window.localStorage.getItem("issues");
-          dfd.resolve(items);
-        } else {
-          var items = window.localStorage.getItem("issues");
+  var issues = shinystreets.models;
 
-          // TODO: load items and save it to localStorage
-          items.push({id: 3, title: "One Issue"});
+  issues.prototype.resourceUrl = function(){ return "issues.json"; };
+  issues.prototype.resourceName = function(){ return "issues"; };
+  issues.prototype.oneResourceName = function(){ return "issue"; };
 
-          window.localStorage.setItem("issues", items);
-
-          dfd.resolve(items);
-        }
-        return dfd.promise();
-      }
-    })
-  };
-
-  return viewModel;
-};
+  return new issues(params);
+}
 
 shinystreets.issue = function(params) {
 
-  console.log(params);
+  var issue = shinystreets.model;
 
-  var viewModel = {
-    id: params.id,
-    title: ko.observable('')
-  };
-  /*$.get('http://sampleservices.devexpress.com/api/Products/' + viewModel.id)
-  .done(function (data) {
-      viewModel.name(data.ProductName);
-  });*/
+  issue.prototype.resourceName = function(){ return "issues"; };
+  issue.prototype.oneResourceName = function(){ return "issue"; };
 
-  return viewModel;
+  return new issue(params);
 };
