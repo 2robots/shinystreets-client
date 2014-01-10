@@ -12,18 +12,39 @@ var modules = [
   'ngAnimate', 
   
   //services
-
+  'shinystreets.Config',
+  
+  //resources services
+  'shinystreets.Area',
+  
   // controllers
-  'shinystreets.MainCtrl'
+  'shinystreets.MainCtrl',
+  'shinystreets.IssuesCtrl',
+  'shinystreets.IssueCtrl',  
+  'shinystreets.AreasCtrl'
 ];
 
-angular.module('shinystreets', modules)
+var shinystreets = angular.module('shinystreets', modules)
 
-.config(function ($compileProvider){
+.config(function ($compileProvider, $httpProvider){
   // Needed for routing to work
   $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
 })
 
 .config(function($routeProvider, $locationProvider) {
+
+  $routeProvider.when('/issues', {
+    templateUrl: 'templates/issues.html', 
+    controller: 'IssuesCtrl'
+  });
+  
+  $routeProvider.when('/issues/:id', {
+    templateUrl: 'templates/issue.html',
+    controller: 'IssueCtrl'
+  });
+
+  $routeProvider.otherwise({
+    redirectTo: '/issues'
+  });
 });
 

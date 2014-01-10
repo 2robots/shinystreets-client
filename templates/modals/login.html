@@ -1,0 +1,25 @@
+<div class="modal" ng-controller="AreasCtrl">
+  <header class="bar bar-header bar-royal">
+    <h1 class="title">Login</h1>
+    <button class="button button-clear icon ion-ios7-checkmark-empty" ng-click="closeModal()"> </button>
+  </header>
+  <content has-header="true">
+    
+    <p class="padding">Du kannst alle Issues auch ohne Login ansehen. Möchtest 
+      du aber ein aktiver Teil der Community werden, dann musst du dich 
+      einloggen.</p>
+    
+    <div class="list list-inset">
+      <label class="item item-input">
+        <input type="text" placeholder="Email-Adresse">
+      </label>
+      <label class="item item-input">
+        <input type="password" placeholder="Passwort">
+      </label>      
+    </div>
+    
+    <div class="padding">
+      <button class="button button-block button-royal" ng-click="closeModal()">Login</button>
+    </div>
+  </content>
+</div>
