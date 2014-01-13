@@ -13,15 +13,19 @@ var modules = [
   
   //services
   'shinystreets.Config',
+  'shinystreets.Authentication',
+  'shinystreets.GenericResources',
   
   //resources services
   'shinystreets.Area',
+  'shinystreets.User',
   
   // controllers
   'shinystreets.MainCtrl',
   'shinystreets.IssuesCtrl',
   'shinystreets.IssueCtrl',  
-  'shinystreets.AreasCtrl'
+  'shinystreets.AreasCtrl', 
+  'shinystreets.LoginCtrl'
 ];
 
 var shinystreets = angular.module('shinystreets', modules)

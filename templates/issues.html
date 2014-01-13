@@ -1,37 +1,16 @@
 <nav-page id="issues-page">
-  <content has-header="true" has-footer="true">
+  <content has-header="true" has-footer="true" on-refresh="onRefresh()">
     
     <!-- for pull to refresh -->
     <refresher></refresher>
+    
+    <div class="error" ng-show="loadError">Fehler beim Laden. Versuch es bitte nichmal.</div>
+    
     <list>
-      <a class="item item-thumbnail-left" href="#">
+      <a class="item item-thumbnail-left" href="#" ng-repeat="issue in issues.results">
         <img src="http://2robots.at/logo.png">
-        <h2>First Issue on shinystreets</h2>
-        <p>Lorem Ipsums</p>
-      </a>
-      
-      <a class="item item-thumbnail-left" href="#">
-        <img src="http://2robots.at/logo.png">
-        <h2>First Issue on shinystreets</h2>
-        <p>Lorem Ipsums</p>
-      </a>
-      
-      <a class="item item-thumbnail-left" href="#">
-        <img src="http://2robots.at/logo.png">
-        <h2>First Issue on shinystreets</h2>
-        <p>Lorem Ipsums</p>
-      </a>
-      
-      <a class="item item-thumbnail-left" href="#">
-        <img src="http://2robots.at/logo.png">
-        <h2>First Issue on shinystreets</h2>
-        <p>Lorem Ipsums</p>
-      </a>
-      
-      <a class="item item-thumbnail-left" href="#">
-        <img src="http://2robots.at/logo.png">
-        <h2>First Issue on shinystreets</h2>
-        <p>Lorem Ipsums</p>
+        <h2 ng-bind="issue.name"> </h2>
+        <p ng-bind="issue.description"> </p>
       </a>
     </list>
   </content>
