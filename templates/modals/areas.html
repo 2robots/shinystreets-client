@@ -11,7 +11,7 @@
     
     <div class="list">
       <label class="item item-radio" ng-repeat="area in areas.results">
-        <input type="radio" name="areas">
+        <input type="radio" ng-model="$parent.activeArea" ng-value="area.id">
         <div class="item-content" ng-bind="area.name"> </div>
         <i class="radio-icon ion-checkmark"> </i>
       </label>

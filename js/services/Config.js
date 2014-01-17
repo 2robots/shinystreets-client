@@ -3,8 +3,8 @@ angular.module('shinystreets.Config', [], function($provide){
     return {
       
       name: 'shinystreets', 
-      //endpoint: 'http://dev.shinystreets.com'
-      endpoint: 'http://localhost/shinystreets_json'
+      endpoint: 'http://dev.shinystreets.com'
+      //endpoint: 'http://localhost/shinystreets_json'
     };
   });
 });

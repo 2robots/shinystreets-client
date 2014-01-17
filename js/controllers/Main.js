@@ -1,8 +1,28 @@
 
 angular.module('shinystreets.MainCtrl', [])
 
-.controller('MainCtrl', function($scope, $rootScope, Modal) {
+.controller('MainCtrl', function($scope, $rootScope, $ionicModal) {
   
+  $rootScope.leftButtons = [
+    {
+      type: 'button-clear',
+      //content: 'Areas<i class="icon ion-navicon"></i>',
+      content: 'Areas',
+      tap: function(e) {
+        $rootScope.openModal("areas");
+      }
+    }
+  ];
+  
+  $rootScope.rightButtons = [
+    {
+      type: 'button-clear',
+      content: 'Neu',
+      tap: function(e) {
+        $rootScope.openModal("create");
+      }
+    }
+  ];
   
   
   /**
@@ -13,12 +33,12 @@ angular.module('shinystreets.MainCtrl', [])
   $rootScope.currentModal = null;
   
   // AREAS MODAL
-  Modal.fromTemplateUrl('templates/modals/areas.html', function(modal) {
+  $ionicModal.fromTemplateUrl('templates/modals/areas.html', function(modal) {
     $rootScope.areasModal = modal;
   }, { scope: $rootScope, animation: 'slide-in-up' });
   
   // LOGIN MODAL
-  Modal.fromTemplateUrl('templates/modals/login.html', function(modal) {
+  $ionicModal.fromTemplateUrl('templates/modals/login.html', function(modal) {
     $rootScope.loginModal = modal;
   }, { scope: $rootScope, animation: 'slide-in-up' });
   

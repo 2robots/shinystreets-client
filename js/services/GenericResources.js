@@ -14,8 +14,8 @@ angular.module('shinystreets.GenericResources', ['ngResource'], function($provid
           var tmp_method = {
             method: 'GET', 
             params: { sub: '' }, 
-            isArray: false, 
-            headers: { 'Authentication': Authentication().httpAuthorization() }
+            isArray: false/*, 
+            headers: { 'Authentication': Authentication().httpAuthorization() }*/
           };
           
           // define some values, for key-methods
@@ -56,8 +56,8 @@ angular.module('shinystreets.GenericResources', ['ngResource'], function($provid
           params: {
             id: ''
           }, 
-          isArray: false, 
-          headers: { 'Authentication': Authentication.httpAuthorization() }
+          isArray: false/*, 
+          headers: { 'Authentication': Authentication.httpAuthorization() }*/
         };
       }
       

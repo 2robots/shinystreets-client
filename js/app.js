@@ -10,7 +10,11 @@ var modules = [
   'ionic', 
   'ngRoute', 
   'ngAnimate', 
+  'ngCookies', 
   
+  // 3d party modules
+  'angularLocalStorage',
+     
   //services
   'shinystreets.Config',
   'shinystreets.Authentication',
@@ -19,36 +23,72 @@ var modules = [
   //resources services
   'shinystreets.Area',
   'shinystreets.User',
+  'shinystreets.Issue',
   
   // controllers
   'shinystreets.MainCtrl',
+  'shinystreets.MapCtrl',
+  'shinystreets.ProfileCtrl',
   'shinystreets.IssuesCtrl',
-  'shinystreets.IssueCtrl',  
+  'shinystreets.IssueCtrl', 
+   
   'shinystreets.AreasCtrl', 
   'shinystreets.LoginCtrl'
 ];
 
 var shinystreets = angular.module('shinystreets', modules)
 
-.config(function ($compileProvider, $httpProvider){
+/*.config(function ($compileProvider, $httpProvider){
   // Needed for routing to work
   $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
-})
+})*/
+.config(function($stateProvider, $urlRouterProvider) {
 
-.config(function($routeProvider, $locationProvider) {
+  $stateProvider
+    .state('tabs', {
+      url: "/tabs",
+      abstract: true,
+      templateUrl: "templates/mainTabs.html"
+    })
+    .state('tabs.issues', {
+      url: "/issues",
+      views: {
+        'issues-tab': {
+          templateUrl: "templates/issues.html",
+          controller: 'IssuesCtrl'
+        }
+      }
+    })
+    .state('tabs.issue', {
+      url: "/issues/:id",
+      views: {
+        'issues-tab': {
+          templateUrl: "templates/issue.html",
+          controller: 'IssueCtrl'
+        }
+      }
+    })
+    
+    .state('tabs.map', {
+      url: "/map",
+      views: {
+        'map-tab': {
+          templateUrl: "templates/map.html",
+          controller: 'MapCtrl'
+        }
+      }
+    })
+    .state('tabs.profile', {
+      url: "/profile",
+      views: {
+        'profile-tab': {
+          templateUrl: "templates/profile.html",
+          controller: 'ProfileCtrl'
+        }
+      }
+    });
 
-  $routeProvider.when('/issues', {
-    templateUrl: 'templates/issues.html', 
-    controller: 'IssuesCtrl'
-  });
-  
-  $routeProvider.when('/issues/:id', {
-    templateUrl: 'templates/issue.html',
-    controller: 'IssueCtrl'
-  });
-
-  $routeProvider.otherwise({
-    redirectTo: '/issues'
-  });
+    // if none of the above are matched, go to this one
+    $urlRouterProvider.otherwise("/tabs/issues");
 });
 

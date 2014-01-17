@@ -19,6 +19,11 @@
     <script src="js/lib/angular/angular-touch.js"></script>
     <script src="js/lib/angular/angular-sanitize.js"></script>
     <script src="js/lib/angular/angular-resource.js"></script>
+    <script src="js/lib/angular/angular-cookies.js"></script>
+    
+    <script src="js/lib/angular-ui/angular-ui-router.js"></script>
+    <script src="js/lib/angularLocalStorage.js"></script>
+    
     <script src="js/lib/ionic-angular.js"></script>
 
     <!-- Custom Services -->
@@ -29,11 +34,15 @@
     <!-- Custom Services Resources -->
     <script src="js/services/resources/Area.js"></script>
     <script src="js/services/resources/User.js"></script>
+    <script src="js/services/resources/Issue.js"></script>
 
     <!-- Controller scripts -->    
     <script src="js/controllers/Main.js"></script>
+    <script src="js/controllers/Map.js"></script>
+    <script src="js/controllers/Profile.js"></script>
     <script src="js/controllers/Issues.js"></script>
     <script src="js/controllers/Issue.js"></script>
+    
     <script src="js/controllers/Areas.js"></script>
     <script src="js/controllers/Login.js"></script>
 
@@ -45,49 +54,14 @@
   </head>
 
   <body ng-app="shinystreets" ng-controller="MainCtrl">
+    
+    <!-- The nav bar that will be updated as we navigate -->
+    <nav-bar animation="nav-title-slide-ios7" 
+      type="bar-royal" 
+      back-button-type="button-icon" 
+      back-button-icon="ion-arrow-left-c"></nav-bar>
 
-    <tabs tabs-type="tabs-icon-only" tabs-style="tabs-royal">
-      
-      <!-- list tab -->
-      <tab id="tab_list" title="List" icon-on="icon ion-ios7-albums" icon-off="icon ion-ios7-albums-outline">
-        
-        <header class="bar bar-header bar-royal">
-          <button class="button button-clear icon ion-navicon" ng-click="openModal('areas')"> </button>
-          <h1 class="title">Issues</h1>
-          <button class="button button-clear icon ion-ios7-compose-outline"> </button>
-        </header>
-        
-        <pane nav-router>
-          <ng-view></ng-view>
-        </pane>
-      </tab>
-    
-      <tab id="tab_map" title="Map" icon-on="icon ion-ios7-location" icon-off="icon ion-ios7-location-outline">
-        
-        <header class="bar bar-header bar-royal">
-          <button class="button button-clear icon ion-navicon" ng-click="openModal('areas')"> </button>
-          <h1 class="title">Issues</h1>
-          <button class="button button-clear icon ion-ios7-compose-outline"> </button>
-        </header>
-        <content has-header="true" has-footer="true">
-          <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/export/embed.html?bbox=16.33443832397461%2C48.18588898883708%2C16.4040470123291%2C48.232791761830015&amp;layer=hot"></iframe>
-        </content>
-      </tab>
-    
-      <tab id="tab_profile" title="Profile" icon-on="icon ion-ios7-person" icon-off="icon ion-ios7-person-outline">
-        
-        <header class="bar bar-header bar-royal">
-          <h1 class="title">Profil</h1>
-        </header>
-        <content has-header="true" has-footer="true">
-          
-          <p class="padding">Du siehst dein Profil erst, wenn du dich eingeloggt hast.</p>
-          <p class="padding">
-            <button class="button button-block button-royal" ng-click="openModal('login')">Einloggen</button>
-          </p>
-        </content>
-      </tab>
-  </tabs>
-    
+    <!-- where the initial view template will be rendered -->
+    <nav-view animation="slide-left-right"></nav-view>
   </body>
 </html>
