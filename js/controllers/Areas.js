@@ -1,7 +1,7 @@
 
 angular.module('shinystreets.AreasCtrl', [])
 
-.controller('AreasCtrl', function($scope, $rootScope, Area, Config, storage) {
+.controller('AreasCtrl', function($scope, Area, Config, storage) {
   
   storage.bind($scope, 'activeArea', {storeName: Config.name + '.Area'});
   $scope.areas = Area.query();

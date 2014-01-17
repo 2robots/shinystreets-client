@@ -31,6 +31,7 @@ var modules = [
   'shinystreets.ProfileCtrl',
   'shinystreets.IssuesCtrl',
   'shinystreets.IssueCtrl', 
+  'shinystreets.CommentsCtrl', 
    
   'shinystreets.AreasCtrl', 
   'shinystreets.LoginCtrl'
@@ -59,12 +60,23 @@ var shinystreets = angular.module('shinystreets', modules)
         }
       }
     })
+    
     .state('tabs.issue', {
-      url: "/issues/:id",
+      url: "/issues/:id", 
       views: {
         'issues-tab': {
           templateUrl: "templates/issue.html",
           controller: 'IssueCtrl'
+        }
+      }
+    })
+    
+    .state('tabs.comments', {
+      url: "/issues/:id/comments", 
+      views: {
+        'issues-tab': {
+          templateUrl: "templates/comments.html",
+          controller: 'CommentsCtrl'
         }
       }
     })

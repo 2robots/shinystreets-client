@@ -1,7 +1,7 @@
 
 angular.module('shinystreets.MainCtrl', [])
 
-.controller('MainCtrl', function($scope, $rootScope, $ionicModal) {
+.controller('MainCtrl', function($scope, $rootScope, $ionicModal, Authentication) {
   
   $rootScope.leftButtons = [
     {
@@ -14,15 +14,27 @@ angular.module('shinystreets.MainCtrl', [])
     }
   ];
   
-  $rootScope.rightButtons = [
-    {
-      type: 'button-clear',
-      content: 'Neu',
-      tap: function(e) {
-        $rootScope.openModal("create");
+  if(Authentication().loggedin()) {
+    $rootScope.rightButtons = [
+      {
+        type: 'button-clear',
+        content: 'Neu',
+        tap: function(e) {
+          $rootScope.openModal("create");
+        }
       }
-    }
-  ];
+    ];
+  } else {
+    $rootScope.rightButtons = [
+      {
+        type: 'button-clear',
+        content: 'Login',
+        tap: function(e) {
+          $rootScope.openModal("login");
+        }
+      }
+    ];
+  }
   
   
   /**
