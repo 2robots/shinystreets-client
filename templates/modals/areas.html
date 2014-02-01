@@ -6,12 +6,13 @@
   <content has-header="true" on-refresh="onRefresh()">
     <!-- for pull to refresh -->
     <refresher></refresher>
-    
+    <div class="error" ng-show="loadError">Fehler beim Laden. Versuch es bitte nichmal.</div>
+
     <p class="padding">Wähle die Regionen, aus denen Issues angezeig werden sollen.</p>
-    
+
     <div class="list">
       <label class="item item-radio" ng-repeat="area in areas.results">
-        <input type="radio" ng-model="$parent.activeArea" ng-value="area.id">
+        <input type="radio" ng-model="userConfig.activeArea" ng-value="area.id">
         <div class="item-content" ng-bind="area.name"> </div>
         <i class="radio-icon ion-checkmark"> </i>
       </label>

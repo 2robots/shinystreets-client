@@ -1,11 +1,11 @@
 angular.module('shinystreets.Area', ['ngResource'], function($provide){
-  $provide.factory('Area', function(GenericResources, Config){
+  $provide.factory('Area', function(GenericResources, Config, storage){
     return GenericResources('areas', [
-      { name: 'query' }, 
+      { name: 'query' },
       { name: 'issues', params: {
         id: function(){
-          return window.localStorage.getItem(Config.name + '.Area');
-        }, 
+          return Config.userConfig().activeArea;
+        },
         sub: 'issues'
         }
       }

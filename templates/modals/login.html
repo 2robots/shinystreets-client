@@ -4,28 +4,28 @@
     <button class="button button-clear icon ion-ios7-close-empty" ng-click="closeModal()"> </button>
   </header>
   <content has-header="true">
-    
-    <p class="padding">Du kannst alle Issues auch ohne Login ansehen. Möchtest 
-      du aber ein aktiver Teil der Community werden, dann musst du dich 
+
+    <p class="padding">Du kannst alle Issues auch ohne Login ansehen. Möchtest
+      du aber ein aktiver Teil der Community werden, dann musst du dich
       einloggen.</p>
-    
+
     <div class="list list-inset">
       <label class="item item-input">
-        <input type="text" placeholder="Email-Adresse">
+        <input ng-model="user.username" type="text" placeholder="Email-Adresse">
       </label>
       <label class="item item-input">
-        <input type="password" placeholder="Passwort">
-      </label>      
+        <input ng-model="user.password" type="password" placeholder="Passwort">
+      </label>
     </div>
-    
+
     <div class="padding">
-      <button class="button button-block button-royal" ng-click="closeModal()">Login</button>
+      <button class="button button-block button-royal" ng-click="login()">Login</button>
     </div>
-    
+
     <div class="padding">
       <h4>Hast du noch keinen Account?</h4>
-      <p>Du kannst dir im Handumdrehen einen erstellen. Gratis und geben deine Daten auch nicht weiter.</p>
-      <button class="button button-block button-light">Registrieren</button>
+      <p>Du kannst dir im Handumdrehen einen erstellen. Gratis und wir geben deine Daten auch nicht weiter.</p>
+      <button class="button button-block button-energized" ng-click="openModal('register')">Registrieren</button>
     </div>
   </content>
 </div>
