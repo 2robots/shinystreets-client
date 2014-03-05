@@ -18,6 +18,10 @@ angular.module('shinystreets.IssuesCtrl', [])
   });
 
   $scope.loadError = false;
+  
+  $rootScope.$on('modalClose', function(){
+    $scope.onRefresh();
+  });
 
   // On pull to refresh
   $scope.onRefresh = function() {

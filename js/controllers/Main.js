@@ -94,6 +94,7 @@ angular.module('shinystreets.MainCtrl', [])
 
       // close the modal & unsert currentModal
       $rootScope.currentModal.hide();
+      $rootScope.$broadcast('modalClose');
       $rootScope.currentModal = null;
     }
   };
