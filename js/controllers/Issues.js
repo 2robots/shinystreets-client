@@ -1,12 +1,19 @@
 
 angular.module('shinystreets.IssuesCtrl', [])
 
-.controller('IssuesCtrl', function($scope, $rootScope, Area) {
+.controller('IssuesCtrl', function($scope, $rootScope, $ionicLoading, Area) {
 
   $scope.leftButtons = $rootScope.leftButtons;
   $scope.rightButtons = $rootScope.rightButtons;
-
-  $scope.issues = Area.issues(function(){}, function(){
+  
+  $scope.loading = $ionicLoading.show({
+    content: 'Loading'
+  });
+  
+  $scope.issues = Area.issues(function(){
+    $scope.loading.hide();
+  }, function(){
+    $scope.loading.hide();
     $scope.loadError = true;
   });
 
@@ -15,7 +22,6 @@ angular.module('shinystreets.IssuesCtrl', [])
   // On pull to refresh
   $scope.onRefresh = function() {
     $scope.loadError = false;
-
     $scope.issues = Area.issues(
       // on success
       function(){

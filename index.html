@@ -3,28 +3,24 @@
   <head>
     <meta charset="utf-8">
     <title>Shinystreets</title>
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 
     <!-- ionic css -->
-    <link href="css/lib/ionic.css" rel="stylesheet">
-
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    
     <!-- your app's css -->
     <link href="css/app.css" rel="stylesheet">
-
+    
     <!-- ionic/angularjs scripts -->
-    <script src="js/lib/ionic.js"></script>
-    <script src="js/lib/angular/angular.js"></script>
-    <script src="js/lib/angular/angular-animate.js"></script>
-    <script src="js/lib/angular/angular-route.js"></script>
-    <script src="js/lib/angular/angular-touch.js"></script>
-    <script src="js/lib/angular/angular-sanitize.js"></script>
-    <script src="js/lib/angular/angular-resource.js"></script>
-    <script src="js/lib/angular/angular-cookies.js"></script>
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    
+    <!-- other angular modules -->
+    <script src="lib/ionic/js/angular/angular-resource.min.js"></script>
+    <script src="lib/ionic/js/angular/angular-cookies.min.js"></script>
+    
+    <!-- angular-local-storage -->
+    <script src="lib/angular/angularLocalStorage.js"></script>
 
-    <script src="js/lib/angular-ui/angular-ui-router.js"></script>
-    <script src="js/lib/angularLocalStorage.js"></script>
-
-    <script src="js/lib/ionic-angular.js"></script>
 
     <!-- Custom Services -->
     <script src="js/services/Config.js"></script>
@@ -54,15 +50,15 @@
     <script src="phonegap.js"></script>
   </head>
 
-  <body ng-app="shinystreets" ng-controller="MainCtrl">
+  <body ng-app="shinystreets" ng-controller="MainCtrl" animation="slide-left-right-ios7">
 
     <!-- The nav bar that will be updated as we navigate -->
-    <nav-bar animation="nav-title-slide-ios7"
+    <ion-nav-bar animation="nav-title-slide-ios7"
       type="bar-royal"
       back-button-type="button-icon"
-      back-button-icon="ion-arrow-left-c"></nav-bar>
+      back-button-icon="ion-arrow-left-c"></ion-nav-bar>
 
     <!-- where the initial view template will be rendered -->
-    <nav-view animation="slide-left-right"></nav-view>
+    <ion-nav-view></ion-nav-view>
   </body>
 </html>

@@ -8,9 +8,10 @@ var modules = [
 
   // ionic modules
   'ionic',
-  'ngRoute',
-  'ngAnimate',
-
+  
+  // other angular modules
+  'ngResource',
+  
   // 3d party modules
   'angularLocalStorage',
 
@@ -50,6 +51,7 @@ var shinystreets = angular.module('shinystreets', modules)
       abstract: true,
       templateUrl: "templates/mainTabs.html"
     })
+    
     .state('tabs.issues', {
       url: "/issues",
       views: {
