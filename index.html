@@ -7,17 +7,17 @@
 
     <!-- ionic css -->
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    
+
     <!-- your app's css -->
     <link href="css/app.css" rel="stylesheet">
-    
+
     <!-- ionic/angularjs scripts -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
-    
+
     <!-- other angular modules -->
-    <script src="lib/ionic/js/angular/angular-resource.min.js"></script>
-    <script src="lib/ionic/js/angular/angular-cookies.min.js"></script>
-    
+    <script src="lib/angular/angular-resource.min.js"></script>
+    <script src="lib/angular/angular-cookies.min.js"></script>
+
     <!-- angular-local-storage -->
     <script src="lib/angular/angularLocalStorage.js"></script>
 
@@ -53,10 +53,18 @@
   <body ng-app="shinystreets" ng-controller="MainCtrl" animation="slide-left-right-ios7">
 
     <!-- The nav bar that will be updated as we navigate -->
-    <ion-nav-bar animation="nav-title-slide-ios7"
-      type="bar-royal"
-      back-button-type="button-icon"
-      back-button-icon="ion-arrow-left-c"></ion-nav-bar>
+    <ion-nav-bar class="bar-stable nav-title-slide-ios7">
+      <ion-nav-back-button class="button-icon">
+        <i class="ion-ios7-arrow-left"></i></ion-nav-back-button>
+
+        <ion-nav-buttons side="left">
+            <button class="button" ng-click="button.tap()" ng-repeat="button in leftButtons">{{button.content}}</button>
+        </ion-nav-buttons>
+
+        <ion-nav-buttons side="right">
+            <button class="button" ng-click="button.tap()" ng-repeat="button in rightButtons">{{button.content}}</button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
 
     <!-- where the initial view template will be rendered -->
     <ion-nav-view></ion-nav-view>

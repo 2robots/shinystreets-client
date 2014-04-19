@@ -25,6 +25,8 @@ angular.module('shinystreets.LoginCtrl', [])
           $rootScope.closeModal();
         }
 
+        $rootScope.rightButtons = $rootScope.defaultRightButtons();
+
       }
     );
   }

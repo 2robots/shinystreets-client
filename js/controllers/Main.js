@@ -1,7 +1,7 @@
 
 angular.module('shinystreets.MainCtrl', [])
 
-.controller('MainCtrl', function($scope, $rootScope, $ionicModal, Authentication, Config, storage) {
+.controller('MainCtrl', function($scope, $rootScope, $ionicModal, Authentication, Config, storage, $state) {
 
   // bind user config to rootScope
   storage.bind(
@@ -15,38 +15,40 @@ angular.module('shinystreets.MainCtrl', [])
     }
   );
 
-  $rootScope.leftButtons = [
-    {
-      type: 'button-clear',
-      //content: 'Areas<i class="icon ion-navicon"></i>',
-      content: 'Areas',
-      tap: function(e) {
-        $rootScope.openModal("areas");
+  $rootScope.leftButtons = [];
+  $rootScope.defaultLeftButtons = function(){
+    return [
+      {
+        content: 'Areas',
+        tap: function(e) {
+          $rootScope.openModal("areas");
+        }
       }
-    }
-  ];
+    ];
+  };
 
-  if(Authentication().loggedin()) {
-    $rootScope.rightButtons = [
-      {
-        type: 'button-clear',
-        content: 'Neu',
-        tap: function(e) {
-          $rootScope.openModal("create");
+  $rootScope.rightButtons = [];
+  $rootScope.defaultRightButtons = function(){
+    if(Authentication().loggedin()) {
+      return [
+        {
+          content: 'Neu',
+          tap: function(e) {
+            $rootScope.openModal("create");
+          }
         }
-      }
-    ];
-  } else {
-    $rootScope.rightButtons = [
-      {
-        type: 'button-clear',
-        content: 'Login',
-        tap: function(e) {
-          $rootScope.openModal("login");
+      ];
+    } else {
+      return [
+        {
+          content: 'Login',
+          tap: function(e) {
+            $rootScope.openModal("login");
+          }
         }
-      }
-    ];
-  }
+      ];
+    }
+  };
 
 
   /**
