@@ -34,7 +34,7 @@ angular.module('shinystreets.MainCtrl', [])
         {
           content: 'Neu',
           tap: function(e) {
-            $rootScope.openModal("create");
+            $rootScope.openModal("createIssue");
           }
         }
       ];
@@ -48,6 +48,10 @@ angular.module('shinystreets.MainCtrl', [])
         }
       ];
     }
+  };
+
+  $rootScope.loggedin = function(){
+    return Authentication().loggedin();
   };
 
 
@@ -66,6 +70,11 @@ angular.module('shinystreets.MainCtrl', [])
   // LOGIN MODAL
   $ionicModal.fromTemplateUrl('templates/modals/login.html', function(modal) {
     $rootScope.loginModal = modal;
+  }, { scope: $rootScope, animation: 'slide-in-up' });
+
+  // CREATE ISSUE MODAL
+  $ionicModal.fromTemplateUrl('templates/modals/createIssue.html', function(modal) {
+    $rootScope.createIssueModal = modal;
   }, { scope: $rootScope, animation: 'slide-in-up' });
 
   /**

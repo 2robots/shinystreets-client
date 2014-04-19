@@ -1,5 +1,7 @@
-<ion-view title="Issue #1">
+<ion-view title="{{issue.title}}">
   <ion-content>
+
+    <div class="error" ng-show="loadError">Fehler beim Laden. Versuch es bitte nichmal.</div>
 
     <div class="list card">
       <div class="item item-avatar">
@@ -9,17 +11,13 @@
       </div>
 
       <div class="item item-body">
-        <iframe width="100%" height="150px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/export/embed.html?bbox=16.33443832397461%2C48.18588898883708%2C16.4040470123291%2C48.232791761830015&amp;layer=hot">
+        <iframe width="100%" height="150px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/export/embed.html?bbox=16.33443832397461%2C48.18588898883708%2C16.4040470123291%2C48.232791761830015&amp;layer=hot" ng-show="issue.location">
         </iframe>
 
-        <p>
-          This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
-          the content is from a card-body consisting of an image and paragraph text. The footer
-          consists of a Tab Bar, icons aligned left, within the card-footer.
-        </p>
+        <p>{{issue.description}}</p>
       </div>
 
-      <div class="item item-body">
+      <!--div class="item item-body">
         <div style="overflow: auto;">
           <div style="white-space:nowrap">
             <img src="http://2robots.at/logo.png" style="height: 50px;" />
@@ -34,14 +32,14 @@
             <img src="http://2robots.at/logo.png" style="height: 50px;" />
           </div>
         </div>
-      </div>
+      </div-->
 
-      <div class="item tabs tabs-secondary tabs-icon-left">
+      <!--div class="item tabs tabs-secondary tabs-icon-left">
         <a class="tab-item" href="#/tabs/issues/1/comments">
           <i class="icon ion-chatbox"></i>
           Comments
         </a>
-      </div>
+      </div-->
     </div>
 
     <div class="padding"></div>

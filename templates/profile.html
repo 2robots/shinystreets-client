@@ -1,8 +1,46 @@
-<ion-view title="'Profile'" left-buttons="leftButtons" right-buttons="rightButtons">
-  <ion-content has-header="true" has-footer="true">
+<ion-view title="Du">
+
+  <!-- user not logged in -->
+  <ion-content ng-show='!loggedin()'>
     <p class="padding">Du siehst dein Profil erst, wenn du dich eingeloggt hast.</p>
     <p class="padding">
       <button class="button button-block button-stable" ng-click="openModal('login')">Einloggen</button>
     </p>
+  </ion-content>
+
+  <!-- user logged in -->
+  <ion-content ng-show='loggedin()'>
+
+    <div class="list card">
+      <div class="item item-avatar">
+        <img src="http://2robots.at/logo.png">
+        <h2>Von: Franz Wilding</h2>
+        <p>Dabei seit <strong>1. April 2013</strong></p>
+      </div>
+
+      <div class="item item-body">
+        <p>Über mich</p>
+      </div>
+
+      <div class="item item-icon-left">
+        <i class="icon ion-ios7-flag-outline"></i>Meine Issues <span class="badge badge-stable">5</span>
+      </div>
+
+      <div class="item item-icon-left">
+        <i class="icon ion-ios7-chatboxes-outline"></i>Meine Kommentare <span class="badge badge-stable">234</span>
+      </div>
+
+      <div class="item item-icon-left">
+        <i class="icon ion-ios7-checkmark-outline"></i>Meine Lösungen <span class="badge badge-stable">2</span>
+      </div>
+
+      <div class="item assertive item-icon-left" ng-click="logout()">
+        <i class="icon ion-ios7-minus-outline"></i>Abmelden
+      </div>
+
+    </div>
+
+    <div class="padding"></div>
+
   </ion-content>
 </ion-view>

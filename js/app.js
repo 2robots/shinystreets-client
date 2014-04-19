@@ -31,6 +31,7 @@ var modules = [
   'shinystreets.ProfileCtrl',
   'shinystreets.IssuesCtrl',
   'shinystreets.IssueCtrl',
+  'shinystreets.CreateIssueCtrl',
   'shinystreets.CommentsCtrl',
 
   'shinystreets.AreasCtrl',

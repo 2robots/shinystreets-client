@@ -11,6 +11,9 @@ angular.module('shinystreets.Authentication', [], function($provide){
         // The server endpoint where we can login
         loginEndpoint: Config.endpoint + '/auth',
 
+        // The server endpoint where we can logout
+        logoutEndpoint: Config.endpoint + '/auth',
+
         // Current token, if we are loggedin
         token: null,
 
@@ -70,6 +73,18 @@ angular.module('shinystreets.Authentication', [], function($provide){
 
           });
 
+          return this;
+        },
+
+        /**
+         * Logout the current user. Will always call callback.
+         * @param function callback
+         */
+        logout: function(callback) {
+
+          this.token = null;
+          storage.set(this.localKey, this.token);
+          callback();
           return this;
         },
 

@@ -22,14 +22,21 @@ angular.module('shinystreets.LoginCtrl', [])
         }
 
         if(result.status == 200) {
-          $rootScope.closeModal();
+          $scope.closeLogin();
         }
 
         $rootScope.rightButtons = $rootScope.defaultRightButtons();
 
       }
     );
-  }
+  };
 
-  //$scope.user = User.login();
+  $scope.closeLogin = function(){
+    $scope.user = {
+      username: $scope.user.username,
+      password: ''
+    };
+
+    $rootScope.closeModal();
+  };
 });
