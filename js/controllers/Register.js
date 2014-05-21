@@ -4,8 +4,11 @@ angular.module('shinystreets.RegisterCtrl', [])
 .controller('RegisterCtrl', function($scope, $rootScope, Authentication) {
 
   $scope.user = {
+    email: '',
     username: '',
-    password: ''
+    password: '',
+    repeat_password: '',
+    bio: ''
   };
 
   $scope.register = function() {
@@ -33,8 +36,11 @@ angular.module('shinystreets.RegisterCtrl', [])
 
   $scope.closeRegister = function(){
     $scope.user = {
+      email: '',
       username: '',
-      password: ''
+      password: '',
+      repeat_password: '',
+      bio: ''
     };
 
     $rootScope.closeModal();

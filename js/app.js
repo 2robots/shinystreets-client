@@ -50,6 +50,13 @@ var shinystreets = angular.module('shinystreets', modules)
 .config(function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
+
+    .state('welcome', {
+      url: "/welcome",
+      templateUrl: "templates/welcome.html",
+      controller: 'WelcomeCtrl'
+    })
+
     .state('tabs', {
       url: "/tabs",
       abstract: true,
@@ -106,6 +113,14 @@ var shinystreets = angular.module('shinystreets', modules)
     });
 
     // if none of the above are matched, go to this one
-    $urlRouterProvider.otherwise("/tabs/issues");
+    $urlRouterProvider.otherwise(function($injector, $location){
+      Config = $injector.get('Config');
+
+      if(Config.userConfig().opened) {
+        return "/tabs/issues";
+      } else {
+        return "/welcome";
+      }
+    });
 });
 

@@ -15,10 +15,25 @@
 
     <div class="list list-inset">
       <label class="item item-input">
-        <input ng-model="user.username" type="text" placeholder="Email-Adresse">
+        <input ng-model="user.email" type="email" placeholder="Email-Adresse">
       </label>
       <label class="item item-input">
+        <input ng-model="user.username" type="text" placeholder="Username">
+      </label>
+    </div>
+
+    <div class="list list-inset">
+      <label class="item item-input">
         <input ng-model="user.password" type="password" placeholder="Passwort">
+      </label>
+      <label class="item item-input">
+        <input ng-model="user.repeat_password" type="password" placeholder="Passwort wiederholen">
+      </label>
+    </div>
+
+    <div class="list list-inset">
+      <label class="item item-input">
+        <textarea ng-model="user.bio" placeholder="Persönliche Beschreibung"></textarea>
       </label>
     </div>
 

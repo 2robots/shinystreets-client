@@ -81,21 +81,6 @@ angular.module('shinystreets.MainCtrl', [])
     $rootScope.createIssueModal = modal;
   }, { scope: $rootScope, animation: 'slide-in-up' });
 
-  // WELCOME MODAL
-  $ionicModal.fromTemplateUrl('templates/modals/welcome.html', function(modal) {
-    $rootScope.welcomeModal = modal;
-
-    // If we open the app the first time
-    if(Config.userConfig().opened != true) {
-      // open welcome modal
-      $rootScope.openModal('welcome');
-      Config.saveUserConfig('opened', true);
-
-      console.log(Config.userConfig());
-    }
-
-  }, { scope: $rootScope, animation: 'slide-in-up' });
-
   /**
    * Open Modal with [name]. Will close any open Modal as well.
    * @param String name
