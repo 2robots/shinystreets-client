@@ -19,10 +19,9 @@ angular.module('shinystreets.IssueCtrl', [])
   };
 
   $scope.issue = Issue.get({id: $stateParams.id}, function(){
-    $scope.loading.hide();
-    console.log($scope.issue);
+    $ionicLoading.hide();
   }, function(){
-    $scope.loading.hide();
+    $ionicLoading.hide();
     $scope.loadError = true;
   });
 

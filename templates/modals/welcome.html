@@ -1,0 +1,58 @@
+<div class="modal" ng-controller="WelcomeCtrl">
+
+  <!--ion-header-bar class="bar-stable">
+    <h1 class="title">Hallo!</h1>
+    <div class="buttons">
+
+    </div>
+  </ion-header-bar-->
+
+  <ion-content scroll="false" has-header="false">
+
+    <button class="button button-clear icon ion-ios7-close-empty button-welcome-close" ng-click="closeModal()"> </button>
+
+    <ion-slide-box>
+      <ion-slide>
+        <div class="slide slide-welcome">
+          <div class="padding">
+            <h1>Hallo!</h1>
+
+            <p>Swpie nach links, um loszulegen</p>
+            <h2><i class="icon ion-ios7-arrow-thin-right"></i></h2>
+          </div>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="slide slide-first-steps">
+          <div class="padding">
+            <h1>Erste Schritte</h1>
+          </div>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="slide slide-register">
+          <div class="padding">
+            <h1>Anmelden</h1>
+            <p><a href="" ng-click="openModal('login')">Du hast schon einen Account?</a></p>
+
+            <div class="list list-inset">
+              <label class="item item-input">
+                <input ng-model="user.username" type="text" placeholder="Email-Adresse">
+              </label>
+              <label class="item item-input">
+                <input ng-model="user.password" type="password" placeholder="Passwort">
+              </label>
+            </div>
+
+            <div class="padding">
+              <button class="button button-block button-stable" ng-click="register()">Registrieren</button>
+            </div>
+
+          </div>
+        </div>
+      </ion-slide>
+    </ion-slide-box>
+
+  </ion-content>
+
+</div>

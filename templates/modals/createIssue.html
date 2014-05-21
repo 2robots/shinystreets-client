@@ -1,4 +1,4 @@
-<div class="modal" ng-controller="CreateIssueCtrl">
+<div class="modal" ng-controller="CreateIssueCtrl" ng-focus="init()">
 
   <ion-header-bar class="bar-stable">
     <h1 class="title">Issue erstellen</h1>
@@ -22,8 +22,20 @@
         <textarea ng-model="user.description" placeholder="Beschreibung"></textarea>
       </label>
 
+      <div class="item item-divider">Position</div>
+      <div class="item create-issue-map-item">
+        <div id="create-issue-map"></div>
+      </div>
+
       <div class="item item-divider">Füge dem Issue Bilder hinzu</div>
-      <label class="item item-input">@TODO</label>
+      <div class="item create-issue-photos-item">
+        <div class="create-issue-photo" ng-repeat="photo in photos">
+          <img ng-src="{{photo.uri}}" />
+          <button class="button button-small button-clear" ng-click="removePhoto($index)"><i class="icon ion-ios7-close"></i></button>
+        </div>
+
+        <button class="button button-add-photo button-small button-positive" ng-click="addPhoto()"><i class="icon ion-ios7-plus-empty"></i></button>
+      </div>
     </div>
 
     <div class="padding">

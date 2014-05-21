@@ -9,7 +9,7 @@ angular.module('shinystreets.IssuesCtrl', [])
   $scope.loading = $ionicLoading.show({
     content: 'Loading'
   });
-  $scope.loading.hide();
+  $ionicLoading.hide();
 
   $scope.title = 'Issues';
   $scope.issues = [];
@@ -18,12 +18,12 @@ angular.module('shinystreets.IssuesCtrl', [])
   if(Config.userConfig().activeArea == -1) {
     $rootScope.openModal('areas');
   } else {
-    $scope.loading.show();
+    $ionicLoading.show();
 
     $scope.issues = Area.issues(function(){
-      $scope.loading.hide();
+      $ionicLoading.hide();
     }, function(){
-      $scope.loading.hide();
+      $ionicLoading.hide();
       $scope.loadError = true;
     });
   }

@@ -54,7 +54,6 @@ angular.module('shinystreets.MainCtrl', [])
     return Authentication().loggedin();
   };
 
-
   /**
    * Define all Modals. Modals must be named [NAME]Modal, so the generic open
    * and close methods will work. They can be called by openModal([NAME]) and
@@ -72,9 +71,29 @@ angular.module('shinystreets.MainCtrl', [])
     $rootScope.loginModal = modal;
   }, { scope: $rootScope, animation: 'slide-in-up' });
 
+  // REGISTER MODAL
+  $ionicModal.fromTemplateUrl('templates/modals/register.html', function(modal) {
+    $rootScope.registerModal = modal;
+  }, { scope: $rootScope, animation: 'slide-in-up' });
+
   // CREATE ISSUE MODAL
   $ionicModal.fromTemplateUrl('templates/modals/createIssue.html', function(modal) {
     $rootScope.createIssueModal = modal;
+  }, { scope: $rootScope, animation: 'slide-in-up' });
+
+  // WELCOME MODAL
+  $ionicModal.fromTemplateUrl('templates/modals/welcome.html', function(modal) {
+    $rootScope.welcomeModal = modal;
+
+    // If we open the app the first time
+    if(Config.userConfig().opened != true) {
+      // open welcome modal
+      $rootScope.openModal('welcome');
+      Config.saveUserConfig('opened', true);
+
+      console.log(Config.userConfig());
+    }
+
   }, { scope: $rootScope, animation: 'slide-in-up' });
 
   /**

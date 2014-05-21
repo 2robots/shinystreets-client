@@ -5,12 +5,18 @@
     <ion-refresher on-refresh="onRefresh()"></ion-refresher>
     <div class="error" ng-show="loadError">Fehler beim Laden. Versuch es bitte nichmal.</div>
 
-    <list>
-      <a class="item item-thumbnail-left" href="#tabs/issues/{{issue.id}}" ng-repeat="issue in issues.results">
-        <img src="http://2robots.at/logo.png">
-        <h2 ng-bind="issue.title"> </h2>
-        <p ng-bind="issue.description"> </p>
+    <div class="list">
+      <a class="item issue-list-item item-thumbnail-left"
+        collection-repeat="issue in issues.results"
+        collection-item-width="'100%'"
+        collection-item-height="100"
+        ng-style="{height: 100}"
+        href="#tabs/issues/{{issue.id}}">
+          <img src="http://2robots.at/logo.png">
+          <h2 ng-bind="issue.title"> </h2>
+          <p ng-bind="issue.description"> </p>
+
       </a>
-    </list>
+    </div>
   </ion-content>
 </ion-view>

@@ -35,7 +35,10 @@ var modules = [
   'shinystreets.CommentsCtrl',
 
   'shinystreets.AreasCtrl',
-  'shinystreets.LoginCtrl'
+  'shinystreets.LoginCtrl',
+  'shinystreets.RegisterCtrl',
+
+  'shinystreets.WelcomeCtrl'
 ];
 
 var shinystreets = angular.module('shinystreets', modules)
