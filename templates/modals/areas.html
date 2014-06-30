@@ -15,9 +15,9 @@
     <p class="padding">Wähle die Regionen, aus denen Issues angezeig werden sollen.</p>
 
     <div class="list">
-      <label class="item item-radio" ng-repeat="area in areas.results">
+      <label class="item item-radio" ng-repeat="area in areas">
         <input type="radio" ng-model="userConfig.activeArea" ng-value="area.id">
-        <div class="item-content" ng-bind="area.name"> </div>
+        <div class="item-content" ng-bind="area.title"> </div>
         <i class="radio-icon ion-checkmark"> </i>
       </label>
     </div>

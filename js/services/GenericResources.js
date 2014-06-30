@@ -5,7 +5,9 @@ angular.module('shinystreets.GenericResources', ['ngResource'], function($provid
     return function(name, methods){
 
       var auth = Authentication();
-      var methods_obj = {};
+      var methods_obj = {
+        isArray: true
+      };
 
       methods.forEach(function(method){
 
@@ -15,12 +17,17 @@ angular.module('shinystreets.GenericResources', ['ngResource'], function($provid
           var tmp_method = {
             method: 'GET',
             params: { sub: '' },
-            isArray: false
+            isArray: true
           };
 
           // define some values, for key-methods
           if(method.name == "query") {
             tmp_method.params = { id: '', sub: '' };
+          }
+
+          // define some values, for key-methods
+          if(method.name == "get") {
+            tmp_method.isArray = false;
           }
 
           // allow customization
@@ -61,7 +68,7 @@ angular.module('shinystreets.GenericResources', ['ngResource'], function($provid
           params: {
             id: ''
           },
-          isArray: false
+          isArray: true
         };
       }
 

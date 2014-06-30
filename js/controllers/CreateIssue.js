@@ -1,15 +1,19 @@
 
 angular.module('shinystreets.CreateIssueCtrl', [])
 
-.controller('CreateIssueCtrl', function($scope, $rootScope, Issue) {
+.controller('CreateIssueCtrl', function($scope, $rootScope, $ionicActionSheet, Issue, FileUploader) {
 
   $scope.issue = {
     title: '',
-    description: ''
+    description: '',
+    latitude: null,
+    longitude: null
   };
 
   //$scope.photos = [{uri: "http://2robots.at/logo.png"}, {uri: "http://2robots.at/logo.png"}, {uri: "http://2robots.at/logo.png"}, {uri: "http://2robots.at/logo.png"}, {uri: "http://2robots.at/logo.png"}, {uri: "http://2robots.at/logo.png"}];
   $scope.photos = [];
+
+  var marker = null;
 
   // on shown
   $rootScope.$on('modal.shown', function(e) {
@@ -44,7 +48,8 @@ angular.module('shinystreets.CreateIssueCtrl', [])
               popupAnchor:  [-1, -26] // point from which the popup should open relative to the iconAnchor
             });
 
-            L.marker([48.198655, 16.368463], {icon: issueIcon}).addTo($scope.map);
+            marker = L.marker([position.coords.latitude, position.coords.longitude], {icon: issueIcon, draggable: true});
+            marker.addTo($scope.map);
 
             // locate current position
             $scope.map.setView([position.coords.latitude, position.coords.longitude], 15);
@@ -68,22 +73,54 @@ angular.module('shinystreets.CreateIssueCtrl', [])
 
     if(typeof(navigator.camera) != 'undefined') {
 
-      navigator.camera.getPicture(
-      // ON SUCCESS
-      function(imageURI){
-        $scope.photos.push({uri: imageURI});
-        $scope.$apply();
+      // action sheet to select or take a picture
+      var hideSheet = $ionicActionSheet.show({
+        buttons: [
+          { text: 'Photo auswählen' },
+          { text: 'Photo aufnehmen' }
+        ],
+        titleText: 'Füge ein Foto hinzu',
+        cancelText: 'Abbrechen',
 
-      // ON ERROR
-      }, function(message){
-        alert("Beim auswählen des Bildes ist ein Fehler aufgetreten: " + message);
+        // on action sheet button click
+        buttonClicked: function(index) {
 
-      }, {
-        quality: 49,
-        destinationType: Camera.DestinationType.FILE_URI,
-        allowEdit : true,
-        correctOrientation: true,
-        popoverOptions: true
+          // get user selection
+          var sourceType = null;
+
+          if(index == 0) {
+            sourceType = Camera.PictureSourceType.PHOTOLIBRARY;
+          }
+
+          if(index == 1) {
+            sourceType = Camera.PictureSourceType.CAMERA;
+          }
+
+          // access camera
+          navigator.camera.getPicture(
+
+            // ON SUCCESS
+            function(imageURI){
+
+              // add photo to scope
+              $scope.photos.push({uri: imageURI});
+              $scope.$apply();
+
+            // ON ERROR
+            }, function(message){
+              alert("Beim auswählen des Bildes ist ein Fehler aufgetreten: " + message);
+
+            }, {
+              quality: 49,
+              sourceType: sourceType,
+              destinationType: Camera.DestinationType.DATA_URL,
+              allowEdit : true,
+              correctOrientation: true,
+              popoverOptions: true
+            });
+
+          return true;
+        }
       });
 
     } else {
@@ -93,15 +130,38 @@ angular.module('shinystreets.CreateIssueCtrl', [])
 
   $scope.create = function() {
 
+    // get selected coordiantes
+    if(marker) {
+      var coordiantes = marker.getLatLng();
+      $scope.issue.latitude = coordiantes.lat;
+      $scope.issue.longitude = coordiantes.lng;
+    }
+
     Issue.create($scope.issue,
 
       // ON SUCCESS
-      function(){
-        $scope.closeCreateIssue();
+      function(response){
+
+        // let's upload the photos
+        var uploader = new FileUploader($scope.photos,
+
+          // success callback
+          function(){
+
+            $scope.closeCreateIssue();
+
+          // error callback
+          }, function(){
+
+            alert("Fotos konnten nicht hochgeladen werden!");
+
+          }
+        ).start();
+
 
       // ON ERROR
       }, function(){
-        alert("ERROR");
+        alert("ERROR creating issue");
       }
     );
   };
@@ -111,4 +171,5 @@ angular.module('shinystreets.CreateIssueCtrl', [])
     };
     $rootScope.closeModal();
   };
+
 });

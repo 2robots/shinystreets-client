@@ -9,10 +9,13 @@ angular.module('shinystreets.Authentication', [], function($provide){
         localKey: Config.name + '_AuthToken',
 
         // The server endpoint where we can login
-        loginEndpoint: Config.endpoint + '/auth',
+        loginEndpoint: Config.endpoint + '/users/login',
 
         // The server endpoint where we can logout
-        logoutEndpoint: Config.endpoint + '/auth',
+        logoutEndpoint: Config.endpoint + '/users/logout',
+
+        // The server endpoint where we can register a new user
+        registerEndpoint: Config.endpoint + '/users',
 
         // Current token, if we are loggedin
         token: null,
@@ -29,15 +32,16 @@ angular.module('shinystreets.Authentication', [], function($provide){
         },
 
         /**
-         * Login to shinystreets-server with username and password. When
+         * Login to shinystreets-server with username (or email) and password. When
          * successful, will get a token in server response and save it to local
          * storage.
          *
          * @param string username
+         * @param string email
          * @param string password
          * @param function callback
          */
-        login: function(username, password, callback) {
+        login: function(username, email, password, callback) {
 
           var t = this;
 
@@ -46,6 +50,7 @@ angular.module('shinystreets.Authentication', [], function($provide){
             this.loginEndpoint,
             {
               username: username,
+              email: email,
               password: password
             }
 
@@ -53,7 +58,7 @@ angular.module('shinystreets.Authentication', [], function($provide){
           ).success(function(data, status, headers, config){
 
             // save the token to localstorage
-            t.token = data.token;
+            t.token = data.bearer_token;
             t.save();
 
             // call callback with token and success status.
@@ -89,6 +94,42 @@ angular.module('shinystreets.Authentication', [], function($provide){
         },
 
         /**
+         * Register a new user. Will always call callback.
+         * @param function callback
+         */
+        register: function(udata, callback) {
+
+          var t = this;
+
+          // Send request to server
+          $http.post(
+            t.registerEndpoint,
+            udata
+
+          // on success
+          ).success(function(data, status, headers, config){
+
+            // call callback with user object
+            callback({
+              user: data,
+              status: status
+            });
+
+          // on error
+          }).error(function(data, status, headers, config){
+
+            // call callback with no user and error status.
+            callback({
+              user: null,
+              status: status
+            });
+
+          });
+
+          return this;
+        },
+
+        /**
          * return true, if there is a token
          */
         loggedin: function() {
@@ -105,7 +146,7 @@ angular.module('shinystreets.Authentication', [], function($provide){
           if(this.token == null) {
             return "";
           } else {
-            return "Token " + this.token;
+            return "Bearer " + this.token;
           }
         },
 

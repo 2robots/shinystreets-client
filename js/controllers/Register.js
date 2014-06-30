@@ -13,25 +13,50 @@ angular.module('shinystreets.RegisterCtrl', [])
 
   $scope.register = function() {
 
-    // Try to Login and to get the token
-    Authentication().register(
-      $scope.user.username,
-      $scope.user.password,
+    // check if passwords match
+    if($scope.user.password == $scope.user.repeat_password && $scope.user.password != '') {
 
-      function(result){
+      // don't send repeat_password
+      $scope.user.repeat_password = undefined;
 
-        if(result.status == 500) {
-          alert("Server-Fehler!");
+      // Try to Login and to get the token
+      Authentication().register(
+        $scope.user,
+
+        function(result){
+
+          // on server success
+          if(result.status == 200) {
+
+            // Login user
+            Authentication().login(
+              $scope.user.username,
+              $scope.user.email,
+              $scope.user.password,
+
+              function(result){
+
+                // on server success
+                if(result.status == 200) {
+                  $scope.closeRegister();
+                  $rootScope.rightButtons = $rootScope.defaultRightButtons();
+
+                // on server error
+                } else {
+                  alert("Server-Fehler!");
+                }
+              }
+            );
+
+          // on server error
+          } else {
+            alert("Server-Fehler!");
+          }
         }
-
-        if(result.status == 200) {
-          $scope.closeRegister();
-        }
-
-        $rootScope.rightButtons = $rootScope.defaultRightButtons();
-
-      }
-    );
+      );
+    } else {
+      alert("Bitte gib zweimal das selbe Passwort ein.");
+    }
   };
 
   $scope.closeRegister = function(){

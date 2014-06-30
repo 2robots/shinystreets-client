@@ -3,7 +3,9 @@ angular.module('shinystreets.Config', [], function($provide){
 
     return {
       name: 'shinystreets',
-      endpoint: 'http://dev.shinystreets.com',
+      //endpoint: 'http://dev.shinystreets.com',
+      endpoint: 'http://node-shinystreets-com.herokuapp.com',
+      //endpoint: 'http://localhost:5000',
       //endpoint: '/test',
       userConfig: function() {
         return storage.get(this.name + '_UserConfig');

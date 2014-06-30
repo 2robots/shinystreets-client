@@ -1,6 +1,6 @@
 
 angular.module('shinystreets.MapCtrl', [])
-.controller('MapCtrl', function($scope, $rootScope) {
+.controller('MapCtrl', function($scope, $rootScope, Area, Config, $ionicLoading, $location) {
 
   $rootScope.leftButtons = $rootScope.defaultLeftButtons();
   $rootScope.rightButtons = $rootScope.defaultRightButtons();
@@ -15,6 +15,12 @@ angular.module('shinystreets.MapCtrl', [])
   });
   osmLayer.addTo($scope.map);
 
+  // create layergroup for this map
+  var layergroup = L.layerGroup([]);
+
+  // add layergroup to map
+  layergroup.addTo($scope.map);
+
   // create icon
   var issueIcon = L.icon({
     iconUrl: 'lib/leaflet/images/marker-icon.png',
@@ -28,19 +34,56 @@ angular.module('shinystreets.MapCtrl', [])
     popupAnchor:  [-1, -26] // point from which the popup should open relative to the iconAnchor
   });
 
+  // on refresh recreatemap
+  $scope.onRefresh = function(){
 
-  if(typeof(navigator.geolocation) != 'undefined') {
-    navigator.geolocation.getCurrentPosition(
-      // on success
-      function(position){
-        // locate current position
-        $scope.map.setView([position.coords.latitude, position.coords.longitude], 15);
+    $ionicLoading.show();
+
+    $scope.issues = Area.issues(function(){
+      $ionicLoading.hide();
+
+      if(typeof(navigator.geolocation) != 'undefined') {
+        navigator.geolocation.getCurrentPosition(
+          // on success
+          function(position){
+            // locate current position
+            $scope.map.setView([position.coords.latitude, position.coords.longitude], 15);
+          }
+        );
       }
-    );
-  }
+
+      // remove markers
+      layergroup.clearLayers();
+
+      // add markers to layergroup
+      $scope.issues.forEach(function(issue){
+        layergroup.addLayer(
+          L.marker([
+            issue.latitude,
+            issue.longitude
+          ], {icon: issueIcon})
+
+          .bindPopup('<a href="#/tabs/issues/' + issue.id + '">' + issue.title + '</a>')
+        );
+      });
+
+
+    }, function(){
+      $ionicLoading.hide();
+      $scope.loadError = true;
+    });
+  };
 
 
   // add icons from current issues to the map
-  // @TODO
-  L.marker([48.198655, 16.368463], {icon: issueIcon}).addTo($scope.map).bindPopup("I am a green leaf.");
+  // Check if we have already selected an area
+  if(!Config.userConfig().activeArea) {
+    $rootScope.openModal('areas');
+  } else {
+    $scope.onRefresh();
+  }
+
+  $rootScope.$on('modalClose', function(){
+    $scope.onRefresh();
+  });
 });

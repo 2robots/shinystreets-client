@@ -9,14 +9,20 @@
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
-    
+
     <feature name="Console">
       <param name="ios-package" value="CDVLogger" />
     </feature>
     <feature name="Device">
       <param name="ios-package" value="CDVDevice" />
-    </feature>    
+    </feature>
     <feature name="PushPlugin">
       <param name="ios-package" value="PushPlugin"/>
+    </feature>
+    <feature name="File">
+      <param name="ios-package" value="CDVFile" />
+    </feature>
+    <feature name="FileTransfer">
+      <param name="ios-package" value="CDVFileTransfer" />
     </feature>
 </widget>

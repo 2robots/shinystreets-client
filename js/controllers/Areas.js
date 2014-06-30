@@ -3,7 +3,8 @@ angular.module('shinystreets.AreasCtrl', [])
 
 .controller('AreasCtrl', function($scope, Area) {
 
-  $scope.areas = Area.query(function(){}, function(){
+  $scope.areas = Area.query(function(){
+  }, function(){
     $scope.loadError = true;
   });
 

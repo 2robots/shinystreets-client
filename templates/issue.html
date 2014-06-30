@@ -6,8 +6,9 @@
     <div class="list card">
       <div class="item item-avatar">
         <img src="http://2robots.at/logo.png">
-        <h2>Von: Franz Wilding</h2>
-        <p>Vor <strong>5 Tagen</strong> in <strong>Wien</strong></p>
+        <h2>Von: {{issue.creator.username}}</h2>
+        <!--p>Vor <strong>5 Tagen</strong> in <strong>Wien</strong></p-->
+        <p>{{issue.createdAt}}</p>
       </div>
 
       <div class="item item-body">
@@ -17,22 +18,13 @@
         <p>{{issue.description}}</p>
       </div>
 
-      <!--div class="item item-body">
+      <div class="item item-body">
         <div style="overflow: auto;">
           <div style="white-space:nowrap">
-            <img src="http://2robots.at/logo.png" style="height: 50px;" />
-            <img src="http://2robots.at/logo.png" style="height: 50px;" />
-            <img src="http://2robots.at/logo.png" style="height: 50px;" />
-            <img src="http://2robots.at/logo.png" style="height: 50px;" />
-            <img src="http://2robots.at/logo.png" style="height: 50px;" />
-            <img src="http://2robots.at/logo.png" style="height: 50px;" />
-            <img src="http://2robots.at/logo.png" style="height: 50px;" />
-            <img src="http://2robots.at/logo.png" style="height: 50px;" />
-            <img src="http://2robots.at/logo.png" style="height: 50px;" />
-            <img src="http://2robots.at/logo.png" style="height: 50px;" />
+            <a href="{{photo.big}}"><img src="{{photo.thumbnail}}" style="height: 50px;" ng-eatch="photo in issue.photos" /></a>
           </div>
         </div>
-      </div-->
+      </div>
 
       <!--div class="item tabs tabs-secondary tabs-icon-left">
         <a class="tab-item" href="#/tabs/issues/1/comments">

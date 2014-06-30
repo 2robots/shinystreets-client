@@ -19,6 +19,7 @@ var modules = [
   'shinystreets.Config',
   'shinystreets.Authentication',
   'shinystreets.GenericResources',
+  'shinystreets.FileUploader',
 
   //resources services
   'shinystreets.Area',

@@ -15,7 +15,7 @@ angular.module('shinystreets.IssuesCtrl', [])
   $scope.issues = [];
 
   // Check if we have already selected an area
-  if(Config.userConfig().activeArea) {
+  if(!Config.userConfig().activeArea) {
     $rootScope.openModal('areas');
   } else {
     $ionicLoading.show();

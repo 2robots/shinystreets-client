@@ -13,6 +13,7 @@ angular.module('shinystreets.LoginCtrl', [])
     // Try to Login and to get the token
     Authentication().login(
       $scope.user.username,
+      $scope.user.username,
       $scope.user.password,
 
       function(result){
