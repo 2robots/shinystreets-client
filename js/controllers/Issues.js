@@ -15,18 +15,18 @@ angular.module('shinystreets.IssuesCtrl', [])
   $scope.issues = [];
 
   // Check if we have already selected an area
-  if(!Config.userConfig().activeArea) {
+  /*if(!Config.userConfig().activeArea) {
     $rootScope.openModal('areas');
   } else {
     $ionicLoading.show();
 
-    $scope.issues = Area.issues(function(){
+    $scope.issues = Area().issues(function(){
       $ionicLoading.hide();
     }, function(){
       $ionicLoading.hide();
       $scope.loadError = true;
     });
-  }
+  }*/
 
   $scope.loadError = false;
 
@@ -37,7 +37,7 @@ angular.module('shinystreets.IssuesCtrl', [])
   // On pull to refresh
   $scope.onRefresh = function() {
     $scope.loadError = false;
-    $scope.issues = Area.issues(
+    $scope.issues = Area().issues(
       // on success
       function(){
         $scope.$broadcast('scroll.refreshComplete');

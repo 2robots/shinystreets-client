@@ -6,7 +6,7 @@ angular.module('shinystreets.GenericResources', ['ngResource'], function($provid
 
       var auth = Authentication();
       var methods_obj = {
-        isArray: true
+        //isArray: true
       };
 
       methods.forEach(function(method){
@@ -27,6 +27,11 @@ angular.module('shinystreets.GenericResources', ['ngResource'], function($provid
 
           // define some values, for key-methods
           if(method.name == "get") {
+            tmp_method.isArray = false;
+          }
+
+          // define some values, for key-methods
+          if(method.name == "create") {
             tmp_method.isArray = false;
           }
 
@@ -72,6 +77,7 @@ angular.module('shinystreets.GenericResources', ['ngResource'], function($provid
         };
       }
 
+      console.log(methods_obj);
       return $resource(Config.endpoint + '/' + name + '/:id/:sub', {}, methods_obj);
     };
   });

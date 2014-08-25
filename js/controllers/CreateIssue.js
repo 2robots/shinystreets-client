@@ -1,7 +1,7 @@
 
 angular.module('shinystreets.CreateIssueCtrl', [])
 
-.controller('CreateIssueCtrl', function($scope, $rootScope, $ionicActionSheet, Issue, FileUploader) {
+.controller('CreateIssueCtrl', function($scope, $rootScope, $ionicActionSheet, $ionicLoading, Issue, FileUploader) {
 
   $scope.issue = {
     title: '',
@@ -10,8 +10,13 @@ angular.module('shinystreets.CreateIssueCtrl', [])
     longitude: null
   };
 
-  //$scope.photos = [{uri: "http://2robots.at/logo.png"}, {uri: "http://2robots.at/logo.png"}, {uri: "http://2robots.at/logo.png"}, {uri: "http://2robots.at/logo.png"}, {uri: "http://2robots.at/logo.png"}, {uri: "http://2robots.at/logo.png"}];
+  //$scope.photos = [{uri: "http://www.2robots.at/img/menu@2x.png"}, {uri: "http://www.2robots.at/img/menu@2x.png"}, {uri: "http://www.2robots.at/img/menu@2x.png"}, {uri: "http://www.2robots.at/img/menu@2x.png"}];
   $scope.photos = [];
+
+  $scope.loading = $ionicLoading.show({
+    content: 'Create issue...'
+  });
+  $ionicLoading.hide();
 
   var marker = null;
 
@@ -113,7 +118,7 @@ angular.module('shinystreets.CreateIssueCtrl', [])
             }, {
               quality: 49,
               sourceType: sourceType,
-              destinationType: Camera.DestinationType.DATA_URL,
+              destinationType: Camera.DestinationType.FILE_URI,
               allowEdit : true,
               correctOrientation: true,
               popoverOptions: true
@@ -130,6 +135,8 @@ angular.module('shinystreets.CreateIssueCtrl', [])
 
   $scope.create = function() {
 
+    $ionicLoading.show();
+
     // get selected coordiantes
     if(marker) {
       var coordiantes = marker.getLatLng();
@@ -137,7 +144,7 @@ angular.module('shinystreets.CreateIssueCtrl', [])
       $scope.issue.longitude = coordiantes.lng;
     }
 
-    Issue.create($scope.issue,
+    new Issue().create($scope.issue,
 
       // ON SUCCESS
       function(response){
@@ -148,19 +155,40 @@ angular.module('shinystreets.CreateIssueCtrl', [])
           // success callback
           function(){
 
+            $ionicLoading.hide();
+            alert("Issue wurde erfolgfeich erstellt!");
             $scope.closeCreateIssue();
 
           // error callback
           }, function(){
 
+            $ionicLoading.hide();
             alert("Fotos konnten nicht hochgeladen werden!");
 
           }
-        ).start();
+        );
+
+        // if we can create the uploader
+        if(typeof(uploader.start) != 'undefined') {
+
+          console.log(response);
+
+          // if server gave us S3 signation data and parentID
+          if(typeof(response.awsKey) != 'undefined' &&
+            typeof(response.policy) != 'undefined' &&
+            typeof(response.signature) != 'undefined' &&
+            typeof(response.bucket) != 'undefined' &&
+            typeof(response.id) != 'undefined') {
+
+            uploader.start(response);
+          }
+        }
 
 
       // ON ERROR
-      }, function(){
+      }, function(ret){
+        console.log(ret);
+        $ionicLoading.hide();
         alert("ERROR creating issue");
       }
     );

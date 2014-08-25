@@ -5,11 +5,13 @@ angular.module('shinystreets.WelcomeCtrl', [])
 
   $scope.login = function(){
     Config.saveUserConfig('opened', true);
+    $scope.close();
     $rootScope.openModal('login');
   };
 
   $scope.register = function(){
     Config.saveUserConfig('opened', true);
+    $scope.close();
     $rootScope.openModal('register');
   };
 

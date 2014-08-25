@@ -22,6 +22,10 @@ angular.module('shinystreets.LoginCtrl', [])
           alert("Server-Fehler!");
         }
 
+        if(result.status == 404) {
+          alert("Emailadresse und/oder Passwort sind nicht korrekt!");
+        }
+
         if(result.status == 200) {
           $scope.closeLogin();
         }

@@ -41,6 +41,10 @@ angular.module('shinystreets.RegisterCtrl', [])
                   $scope.closeRegister();
                   $rootScope.rightButtons = $rootScope.defaultRightButtons();
 
+                } else if(result.status == 400) {
+
+                  alert("Die angegeben Daten sind entweder unvollständig oder ungültig.")
+
                 // on server error
                 } else {
                   alert("Server-Fehler!");
@@ -67,7 +71,6 @@ angular.module('shinystreets.RegisterCtrl', [])
       repeat_password: '',
       bio: ''
     };
-
     $rootScope.closeModal();
   };
 });

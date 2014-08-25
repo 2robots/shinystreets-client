@@ -3,7 +3,7 @@ angular.module('shinystreets.AreasCtrl', [])
 
 .controller('AreasCtrl', function($scope, Area) {
 
-  $scope.areas = Area.query(function(){
+  $scope.areas = Area().query(function(){
   }, function(){
     $scope.loadError = true;
   });
@@ -12,7 +12,7 @@ angular.module('shinystreets.AreasCtrl', [])
 
   // On pull to refresh
   $scope.onRefresh = function() {
-    $scope.areas = Area.query(
+    $scope.areas = Area().query(
       // on success
       function(){
         $scope.loadError = false;

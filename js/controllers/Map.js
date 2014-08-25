@@ -39,7 +39,7 @@ angular.module('shinystreets.MapCtrl', [])
 
     $ionicLoading.show();
 
-    $scope.issues = Area.issues(function(){
+    $scope.issues = Area().issues(function(){
       $ionicLoading.hide();
 
       if(typeof(navigator.geolocation) != 'undefined') {
