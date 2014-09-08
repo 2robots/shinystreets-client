@@ -19,7 +19,7 @@
         <input ng-model="issue.title" type="text" placeholder="Titel">
       </label>
       <label class="item item-input">
-        <textarea ng-model="user.description" placeholder="Beschreibung"></textarea>
+        <textarea ng-model="issue.description" placeholder="Beschreibung"></textarea>
       </label>
 
       <div class="item item-divider">Position</div>
@@ -30,7 +30,7 @@
       <div class="item item-divider">Füge dem Issue Bilder hinzu</div>
       <div class="item create-issue-photos-item">
         <div class="create-issue-photo" ng-repeat="photo in photos">
-          <img ng-src="{{photo.uri}}" />
+          <img ng-src="{{photo.uri}}" ng-click="openFile(photo.uri)" />
           <button class="button button-small button-clear" ng-click="removePhoto($index)"><i class="icon ion-ios7-close"></i></button>
         </div>
 

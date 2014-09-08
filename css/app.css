@@ -27,6 +27,11 @@
   height: 200px;
 }
 
+#issue-detail-map {
+  width: 100%;
+  height: 200px;
+}
+
 .issue-list-item {
   left: 0;
   right: 0;

@@ -13,28 +13,31 @@
   <!-- user logged in -->
   <ion-content ng-show='loggedin()'>
 
+    <!-- for pull to refresh -->
+    <ion-refresher on-refresh="onRefresh()"></ion-refresher>
+    <div class="error" ng-show="loadError">Fehler beim Laden. Versuch es bitte nichmal.</div>
+
     <div class="list card">
-      <div class="item item-avatar">
-        <img src="http://2robots.at/logo.png">
-        <h2>Von: Franz Wilding</h2>
-        <p>Dabei seit <strong>1. April 2013</strong></p>
+      <div class="item">
+        <h2>{{user.username}}</h2>
+        <p>Dabei seit <strong>{{user.createdAt | date: 'dd.MM.yyyy HH:mm' }}</strong></p>
       </div>
 
-      <div class="item item-body">
-        <p>Über mich</p>
+      <div class="item item-body" ng-if="user.bio.length > 0">
+        <p>{{user.bio}}</p>
       </div>
 
-      <div class="item item-icon-left">
-        <i class="icon ion-ios7-flag-outline"></i>Meine Issues <span class="badge badge-stable">5</span>
-      </div>
+      <a class="item item-icon-left" href="#/tabs/profile/{{user.id}}/issues">
+        <i class="icon ion-ios7-flag-outline"></i>Meine Issues <span class="badge badge-stable">{{user.issue_count}}</span>
+      </a>
 
-      <div class="item item-icon-left">
+      <!--div class="item item-icon-left">
         <i class="icon ion-ios7-chatboxes-outline"></i>Meine Kommentare <span class="badge badge-stable">234</span>
       </div>
 
       <div class="item item-icon-left">
         <i class="icon ion-ios7-checkmark-outline"></i>Meine Lösungen <span class="badge badge-stable">2</span>
-      </div>
+      </div-->
 
       <div class="item assertive item-icon-left" ng-click="logout()">
         <i class="icon ion-ios7-minus-outline"></i>Abmelden

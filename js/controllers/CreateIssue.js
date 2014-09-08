@@ -133,6 +133,32 @@ angular.module('shinystreets.CreateIssueCtrl', [])
     }
   }
 
+  $scope.openFile = function(url) {
+
+    $ionicLoading.hide();
+
+    // if FileViewerPlugin is supported
+    if(typeof(FileViewerPlugin) != 'undefined') {
+
+      // Open file
+      FileViewerPlugin.view(
+        // file url (local)
+        {url: url},
+
+        // success cb
+        function(){
+          $ionicLoading.hide();
+
+        // error cb
+        }, function(){
+          $ionicLoading.hide();
+          alert("There was an error, opening the file.");
+        });
+    } else {
+      alert("FileViewerPlugin not supported");
+    }
+  };
+
   $scope.create = function() {
 
     $ionicLoading.show();
@@ -144,49 +170,74 @@ angular.module('shinystreets.CreateIssueCtrl', [])
       $scope.issue.longitude = coordiantes.lng;
     }
 
+    console.log('######################');
+    console.log('######################');
+    console.log($scope.issue);
+    console.log('######################');
+    console.log('######################');
+
+    console.log('1');
+
     new Issue().create($scope.issue,
 
       // ON SUCCESS
       function(response){
 
-        // let's upload the photos
-        var uploader = new FileUploader($scope.photos,
+        console.log('SUCCESS 2');
 
-          // success callback
-          function(){
+        $ionicLoading.hide();
 
-            $ionicLoading.hide();
-            alert("Issue wurde erfolgfeich erstellt!");
+        // if we have an id continue
+        if(response.id) {
+
+          console.log('SUCCESS 3');
+
+          // if we have selected at least one foto, we need to upload themn
+          if($scope.photos.length > 0) {
+
+            console.log('SUCCESS 4');
+
+            // // let's upload the photos
+            var uploader = new FileUploader($scope.photos, response.id,
+
+              // success callback
+              function(){
+
+                console.log('SUCCESS 5');
+
+                $ionicLoading.hide();
+                alert("Issue wurde erfolgfeich erstellt!");
+                $scope.closeCreateIssue();
+
+              // error callback
+              }, function(){
+
+                console.log('ERROR 5');
+
+                $ionicLoading.hide();
+                alert("Fotos konnten nicht hochgeladen werden!");
+
+              }
+            );
+
+            // if we can create the uploader
+            if(typeof(uploader.start) != 'undefined') {
+              uploader.start();
+            }
+          } else {
             $scope.closeCreateIssue();
-
-          // error callback
-          }, function(){
-
-            $ionicLoading.hide();
-            alert("Fotos konnten nicht hochgeladen werden!");
-
           }
-        );
 
-        // if we can create the uploader
-        if(typeof(uploader.start) != 'undefined') {
-
-          console.log(response);
-
-          // if server gave us S3 signation data and parentID
-          if(typeof(response.awsKey) != 'undefined' &&
-            typeof(response.policy) != 'undefined' &&
-            typeof(response.signature) != 'undefined' &&
-            typeof(response.bucket) != 'undefined' &&
-            typeof(response.id) != 'undefined') {
-
-            uploader.start(response);
-          }
+        } else {
+          alert("Issue konnte nicht erstellt weren!");
         }
 
 
       // ON ERROR
       }, function(ret){
+
+        console.log('ERROR 2');
+
         console.log(ret);
         $ionicLoading.hide();
         alert("ERROR creating issue");

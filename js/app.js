@@ -25,6 +25,7 @@ var modules = [
   'shinystreets.Area',
   'shinystreets.User',
   'shinystreets.Issue',
+  'shinystreets.File',
 
   // controllers
   'shinystreets.MainCtrl',
@@ -32,6 +33,7 @@ var modules = [
   'shinystreets.ProfileCtrl',
   'shinystreets.IssuesCtrl',
   'shinystreets.IssueCtrl',
+  'shinystreets.UserIssuesCtrl',
   'shinystreets.CreateIssueCtrl',
   'shinystreets.CommentsCtrl',
 
@@ -103,12 +105,33 @@ var shinystreets = angular.module('shinystreets', modules)
         }
       }
     })
+
     .state('tabs.profile', {
       url: "/profile",
       views: {
         'profile-tab': {
           templateUrl: "templates/profile.html",
           controller: 'ProfileCtrl'
+        }
+      }
+    })
+
+    .state('tabs.profileIssues', {
+      url: "/profile/:userid/issues",
+      views: {
+        'profile-tab': {
+          templateUrl: "templates/issues.html",
+          controller: 'UserIssuesCtrl'
+        }
+      }
+    })
+
+    .state('tabs.profileIssue', {
+      url: "/profile/:userid/issues/:id",
+      views: {
+        'profile-tab': {
+          templateUrl: "templates/issue.html",
+          controller: 'IssueCtrl'
         }
       }
     });

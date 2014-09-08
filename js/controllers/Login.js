@@ -1,7 +1,7 @@
 
 angular.module('shinystreets.LoginCtrl', [])
 
-.controller('LoginCtrl', function($scope, $rootScope, Authentication) {
+.controller('LoginCtrl', function($scope, $rootScope, Authentication, $ionicLoading) {
 
   $scope.user = {
     username: '',
@@ -9,6 +9,10 @@ angular.module('shinystreets.LoginCtrl', [])
   };
 
   $scope.login = function() {
+
+    $ionicLoading.show({
+      template: "Login..."
+    });
 
     // Try to Login and to get the token
     Authentication().login(
@@ -27,7 +31,14 @@ angular.module('shinystreets.LoginCtrl', [])
         }
 
         if(result.status == 200) {
-          $scope.closeLogin();
+
+          setTimeout(function(){
+            $scope.closeLogin();
+            $ionicLoading.hide();
+          }, 100);
+
+        } else {
+          $ionicLoading.hide();
         }
 
         $rootScope.rightButtons = $rootScope.defaultRightButtons();

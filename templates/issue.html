@@ -1,27 +1,27 @@
-<ion-view title="{{issue.title}}">
+<ion-view title="{{issue.title}}" hide-back-button="false">
   <ion-content>
 
     <div class="error" ng-show="loadError">Fehler beim Laden. Versuch es bitte nichmal.</div>
 
     <div class="list card">
-      <div class="item item-avatar">
-        <img src="http://2robots.at/logo.png">
+      <div class="item">
+        <!--img src="http://2robots.at/logo.png" item-avatar-->
         <h2>Von: {{issue.creator.username}}</h2>
         <!--p>Vor <strong>5 Tagen</strong> in <strong>Wien</strong></p-->
-        <p>{{issue.createdAt}}</p>
+        <p>{{issue.createdAt | date: 'dd.MM.yyyy HH:mm' }}</p>
       </div>
 
       <div class="item item-body">
-        <iframe width="100%" height="150px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/export/embed.html?bbox=16.33443832397461%2C48.18588898883708%2C16.4040470123291%2C48.232791761830015&amp;layer=hot" ng-show="issue.location">
-        </iframe>
+        <div id="issue-detail-map" data-tap-disabled="true"></div>
 
         <p>{{issue.description}}</p>
       </div>
 
-      <div class="item item-body">
+      <div class="item item-body" ng-if="issue.photos.length > 0">
         <div style="overflow: auto;">
           <div style="white-space:nowrap">
-            <a href="{{photo.big}}"><img src="{{photo.thumbnail}}" style="height: 50px;" ng-eatch="photo in issue.photos" /></a>
+
+            <img ng-src="{{photo.url}}" style="height: 50px;" ng-repeat="photo in issue.photos" ng-click="openFile(photo.url)" />
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 
 angular.module('shinystreets.RegisterCtrl', [])
 
-.controller('RegisterCtrl', function($scope, $rootScope, Authentication) {
+.controller('RegisterCtrl', function($scope, $rootScope, Authentication, $ionicLoading) {
 
   $scope.user = {
     email: '',
@@ -12,6 +12,10 @@ angular.module('shinystreets.RegisterCtrl', [])
   };
 
   $scope.register = function() {
+
+    $ionicLoading.show({
+      template: 'Account wird erstellt...'
+    });
 
     // check if passwords match
     if($scope.user.password == $scope.user.repeat_password && $scope.user.password != '') {
@@ -24,6 +28,8 @@ angular.module('shinystreets.RegisterCtrl', [])
         $scope.user,
 
         function(result){
+
+          $ionicLoading.hide();
 
           // on server success
           if(result.status == 200) {

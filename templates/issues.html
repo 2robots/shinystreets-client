@@ -1,4 +1,4 @@
-<ion-view title="Issues">
+<ion-view title="{{title}}">
   <ion-content>
 
     <!-- for pull to refresh -->
@@ -6,15 +6,20 @@
     <div class="error" ng-show="loadError">Fehler beim Laden. Versuch es bitte nichmal.</div>
 
     <div class="list">
-      <a class="item issue-list-item item-thumbnail-left"
+      <a
+        class="item issue-list-item"
+        ng-class="{'item-thumbnail-left': issue.photos.length > 0}"
         collection-repeat="issue in issues"
         collection-item-width="'100%'"
         collection-item-height="100"
         ng-style="{height: 100}"
-        href="#tabs/issues/{{issue.id}}">
-          <img src="http://2robots.at/logo.png">
+        href="#tabs{{detailLinkPrefix}}/{{issue.id}}">
+
+
+          <img ng-src="{{issue.photos[0].url}}" ng-if="issue.photos.length > 0" />
+
           <h2 ng-bind="issue.title"> </h2>
-          <p ng-bind="issue.description"> </p>
+          <p ng-bind="issue.description" ng-if="issue.description != ''"> </p>
 
       </a>
     </div>

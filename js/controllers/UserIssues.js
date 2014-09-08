@@ -1,20 +1,35 @@
 
-angular.module('shinystreets.IssuesCtrl', [])
+angular.module('shinystreets.UserIssuesCtrl', [])
 
-.controller('IssuesCtrl', function($scope, $rootScope, $ionicLoading, Area, File, Config) {
+.controller('UserIssuesCtrl', function($scope, $rootScope, $ionicLoading, $stateParams, User, File, Config) {
 
-  $rootScope.leftButtons = $rootScope.defaultLeftButtons();
+  $rootScope.leftButtons = [];
   $rootScope.rightButtons = $rootScope.defaultRightButtons();
 
   $scope.title = 'Issues';
+  $scope.detailLinkPrefix = '/profile/' + $stateParams.userid + '/issues';
+
+  // if this user the current user
+  if($stateParams.userid == Config.userConfig().userid) {
+    $scope.title = 'Meine Issues';
+  } else {
+
+    var user = User($stateParams.userid).get(
+
+      // on user get success
+      function() {
+        $scope.title = 'Isssues von ' + user.username;
+      },
+
+      // on user get error
+      function() { }
+
+    );
+  }
+
   $scope.issues = [];
-  $scope.detailLinkPrefix = '/issues';
 
   $scope.loadError = false;
-
-  $rootScope.$on('modalClose', function(){
-    $scope.onRefresh();
-  });
 
   // On pull to refresh
   $scope.onRefresh = function() {
@@ -24,7 +39,7 @@ angular.module('shinystreets.IssuesCtrl', [])
     });
 
     $scope.loadError = false;
-    $scope.issues = Area().issues(
+    $scope.issues = User($stateParams.userid).issues(
 
       // on success
       function(){
@@ -53,14 +68,5 @@ angular.module('shinystreets.IssuesCtrl', [])
     );
   };
 
-  // Check if we have not already selected an area
-  if(!Config.userConfig().activeArea || Config.userConfig().activeArea == -1) {
-    $rootScope.openModal('areas');
-
-  // if we have, load the issues
-  } else {
-
-    $scope.title = 'Issues aus ' + Config.userConfig().activeAreaName;
-    $scope.onRefresh();
-  }
+  $scope.onRefresh();
 });

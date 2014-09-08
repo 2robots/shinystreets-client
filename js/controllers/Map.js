@@ -37,10 +37,13 @@ angular.module('shinystreets.MapCtrl', [])
   // on refresh recreatemap
   $scope.onRefresh = function(){
 
-    $ionicLoading.show();
+    $ionicLoading.show({
+      template: "Karte wird geladen..."
+    });
 
-    $scope.issues = Area().issues(function(){
-      $ionicLoading.hide();
+    $scope.issues = Area().issues(
+
+    function(){
 
       if(typeof(navigator.geolocation) != 'undefined') {
         navigator.geolocation.getCurrentPosition(
@@ -56,16 +59,35 @@ angular.module('shinystreets.MapCtrl', [])
       layergroup.clearLayers();
 
       // add markers to layergroup
-      $scope.issues.forEach(function(issue){
+      $scope.issues.forEach(function(issue, key){
         layergroup.addLayer(
           L.marker([
             issue.latitude,
             issue.longitude
           ], {icon: issueIcon})
 
-          .bindPopup('<a href="#/tabs/issues/' + issue.id + '">' + issue.title + '</a>')
+          //.bindPopup('<a ng-href="#/tabs/issues/' + issue.id + '">' + issue.title + '</a>')
+          .on('click', function(){
+            $rootScope.$apply(function() {
+              $location.path('/tabs/issues');
+              setTimeout(function(){
+                $location.path('/tabs/issues/' + issue.id);
+              });
+            });
+          })
         );
+
+
+        // hide on last
+        if(key +1 == $scope.issues.length) {
+          $ionicLoading.hide();
+        }
+
       });
+
+      if($scope.issues.length == 0) {
+        $ionicLoading.hide();
+      }
 
 
     }, function(){
