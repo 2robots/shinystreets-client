@@ -63,7 +63,8 @@ angular.module('shinystreets.CreateIssueCtrl', [])
 
           // on error
           function(error) {
-            alert(error);
+            alert("Geolocation error.");
+            console.log(error);
           }
         );
       }
