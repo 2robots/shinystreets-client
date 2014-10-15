@@ -12,6 +12,7 @@ angular.module('shinystreets.MapCtrl', [])
   // create an OpenStreetMap tile layer
   var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+    detectRetina: true
   });
   osmLayer.addTo($scope.map);
 
@@ -53,39 +54,42 @@ angular.module('shinystreets.MapCtrl', [])
         );
       }
 
-      // remove markers
-      layergroup.clearLayers();
+      $scope.map.on("load", function(e){
 
-      // add markers to layergroup
-      $scope.issues.forEach(function(issue, key){
-        layergroup.addLayer(
-          L.marker([
-            issue.latitude,
-            issue.longitude
-          ], {icon: issueIcon})
+        // remove markers
+        layergroup.clearLayers();
 
-          //.bindPopup('<a ng-href="#/tabs/issues/' + issue.id + '">' + issue.title + '</a>')
-          .on('click', function(){
-            $rootScope.$apply(function() {
-              $location.path('/tabs/issues');
-              setTimeout(function(){
-                $location.path('/tabs/issues/' + issue.id);
+        // add markers to layergroup
+        $scope.issues.forEach(function(issue, key){
+          layergroup.addLayer(
+            L.marker([
+              issue.latitude,
+              issue.longitude
+            ], {icon: issueIcon})
+
+            //.bindPopup('<a ng-href="#/tabs/issues/' + issue.id + '">' + issue.title + '</a>')
+            .on('click', function(){
+              $rootScope.$apply(function() {
+                $location.path('/tabs/issues');
+                setTimeout(function(){
+                  $location.path('/tabs/issues/' + issue.id);
+                });
               });
-            });
-          })
-        );
+            })
+          );
 
 
-        // hide on last
-        if(key +1 == $scope.issues.length) {
+          // hide on last
+          if(key +1 == $scope.issues.length) {
+            $ionicLoading.hide();
+          }
+
+        });
+
+        if($scope.issues.length == 0) {
           $ionicLoading.hide();
         }
-
       });
-
-      if($scope.issues.length == 0) {
-        $ionicLoading.hide();
-      }
 
 
     }, function(){

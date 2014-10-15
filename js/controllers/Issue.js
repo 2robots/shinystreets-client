@@ -27,6 +27,7 @@ angular.module('shinystreets.IssueCtrl', [])
   // create an OpenStreetMap tile layer
   var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+    detectRetina: true
   });
   osmLayer.addTo($scope.map);
 
@@ -66,11 +67,14 @@ angular.module('shinystreets.IssueCtrl', [])
           $scope.issue.longitude
         ], {icon: issueIcon})
 
-        .bindPopup('<a href="#/tabs/issues/' + $scope.issue.id + '">' + $scope.issue.title + '</a>')
+        .bindPopup('<strong>' + $scope.issue.title + '</strong>')
       );
 
       $scope.map.setView([$scope.issue.latitude, $scope.issue.longitude], 15);
-      $ionicLoading.hide();
+      
+      $scope.map.on("load", function(e){
+        $ionicLoading.hide();
+      });
 
 
     // on error
