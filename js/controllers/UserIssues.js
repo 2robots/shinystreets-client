@@ -34,9 +34,7 @@ angular.module('shinystreets.UserIssuesCtrl', [])
   // On pull to refresh
   $scope.onRefresh = function() {
 
-    $scope.loading = $ionicLoading.show({
-      content: 'Issues werden geladen...'
-    });
+    $ionicLoading.show();
 
     $scope.loadError = false;
     $scope.issues = User($stateParams.userid).issues(

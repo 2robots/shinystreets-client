@@ -9,9 +9,7 @@ angular.module('shinystreets.AreasCtrl', [])
   $scope.onRefresh = function() {
 
     // show loading
-    $ionicLoading.show({
-      template: "Areas werden geladen..."
-    });
+    $ionicLoading.show();
 
     $scope.areas = Area().query(
       // on success

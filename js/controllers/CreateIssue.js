@@ -13,9 +13,7 @@ angular.module('shinystreets.CreateIssueCtrl', [])
   //$scope.photos = [{uri: "http://www.2robots.at/img/menu@2x.png"}, {uri: "http://www.2robots.at/img/menu@2x.png"}, {uri: "http://www.2robots.at/img/menu@2x.png"}, {uri: "http://www.2robots.at/img/menu@2x.png"}];
   $scope.photos = [];
 
-  $scope.loading = $ionicLoading.show({
-    content: 'Create issue...'
-  });
+  $ionicLoading.show();
   $ionicLoading.hide();
 
   var marker = null;

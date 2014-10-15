@@ -19,30 +19,49 @@ angular.module('shinystreets.IssuesCtrl', [])
   // On pull to refresh
   $scope.onRefresh = function() {
 
-    $scope.loading = $ionicLoading.show({
-      content: 'Issues werden geladen...'
-    });
+    $scope.loading = $ionicLoading.show();
 
     $scope.loadError = false;
     $scope.issues = Area().issues(
 
       // on success
       function(){
-        $scope.$broadcast('scroll.refreshComplete');
-        $ionicLoading.hide();
 
-        // load first image for issues
-        angular.forEach($scope.issues, function(issue, key){
+        // load issues images
+        var loadIssueImage = function(issues, key) {
+          if($scope.issues.length > key) {
+            var issue = $scope.issues[key];
 
-          issue.photos = File(issue.id).forIssue(
+            issue.photos = File(issue.id).forIssue(
 
             // on file load success
-            function() { },
+            function() {
+
+              // load next foto
+              loadIssueImage($scope.issues, key+1);
+
+            },
 
             // on file load error
-            function() { }
-          );
-        });
+            function() {
+
+              $scope.loadError = true;
+
+              // load next foto
+              loadIssueImage(issues, key+1);
+            });
+
+          // if there are no more issues in the queue
+          } else {
+
+            $scope.$broadcast('scroll.refreshComplete');
+            $ionicLoading.hide();
+
+            return true;
+          }
+        };
+
+        loadIssueImage($scope.issues, 0);
 
       // on error
       }, function(){

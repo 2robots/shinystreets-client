@@ -37,9 +37,7 @@ angular.module('shinystreets.MapCtrl', [])
   // on refresh recreatemap
   $scope.onRefresh = function(){
 
-    $ionicLoading.show({
-      template: "Karte wird geladen..."
-    });
+    $ionicLoading.show();
 
     $scope.issues = Area().issues(
 

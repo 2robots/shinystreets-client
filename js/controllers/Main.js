@@ -61,42 +61,20 @@ angular.module('shinystreets.MainCtrl', [])
    */
   $rootScope.currentModal = null;
 
-  // AREAS MODAL
-  $ionicModal.fromTemplateUrl('templates/modals/areas.html', function(modal) {
-    $rootScope.areasModal = modal;
-  }, { scope: $rootScope, animation: 'slide-in-up' });
-
-  // LOGIN MODAL
-  $ionicModal.fromTemplateUrl('templates/modals/login.html', function(modal) {
-    $rootScope.loginModal = modal;
-  }, { scope: $rootScope, animation: 'slide-in-up' });
-
-  // REGISTER MODAL
-  $ionicModal.fromTemplateUrl('templates/modals/register.html', function(modal) {
-    $rootScope.registerModal = modal;
-  }, { scope: $rootScope, animation: 'slide-in-up' });
-
-  // CREATE ISSUE MODAL
-  $ionicModal.fromTemplateUrl('templates/modals/createIssue.html', function(modal) {
-    $rootScope.createIssueModal = modal;
-  }, { scope: $rootScope, animation: 'slide-in-up' });
-
   /**
    * Open Modal with [name]. Will close any open Modal as well.
    * @param String name
    */
   $rootScope.openModal = function(name) {
 
-    // if this modal is defined
-    if(typeof($rootScope[name + 'Modal']) != 'undefined') {
-
       // close an posible open modal
       $rootScope.closeModal();
 
-      // show the new modal & save it as currentModal
-      $rootScope[name + 'Modal'].show();
-      $rootScope.currentModal = $rootScope[name + 'Modal'];
-    }
+      // create the modal
+      $ionicModal.fromTemplateUrl('templates/modals/' + name + '.html', function(modal) {
+        $rootScope.currentModal = modal;
+        $rootScope.currentModal.show();
+      }, { scope: $rootScope, animation: 'slide-in-up' });
   };
 
   /**

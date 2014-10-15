@@ -10,9 +10,7 @@ angular.module('shinystreets.IssueCtrl', [])
   $rootScope.rightButtons = $rootScope.defaultRightButtons();
 
   // show loading animation
-  $scope.loading = $ionicLoading.show({
-    content: 'Details werden geladen'
-  });
+  $ionicLoading.show();
 
   $scope.issue = {
     title: 'Untitled Issue',
