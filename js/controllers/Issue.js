@@ -71,10 +71,34 @@ angular.module('shinystreets.IssueCtrl', [])
       );
 
       $scope.map.setView([$scope.issue.latitude, $scope.issue.longitude], 15);
-      
-      $scope.map.on("load", function(e){
-        $ionicLoading.hide();
-      });
+      $ionicLoading.hide();
+
+
+      // download files
+      if(typeof(FileTransfer) != 'undefined') {
+
+        window.requestFileSystem(LocalFileSystem.TEMPORARY, 0, function (fileSystem) {
+
+          $scope.issue.photos.forEach(function(photo, key){
+
+            var photo_url = photo.url.substr(8).replace("/", "_");
+            var fileTransfer = new FileTransfer();
+            fileTransfer.download(
+              photo.url, 
+              fileSystem.root.toURL() + photo_url, 
+
+              function(entry) {
+                $scope.issue.photos[key].nativeURL = entry.toURL();
+              }
+            );
+
+          });
+
+        });
+
+      } else {
+        alert("FileTransfer not supported!");
+      }
 
 
     // on error
