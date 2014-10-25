@@ -59,7 +59,7 @@ angular.module('shinystreets.MainCtrl', [])
    * and close methods will work. They can be called by openModal([NAME]) and
    * closeModal().
    */
-  $rootScope.currentModal = null;
+
 
   /**
    * Open Modal with [name]. Will close any open Modal as well.
@@ -67,14 +67,20 @@ angular.module('shinystreets.MainCtrl', [])
    */
   $rootScope.openModal = function(name) {
 
-      // close an posible open modal
-      $rootScope.closeModal();
+    // close an posible open modal
+    $rootScope.closeModal();
 
-      // create the modal
-      $ionicModal.fromTemplateUrl('templates/modals/' + name + '.html', function(modal) {
+    // create the modal    
+    $ionicModal.fromTemplateUrl(
+      'templates/modals/' + name + '.html', {
+        scope: $scope, 
+        animation: 'slide-in-up'
+      }).then(function(modal){
         $rootScope.currentModal = modal;
         $rootScope.currentModal.show();
-      }, { scope: $rootScope, animation: 'slide-in-up' });
+      }
+    );
+
   };
 
   /**
@@ -86,9 +92,8 @@ angular.module('shinystreets.MainCtrl', [])
     if($rootScope.currentModal != null) {
 
       // close the modal & unsert currentModal
-      $rootScope.currentModal.hide();
-      $rootScope.$broadcast('modalClose');
-      $rootScope.currentModal = null;
+      $rootScope.currentModal.remove();
+      delete $rootScope.currentModal;
     }
   };
 

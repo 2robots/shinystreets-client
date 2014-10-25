@@ -4,7 +4,8 @@ angular.module('shinystreets.Config', [], function($provide){
     return {
       name: 'shinystreets',
       //endpoint: 'http://dev.shinystreets.com',
-      endpoint: 'http://node-shinystreets-com.herokuapp.com',
+      //endpoint: 'http://node-shinystreets-com.herokuapp.com',
+      endpoint: 'http://shinystreets.2robots.at', 
       //endpoint: 'http://127.0.0.1/',
       //endpoint: '/test',
       userConfig: function() {

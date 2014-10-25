@@ -20,6 +20,8 @@ angular.module('shinystreets.ProfileCtrl', [])
   // On pull to refresh
   $scope.onRefresh = function() {
 
+    console.log("onRefresh");
+
     $ionicLoading.show();
 
     $scope.user = User().me(

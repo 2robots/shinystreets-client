@@ -34,6 +34,8 @@ angular.module('shinystreets.AreasCtrl', [])
   };
 
   // on init refresh
-  $scope.onRefresh();
+  $scope.$on('modal.shown', function(e) {
+    $scope.onRefresh(); 
+  });
 
 });

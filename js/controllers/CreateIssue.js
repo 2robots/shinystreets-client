@@ -1,7 +1,7 @@
 
 angular.module('shinystreets.CreateIssueCtrl', [])
 
-.controller('CreateIssueCtrl', function($scope, $rootScope, $ionicActionSheet, $ionicLoading, Issue, FileUploader) {
+.controller('CreateIssueCtrl', function($scope, $rootScope, $ionicActionSheet, $ionicLoading, $ionicPopup, Issue, FileUploader) {
 
   $scope.issue = {
     title: '',
@@ -19,54 +19,52 @@ angular.module('shinystreets.CreateIssueCtrl', [])
   var marker = null;
 
   // on shown
-  $rootScope.$on('modal.shown', function(e) {
-    if($rootScope.currentModal == $rootScope.createIssueModal) {
+  $scope.$on('modal.shown', function(e) {
 
-      // create a map and get current position
-      if(typeof(navigator.geolocation) != 'undefined') {
-        navigator.geolocation.getCurrentPosition(
+    // create a map and get current position
+    if(typeof(navigator.geolocation) != 'undefined') {
+      navigator.geolocation.getCurrentPosition(
 
-          // on success
-          function(position){
+        // on success
+        function(position){
 
-            // init leaflet map
-            $scope.map = L.map('create-issue-map', { zoomControl:false });
+          // init leaflet map
+          $scope.map = L.map('create-issue-map', { zoomControl:false });
 
-            // create an OpenStreetMap tile layer
-            var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-              attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-              detectRetina: true
-            });
-            osmLayer.addTo($scope.map);
+          // create an OpenStreetMap tile layer
+          var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+            detectRetina: true
+          });
+          osmLayer.addTo($scope.map);
 
-            // create icon
-            var issueIcon = L.icon({
-              iconUrl: 'lib/leaflet/images/marker-icon.png',
-              iconRetinaUrl: 'lib/leaflet/images/marker-icon-2x.png',
-              shadowUrl: 'lib/leaflet/images/marker-shadow.png',
+          // create icon
+          var issueIcon = L.icon({
+            iconUrl: 'lib/leaflet/images/marker-icon.png',
+            iconRetinaUrl: 'lib/leaflet/images/marker-icon-2x.png',
+            shadowUrl: 'lib/leaflet/images/marker-shadow.png',
 
-              iconSize:     [25, 41], // size of the icon
-              shadowSize:   [41, 41], // size of the shadow
-              iconAnchor:   [12, 20], // point of the icon which will correspond to marker's location
-              shadowAnchor: [12, 20],  // the same for the shadow
-              popupAnchor:  [-1, -26] // point from which the popup should open relative to the iconAnchor
-            });
+            iconSize:     [25, 41], // size of the icon
+            shadowSize:   [41, 41], // size of the shadow
+            iconAnchor:   [12, 20], // point of the icon which will correspond to marker's location
+            shadowAnchor: [12, 20],  // the same for the shadow
+            popupAnchor:  [-1, -26] // point from which the popup should open relative to the iconAnchor
+          });
 
-            marker = L.marker([position.coords.latitude, position.coords.longitude], {icon: issueIcon, draggable: true});
-            marker.addTo($scope.map);
+          marker = L.marker([position.coords.latitude, position.coords.longitude], {icon: issueIcon, draggable: true});
+          marker.addTo($scope.map);
 
-            // locate current position
-            $scope.map.setView([position.coords.latitude, position.coords.longitude], 15);
-            $scope.coords = position.coords;
-          },
+          // locate current position
+          $scope.map.setView([position.coords.latitude, position.coords.longitude], 15);
+          $scope.coords = position.coords;
+        },
 
-          // on error
-          function(error) {
-            alert("Geolocation error.");
-            console.log(error);
-          }
-        );
-      }
+        // on error
+        function(error) {
+          alert("Geolocation error.");
+          console.log(error);
+        }
+      );
     }
   });
 
@@ -129,7 +127,10 @@ angular.module('shinystreets.CreateIssueCtrl', [])
       });
 
     } else {
-      alert("Dieses Gerät unterstützt keinen Bilder-Upload.");
+      $ionicPopup.alert({
+        title: 'Keine Kamera!',
+        template: 'Dieses Gerät unterstützt keinen Bilder-Upload.'
+      });
     }
   }
 
@@ -152,10 +153,18 @@ angular.module('shinystreets.CreateIssueCtrl', [])
         // error cb
         }, function(){
           $ionicLoading.hide();
-          alert("There was an error, opening the file.");
+
+          $ionicPopup.alert({
+            title: 'Datei Error!',
+            template: 'Bei öffnen des Bildes ist ein Fehler aufgetaucht.'
+          });
         });
     } else {
-      alert("FileViewerPlugin not supported");
+
+      $ionicPopup.alert({
+        title: 'FileViewerPlugin Error!',
+        template: 'FileViewerPlugin wird nicht unterstützt.'
+      });
     }
   };
 
@@ -170,32 +179,18 @@ angular.module('shinystreets.CreateIssueCtrl', [])
       $scope.issue.longitude = coordiantes.lng;
     }
 
-    console.log('######################');
-    console.log('######################');
-    console.log($scope.issue);
-    console.log('######################');
-    console.log('######################');
-
-    console.log('1');
-
     new Issue().create($scope.issue,
 
       // ON SUCCESS
       function(response){
-
-        console.log('SUCCESS 2');
 
         $ionicLoading.hide();
 
         // if we have an id continue
         if(response.id) {
 
-          console.log('SUCCESS 3');
-
           // if we have selected at least one foto, we need to upload themn
           if($scope.photos.length > 0) {
-
-            console.log('SUCCESS 4');
 
             // // let's upload the photos
             var uploader = new FileUploader($scope.photos, response.id,
@@ -203,20 +198,23 @@ angular.module('shinystreets.CreateIssueCtrl', [])
               // success callback
               function(){
 
-                console.log('SUCCESS 5');
-
                 $ionicLoading.hide();
-                alert("Issue wurde erfolgfeich erstellt!");
+
+                $ionicPopup.alert({
+                  title: 'Issue wurde erfolgreich erstellt!'
+                });
+
                 $scope.closeCreateIssue();
 
               // error callback
               }, function(){
 
-                console.log('ERROR 5');
-
                 $ionicLoading.hide();
-                alert("Fotos konnten nicht hochgeladen werden!");
 
+                $ionicPopup.alert({
+                  title: 'Foto Error!',
+                  template: 'Fotos konnten nicht hochgeladen werden!'
+                });
               }
             );
 
@@ -229,18 +227,33 @@ angular.module('shinystreets.CreateIssueCtrl', [])
           }
 
         } else {
-          alert("Issue konnte nicht erstellt weren!");
+
+          $ionicPopup.alert({
+            title: 'Issue konnte nicht erstellt werden!',
+          });
         }
 
 
       // ON ERROR
       }, function(ret){
 
-        console.log('ERROR 2');
-
-        console.log(ret);
         $ionicLoading.hide();
-        alert("ERROR creating issue");
+
+        var err = '';
+
+        if(ret.data.error) {
+          if(ret.data.error == "E_VALIDATION") {
+            err = 'Fehler: ' + ret.data.summary;
+          }
+        } else {
+          err = 'Fehler: ' + ret.data;
+        }
+
+        $ionicPopup.alert({
+          title: 'Issue konnte nicht erstellt werden!',
+          template: err
+        });
+
       }
     );
   };

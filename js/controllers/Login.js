@@ -1,7 +1,7 @@
 
 angular.module('shinystreets.LoginCtrl', [])
 
-.controller('LoginCtrl', function($scope, $rootScope, Authentication, $ionicLoading) {
+.controller('LoginCtrl', function($scope, $rootScope, Authentication, $ionicLoading, $ionicPopup) {
 
   $scope.user = {
     username: '',
@@ -10,9 +10,7 @@ angular.module('shinystreets.LoginCtrl', [])
 
   $scope.login = function() {
 
-    $ionicLoading.show({
-      template: "Login..."
-    });
+    $ionicLoading.show();
 
     // Try to Login and to get the token
     Authentication().login(
@@ -23,14 +21,22 @@ angular.module('shinystreets.LoginCtrl', [])
       function(result){
 
         if(result.status == 500) {
-          alert("Server-Fehler!");
+
+          $ionicPopup.alert({
+            title: 'Server-Fehler'
+          });
         }
 
         if(result.status == 404) {
-          alert("Emailadresse und/oder Passwort sind nicht korrekt!");
+
+          $ionicPopup.alert({
+            title: 'Emailadresse und/oder Passwort sind nicht korrekt!'
+          });
         }
 
         if(result.status == 200) {
+
+          $rootScope.$broadcast("loggedin");
 
           setTimeout(function(){
             $scope.closeLogin();
