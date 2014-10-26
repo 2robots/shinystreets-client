@@ -1,7 +1,7 @@
 
 angular.module('shinystreets.RegisterCtrl', [])
 
-.controller('RegisterCtrl', function($scope, $rootScope, Authentication, $ionicLoading) {
+.controller('RegisterCtrl', function($scope, $rootScope, Authentication, $ionicLoading, $ionicPopup) {
 
   $scope.user = {
     email: '',
@@ -13,9 +13,7 @@ angular.module('shinystreets.RegisterCtrl', [])
 
   $scope.register = function() {
 
-    $ionicLoading.show({
-      template: 'Account wird erstellt...'
-    });
+    $ionicLoading.show();
 
     // check if passwords match
     if($scope.user.password == $scope.user.repeat_password && $scope.user.password != '') {
@@ -49,23 +47,45 @@ angular.module('shinystreets.RegisterCtrl', [])
 
                 } else if(result.status == 400) {
 
-                  alert("Die angegeben Daten sind entweder unvollständig oder ungültig.")
+                  $ionicPopup.alert({
+                    title: 'Server-Fehler!'
+                  });
 
                 // on server error
                 } else {
-                  alert("Server-Fehler!");
+                  
+                  $ionicPopup.alert({
+                    title: 'Server-Fehler!'
+                  });
+
                 }
               }
             );
 
+          } else if(result.status == 400) {
+
+            $ionicPopup.alert({
+              title: 'Registrierung fehlgeschlagen!', 
+              template: 'Fehler: ' + result.data.summary
+            });
+
+
           // on server error
           } else {
-            alert("Server-Fehler!");
+            
+            $ionicPopup.alert({
+              title: 'Server-Fehler!'
+            });
           }
         }
       );
     } else {
-      alert("Bitte gib zweimal das selbe Passwort ein.");
+
+      $ionicLoading.hide();
+      $ionicPopup.alert({
+        title: 'Passwort ungültig!',
+        template: 'Bitte gib zweimal das selbe Passwort ein.'
+      });
     }
   };
 

@@ -9,27 +9,30 @@
 
   <ion-content>
 
-    <p class="padding">Du kannst alle Issues auch ohne Login ansehen. Möchtest
-      du aber ein aktiver Teil der Community werden, dann musst du dich
-      einloggen.</p>
+    <form name="loginForm">
 
-    <div class="list list-inset">
-      <label class="item item-input">
-        <input ng-model="user.username" type="text" placeholder="Email-Adresse">
-      </label>
-      <label class="item item-input">
-        <input ng-model="user.password" type="password" placeholder="Passwort">
-      </label>
-    </div>
+      <p class="padding">Du kannst alle Issues auch ohne Login ansehen. Möchtest
+        du aber ein aktiver Teil der Community werden, dann musst du dich
+        einloggen.</p>
 
-    <div class="padding">
-      <button class="button button-block button-stable" ng-click="login()">Login</button>
-    </div>
+      <div class="list list-inset">
+        <label class="item item-input">
+          <input ng-model="user.username" type="text" placeholder="Email-Adresse*" required />
+        </label>
+        <label class="item item-input">
+          <input ng-model="user.password" type="password" placeholder="Passwort*" required />
+        </label>
+      </div>
 
-    <div class="padding">
-      <h4>Hast du noch keinen Account?</h4>
-      <p>Du kannst dir im Handumdrehen einen erstellen. Gratis und wir geben deine Daten auch nicht weiter.</p>
-      <button class="button button-block button-energized" ng-click="openModal('register')">Registrieren</button>
-    </div>
+      <div class="padding">
+        <button class="button button-block button-stable" ng-disabled="loginForm.$invalid" ng-click="login()">Login</button>
+      </div>
+
+      <div class="padding">
+        <h4>Hast du noch keinen Account?</h4>
+        <p>Du kannst dir im Handumdrehen einen erstellen. Gratis und wir geben deine Daten auch nicht weiter.</p>
+        <button class="button button-block button-energized" ng-click="openModal('register')">Registrieren</button>
+      </div>
+    </form>
   </ion-content>
 </div>

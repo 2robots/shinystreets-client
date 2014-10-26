@@ -121,7 +121,8 @@ angular.module('shinystreets.Authentication', [], function($provide){
             // call callback with no user and error status.
             callback({
               user: null,
-              status: status
+              status: status, 
+              data: data.error
             });
 
           });

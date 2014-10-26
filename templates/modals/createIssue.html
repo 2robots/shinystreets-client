@@ -8,38 +8,40 @@
   </ion-header-bar>
 
   <ion-content>
+    <form name="createIssueForm">
 
-    <p class="padding">Erstelle ein neues <strong>Problem</strong> eine <strong>Anregung</strong> oder einen <strong>Wunsch</strong> an deine Stadt.</p>
+      <p class="padding">Erstelle ein neues <strong>Problem</strong> eine <strong>Anregung</strong> oder einen <strong>Wunsch</strong> an deine Stadt.</p>
 
-    <div class="list list-inset">
+      <div class="list list-inset">
 
-      <div class="item item-divider">Allgemeine Infos</div>
+        <div class="item item-divider">Allgemeine Infos</div>
 
-      <label class="item item-input">
-        <input ng-model="issue.title" type="text" placeholder="Titel">
-      </label>
-      <label class="item item-input">
-        <textarea ng-model="issue.description" placeholder="Beschreibung"></textarea>
-      </label>
+        <label class="item item-input">
+          <input ng-model="issue.title" type="text" placeholder="Titel*" required>
+        </label>
+        <label class="item item-input">
+          <textarea style="min-height: 80px;" ng-model="issue.description" placeholder="Beschreibung"></textarea>
+        </label>
 
-      <div class="item item-divider">Position</div>
-      <div class="item create-issue-map-item">
-        <div id="create-issue-map"></div>
-      </div>
-
-      <div class="item item-divider">Füge dem Issue Bilder hinzu</div>
-      <div class="item create-issue-photos-item">
-        <div class="create-issue-photo" ng-repeat="photo in photos">
-          <img ng-src="{{photo.uri}}" ng-click="openFile(photo.uri)" />
-          <button class="button button-small button-clear" ng-click="removePhoto($index)"><i class="icon ion-ios7-close"></i></button>
+        <div class="item item-divider">Position</div>
+        <div class="item create-issue-map-item">
+          <div id="create-issue-map"></div>
         </div>
 
-        <button class="button button-add-photo button-small button-positive" ng-click="addPhoto()"><i class="icon ion-ios7-plus-empty"></i></button>
-      </div>
-    </div>
+        <div class="item item-divider">Füge dem Issue Bilder hinzu</div>
+        <div class="item create-issue-photos-item">
+          <div class="create-issue-photo" ng-repeat="photo in photos">
+            <img ng-src="{{photo.uri}}" ng-click="openFile(photo.uri)" />
+            <button class="button button-small button-clear" ng-click="removePhoto($index)"><i class="icon ion-ios7-close"></i></button>
+          </div>
 
-    <div class="padding">
-      <button class="button button-block button-energized" ng-click="create()">Erstellen</button>
-    </div>
+          <button class="button button-add-photo button-small button-positive" ng-click="addPhoto()"><i class="icon ion-ios7-plus-empty"></i></button>
+        </div>
+      </div>
+
+      <div class="padding">
+        <button class="button button-block button-energized" ng-disabled="createIssueForm.$invalid" ng-click="create()">Erstellen</button>
+      </div>
+    </form>
   </ion-content>
 </div>
