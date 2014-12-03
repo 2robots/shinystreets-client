@@ -57,6 +57,154 @@ angular.module('shinystreets.IssueCtrl', [])
     // on success
     function(){
 
+      /**
+       * MOC ISSUE ATTRIBUTES. 
+       */
+
+      // BIB
+      if($scope.issue.id == '5475c54b3bec3d392918fe07') {
+
+        /**
+         * NEW
+         * SOLUTIONS
+         * SOLVED
+         * IMPLEMENTING
+         * CLOSED
+         */
+        $scope.issue.stauts = 'SOLUTIONS';
+
+        $scope.issue.comments = [
+          {
+            creator: {
+              id: '54611d88a8ef065a721b1a1c', 
+              username: 'tina'
+            }, 
+            description: 'Find ich voll arg! Kann ma da nicht eine Rampe dazu bauen? Oder ist die Stufe zu hoch?'
+          }, 
+          {
+            creator: {
+              id: '54611d88a8ef065a721b1a1c', 
+              username: 'Franz'
+            }, 
+            description: ' Es gibt auch so Hebelifte, da kann der Rollstuhl dann eingespannt werden, und fährt dann hoch. Ist aber glaub ich recht teuer.'
+          },
+          {
+            creator: {
+              id: '54611d88a8ef065a721b1a1c', 
+              username: 'Anna'
+            }, 
+            description: 'Ich kenn den Eingang, es ist eigentlich nur eine Stufe.'
+          }, 
+          {
+            creator: {
+              id: '54611d88a8ef065a721b1a1c', 
+              username: 'tina'
+            }, 
+            description: 'Ich find einen Lift nicht so gut, bei einer Rampe könnten auch Kinderwägen raufgeschoben werden. Das geht ja bei einem Lift nicht.'
+          }, 
+          {
+            creator: {
+              id: '54611d88a8ef065a721b1a1c', 
+              username: 'Franz'
+            }, 
+            description: 'Lifte sind meiner Meinung nach für Rollstühle besser geeignet, weil sie sicherer sind, man kann nicht einfach herunterfallen wie bei einer Rampe, da der Rollstuhl einrastet.'
+          }
+        ];
+
+        $scope.issue.infos = [
+          {
+            creator: {
+              id: '54611d88a8ef065a721b1a1c', 
+              username: 'Anna'
+            }, 
+            description: 'Ich kenne den Eingang. Es ist nur eine Stufe.'
+          }
+        ];
+
+        $scope.issue.solutions = [
+          {
+            creator: {
+              id: '54611d88a8ef065a721b1a1c', 
+              username: 'tina'
+            }, 
+            title: 'Rampe', 
+            description: 'Mein Vorschlag: Die Bibliothek könnte die Stufe abflachen oder eine Rampe davor bauen. Dann können alle Menschen mit Rollstuhl die Bibliothek benützen.', 
+            positive: 26, 
+            negative: 3, 
+            comments: [
+              {
+                creator: {
+                  id: '54611d88a8ef065a721b1a1c', 
+                  username: 'Anna'
+                }, 
+                description: 'Ich bin morgen eh bei der Gemeinde und könnte das dort mal anbringen.'
+              }, 
+              {
+                creator: {
+                  id: '54611d88a8ef065a721b1a1c', 
+                  username: 'tina'
+                }, 
+                description: 'Sehr cool'
+              }, 
+              {
+                creator: {
+                  id: '54611d88a8ef065a721b1a1c', 
+                  username: 'Anna'
+                }, 
+                description: '@ersteller, kannst du die Lösung akzeptieren? Dann würden wir beide Punkte bekommen.'
+              }, 
+              {
+                creator: {
+                  id: '54611d88a8ef065a721b1a1c', 
+                  username: 'Anna'
+                }, 
+                description: '@ersteller ?!?!'
+              }
+            ]
+          }, 
+          {
+            creator: {
+              id: '54611d88a8ef065a721b1a1c', 
+              username: 'Franz'
+            }, 
+            title: 'Lift bauen', 
+            description: 'Die Bib im 16. soll einen Hebelift bauen. Mit dessen Hilfe können alle Menschen im Rollstuhl einfach und sicher die Bibliothek betreten.', 
+            positive: 6, 
+            negative: 8, 
+            comments: [
+              {
+                creator: {
+                  id: '54611d88a8ef065a721b1a1c', 
+                  username: 'tina'
+                }, 
+                description: 'Da bräuchten wir erstmal Angebote...'
+              }, 
+              {
+                creator: {
+                  id: '54611d88a8ef065a721b1a1c', 
+                  username: 'Anna'
+                }, 
+                description: 'Das zahlt sich überhaupt nicht aus, es geht ja nur um eine Stufe, keine ganze Stiege.'
+              }
+            ]
+          }
+        ];
+
+      }
+
+      // BAUSTELLE
+      if($scope.issue.id == '547f28b833649d4b754e1b8f') {
+
+
+
+      }
+
+
+      console.log($scope.issue);
+
+
+
+
       // remove marker
       layergroup.clearLayers();
 
