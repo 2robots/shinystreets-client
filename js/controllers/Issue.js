@@ -195,8 +195,31 @@ angular.module('shinystreets.IssueCtrl', [])
       // BAUSTELLE
       if($scope.issue.id == '547f28b833649d4b754e1b8f') {
 
+        /**
+         * NEW
+         * SOLUTIONS
+         * SOLVED
+         * IMPLEMENTING
+         * CLOSED
+         */
+        $scope.issue.stauts = 'NEW';
 
-
+        $scope.issue.comments = [
+          {
+            creator: {
+              id: '54611d88a8ef065a721b1a1c', 
+              username: 'tina'
+            }, 
+            description: 'Ich glaube, die Baustelle selber ist nicht so das Problem, sondern, dass die Leute nicht informiert darüber sind...'
+          }, 
+          {
+            creator: {
+              id: '54611d88a8ef065a721b1a1c', 
+              username: 'Franz'
+            }, 
+            description: 'Stimmt! Vielleicht sollte es ein Umleitungsschild oder so geben?'
+          }
+        ];
       }
 
 
@@ -245,7 +268,7 @@ angular.module('shinystreets.IssueCtrl', [])
         });
 
       } else {
-        alert("FileTransfer not supported!");
+        //alert("FileTransfer not supported!");
       }
 
 
@@ -276,10 +299,10 @@ angular.module('shinystreets.IssueCtrl', [])
         // error cb
         }, function(){
           $ionicLoading.hide();
-          alert("There was an error, opening the file.");
+          //alert("There was an error, opening the file.");
         });
     } else {
-      alert("FileViewerPlugin not supported");
+      //alert("FileViewerPlugin not supported");
     }
   };
 
