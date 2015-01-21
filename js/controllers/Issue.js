@@ -3,12 +3,6 @@ angular.module('shinystreets.IssueCtrl', [])
 
 .controller('IssueCtrl', function($scope, $rootScope, $stateParams, $ionicLoading, Issue, $ionicNavBarDelegate) {
 
-  // if we have no back button
-  $ionicNavBarDelegate.showBackButton(true);
-
-  $rootScope.leftButtons = [];
-  $rootScope.rightButtons = $rootScope.defaultRightButtons();
-
   // show loading animation
   $ionicLoading.show();
 

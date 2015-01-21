@@ -1,7 +1,7 @@
 
 angular.module('shinystreets.RegisterCtrl', [])
 
-.controller('RegisterCtrl', function($scope, $rootScope, Authentication, $ionicLoading, $ionicPopup) {
+.controller('RegisterCtrl', function($scope, $rootScope, Authentication, $ionicLoading, $ionicPopup, $state) {
 
   $scope.user = {
     email: '',
@@ -44,6 +44,7 @@ angular.module('shinystreets.RegisterCtrl', [])
                 if(result.status == 200) {
                   $scope.closeRegister();
                   $rootScope.rightButtons = $rootScope.defaultRightButtons();
+                  $state.go('tabs.profile');
 
                 } else if(result.status == 400) {
 

@@ -3,9 +3,6 @@ angular.module('shinystreets.IssuesCtrl', [])
 
 .controller('IssuesCtrl', function($scope, $rootScope, $ionicLoading, Area, File, Config) {
 
-  $rootScope.leftButtons = $rootScope.defaultLeftButtons();
-  $rootScope.rightButtons = $rootScope.defaultRightButtons();
-
   $scope.title = 'Issues';
   $scope.issues = [];
   $scope.detailLinkPrefix = '/issues';

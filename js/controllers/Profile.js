@@ -2,9 +2,6 @@
 angular.module('shinystreets.ProfileCtrl', [])
 .controller('ProfileCtrl', function($scope, $rootScope, Authentication, $ionicLoading, User, Config) {
 
-  $rootScope.leftButtons = [];
-  $rootScope.rightButtons = $rootScope.defaultRightButtons();
-
   $scope.user = {};
   $scope.loadError = false;
 
@@ -47,7 +44,7 @@ angular.module('shinystreets.ProfileCtrl', [])
   };
 
   $scope.$on("loggedin", function(){
-    $scope.onRefresh();
+    $scope.onRefresh();    
   });
 
   $scope.onRefresh();

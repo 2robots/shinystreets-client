@@ -15,39 +15,20 @@ angular.module('shinystreets.MainCtrl', [])
     }
   );
 
-  $rootScope.leftButtons = [];
-  $rootScope.defaultLeftButtons = function(){
-    return [
-      {
-        content: 'Areas',
-        tap: function(e) {
-          $rootScope.openModal("areas");
-        }
-      }
-    ];
+  $rootScope.leftButtonText = function(){
+    return 'Areas';
   };
 
-  $rootScope.rightButtons = [];
-  $rootScope.defaultRightButtons = function(){
-    if(Authentication().loggedin()) {
-      return [
-        {
-          content: 'Neu',
-          tap: function(e) {
-            $rootScope.openModal("createIssue");
-          }
-        }
-      ];
-    } else {
-      return [
-        {
-          content: 'Login',
-          tap: function(e) {
-            $rootScope.openModal("login");
-          }
-        }
-      ];
+  $rootScope.leftButtonClick = function(){
+    $rootScope.openModal("areas");
+  };
+
+  $rootScope.isRootState = function(){
+    if($state.current.name == 'tabs.issues' || $state.current.name == 'tabs.map') {
+      return true;
     }
+
+    return false;
   };
 
   $rootScope.loggedin = function(){

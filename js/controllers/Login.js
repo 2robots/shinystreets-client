@@ -1,7 +1,7 @@
 
 angular.module('shinystreets.LoginCtrl', [])
 
-.controller('LoginCtrl', function($scope, $rootScope, Authentication, $ionicLoading, $ionicPopup) {
+.controller('LoginCtrl', function($scope, $rootScope, Authentication, $ionicLoading, $ionicPopup, $state) {
 
   $scope.user = {
     username: '',
@@ -41,14 +41,12 @@ angular.module('shinystreets.LoginCtrl', [])
           setTimeout(function(){
             $scope.closeLogin();
             $ionicLoading.hide();
+            $state.go('tabs.profile'); 
           }, 100);
 
         } else {
           $ionicLoading.hide();
         }
-
-        $rootScope.rightButtons = $rootScope.defaultRightButtons();
-
       }
     );
   };

@@ -2,10 +2,6 @@
 angular.module('shinystreets.MapCtrl', [])
 .controller('MapCtrl', function($scope, $rootScope, Area, Config, $ionicLoading, $location) {
 
-  $rootScope.leftButtons = $rootScope.defaultLeftButtons();
-  $rootScope.rightButtons = $rootScope.defaultRightButtons();
-
-
   // init leaflet map
   $scope.map = L.map('map', { zoomControl:false });
 
