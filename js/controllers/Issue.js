@@ -119,7 +119,7 @@ angular.module('shinystreets.IssueCtrl', [])
           {
             creator: {
               id: '54611d88a8ef065a721b1a1c', 
-              username: 'tina'
+              username: 'tina_solution'
             }, 
             title: 'Rampe', 
             description: 'Mein Vorschlag: Die Bibliothek könnte die Stufe abflachen oder eine Rampe davor bauen. Dann können alle Menschen mit Rollstuhl die Bibliothek benützen.', 
@@ -299,5 +299,9 @@ angular.module('shinystreets.IssueCtrl', [])
       //alert("FileViewerPlugin not supported");
     }
   };
+
+$scope.show_solutions = function(){
+  console.log('yay');
+};
 
 });
