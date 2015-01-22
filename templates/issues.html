@@ -16,7 +16,7 @@
         href="#tabs{{detailLinkPrefix}}/{{issue.id}}">
 
 
-          <img ng-src="{{issue.photos[0].url}}" ng-if="issue.photos.length > 0" />
+          <img class="issues-image" ng-src="{{issue.photos[0].url}}" ng-if="issue.photos.length > 0" />
 
           <h2 ng-bind="issue.title"> </h2>
           <p ng-bind="issue.description" ng-if="issue.description != ''"> </p>

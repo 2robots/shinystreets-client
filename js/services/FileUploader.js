@@ -1,5 +1,5 @@
 angular.module('shinystreets.FileUploader', [], function($provide){
-  $provide.factory('FileUploader', function(Config, File, Authentication, $http){
+  $provide.factory('FileUploader', function(Config, File, Authentication, $http, $ionicPopup){
     return function(files, success_cb, error_cb) {
 
       // Our FileUpload object
@@ -157,19 +157,20 @@ angular.module('shinystreets.FileUploader', [], function($provide){
 
                     // error
                     function(a, b){
-
-                      console.log('######################');
-                      console.log('######################');
-                      console.log(a);
-                      console.log(b);
-                      alert("ERROR creating file object on shs server");
+                      $ionicPopup.alert({
+                        title: 'Bild konnte nicht hochgeladen werden',
+                        template: 'Ein unbekannter Server-Fehler ist aufgetreten. Bitte versuche es erneut!'
+                      });
                     });
 
 
                   // error
                   }, function(response){
 
-                    alert("Error uploading file to amazon!");
+                    $ionicPopup.alert({
+                      title: 'Bild konnte nicht gespeichert werden',
+                      template: 'Ein unbekannter Server-Fehler ist aufgetreten. Bitte versuche es erneut!'
+                    });
 
                     // next!
                     t.start_intern();
@@ -180,9 +181,11 @@ angular.module('shinystreets.FileUploader', [], function($provide){
               // on get policy error
               }).error(function(data, status, headers, config) {
 
-                console.log("error 3");
+                $ionicPopup.alert({
+                  title: 'Fehler beim Schlüsselaustausch',
+                  template: 'Der Schlüssel, um Bilder zu speichern konnte nicht heruntergeladen werden. Bitte versuche es erneut!'
+                });
 
-                alert("get policy error");
                 return;
               });
 

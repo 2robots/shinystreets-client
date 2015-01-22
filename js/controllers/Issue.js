@@ -301,7 +301,9 @@ angular.module('shinystreets.IssueCtrl', [])
   };
 
 $scope.show_solutions = function(){
-  console.log('yay');
+};
+
+$scope.show_comments = function(){
 };
 
 });

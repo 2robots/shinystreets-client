@@ -38,24 +38,39 @@
         <div style="overflow: auto;">
           <div style="white-space:nowrap">
 
-            <img ng-src="{{photo.url}}" style="height: 50px;" ng-repeat="photo in issue.photos" ng-click="openFile(photo.nativeURL)" />
+            <img class="issues-image" ng-src="{{photo.url}}" style="height: 50px;" ng-repeat="photo in issue.photos" ng-click="openFile(photo.nativeURL)" />
           </div>
         </div>
       </div>
 
-      <ion-list>
-        <ion-item ng-repeat="item in issue.infos">
-          {{item.description}}
-        </ion-item>
-      </ion-list>
 
-
-      <div class="item item-stauts" style="position:relative;">
+      <!--div class="item item-stauts" style="position:relative;">
         <div class="item-status-indecator" style="position: absolute; top: 0; left: 0; bottom: 0; right: auto; width: 25%; background:green;"></div>
+      </div-->
+
+      <div class="item tabs tabs-secondary tabs-icon-left">
+        <a class="tab-item" href="#">
+          <i class="icon ion-thumbsup"></i>
+          Up
+        </a>
+        <a class="tab-item" href="#">
+          <i class="icon ion-thumbsdown"></i>
+          Down
+        </a>
+        <a class="tab-item" href="#">
+          <i class="icon ion-chatbox"></i>
+          Comment
+        </a>
       </div>
+
+
     </div>
 
-    <div class="list card">
+    <div class="list card" ng-repeat="solution in issue.solutions">
+      <div class="item">{{ title }}</div>
+    </div>
+
+    <!--div class="list card">
 
 
       <div class="item item-divider" style="padding: 0;">
@@ -71,18 +86,7 @@
         </div>
       </div>
 
-      <ion-list>
-        <ion-item ng-repeat="item in issue.solutions" style="white-space:normal;">
-          {{item.title}}
-        </ion-item>
-      </ion-list>
-
-      <ion-list>
-        <ion-item ng-repeat="item in issue.comments" style="white-space:normal;">
-          {{item.description}}
-        </ion-item>
-      </ion-list>
-
+-->
 
   </ion-content>
 </ion-view>

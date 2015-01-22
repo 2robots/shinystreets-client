@@ -1,7 +1,7 @@
 
 angular.module('shinystreets.WelcomeCtrl', [])
 
-.controller('WelcomeCtrl', function($scope, $rootScope, Config) {
+.controller('WelcomeCtrl', function($scope, $rootScope, Config, $state) {
 
   $scope.login = function(){
     $rootScope.openModal('login');
@@ -14,8 +14,8 @@ angular.module('shinystreets.WelcomeCtrl', [])
   };
 
   $scope.close = function() {
-    $scope.close();
     Config.saveUserConfig('opened', true);
+    $state.go('tabs.issues'); 
   }
 
 });
