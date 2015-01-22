@@ -61,8 +61,11 @@ angular.module('shinystreets.CreateIssueCtrl', [])
 
         // on error
         function(error) {
-          alert("Geolocation error.");
-          console.log(error);
+
+          $ionicPopup.alert({
+            title: 'Geolocation Fehler!',
+            template: 'Deine Position konnte nicht ermittelt werden.'
+          });
         }
       );
     }
@@ -111,7 +114,10 @@ angular.module('shinystreets.CreateIssueCtrl', [])
 
             // ON ERROR
             }, function(message){
-              alert("Beim auswählen des Bildes ist ein Fehler aufgetreten: " + message);
+              $ionicPopup.alert({
+                title: 'Beim auswählen des Bildes ist ein Fehler aufgetreten!',
+                template: message
+              });
 
             }, {
               quality: 49,
