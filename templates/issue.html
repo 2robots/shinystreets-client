@@ -25,12 +25,33 @@
         </div>
       </div>
 
-      <div class="item item-stauts" style="position:relative;">
+      <!--div class="item item-stauts" style="position:relative;">
         <div class="item-status-indecator" style="position: absolute; top: 0; left: 0; bottom: 0; right: auto; width: 25%; background:green;"></div>
+      </div-->
+
+      <div class="item tabs tabs-secondary tabs-icon-left">
+        <a class="tab-item" href="#">
+          <i class="icon ion-thumbsup"></i>
+          Up
+        </a>
+        <a class="tab-item" href="#">
+          <i class="icon ion-thumbsdown"></i>
+          Down
+        </a>
+        <a class="tab-item" href="#">
+          <i class="icon ion-chatbox"></i>
+          Comment
+        </a>
       </div>
+
+
     </div>
 
-    <div class="list card">
+    <div class="list card" ng-repeat="solution in issue.solutions">
+      <div class="item">{{ title }}</div>
+    </div>
+
+    <!--div class="list card">
 
       <div class="item item-divider" style="padding: 0;">
         <div class="button-bar bar-light">
@@ -65,7 +86,7 @@
         <h3>tina, 02. Dezember 2014</h3>
         <p>lalelu</p>
       </div>
-    </div>
+    </div-->
 
   </ion-content>
 </ion-view>
