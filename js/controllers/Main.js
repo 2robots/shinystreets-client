@@ -23,6 +23,14 @@ angular.module('shinystreets.MainCtrl', [])
     $rootScope.openModal("areas");
   };
 
+  $rootScope.isWelcomeState = function(){
+    if($state.current.name == 'welcome') {
+      return true;
+    }
+
+    return false;
+  };
+
   $rootScope.isRootState = function(){
     if($state.current.name == 'tabs.issues' || $state.current.name == 'tabs.map') {
       return true;

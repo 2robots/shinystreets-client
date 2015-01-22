@@ -96,10 +96,14 @@ button.button-add-photo {
   color: white;
 }
 
+.welcome-screen[nav-view="active"] {
+  z-index: 10;
+}
+
 .button-welcome-close.button-clear {
   color: white;
   position: absolute;
-  top: 20px;
+  top: 0;
   right: 0;
   z-index: 20;
 }

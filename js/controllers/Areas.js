@@ -1,7 +1,7 @@
 
 angular.module('shinystreets.AreasCtrl', [])
 
-.controller('AreasCtrl', function($scope, Area, $ionicLoading, Config) {
+.controller('AreasCtrl', function($rootScope, $scope, Area, $ionicLoading, Config) {
 
   $scope.loadError = false;
 
@@ -30,6 +30,8 @@ angular.module('shinystreets.AreasCtrl', [])
   $scope.onChange = function(area) {
     setTimeout(function(){
       Config.saveUserConfig('activeAreaName', area.title);
+      $rootScope.$broadcast("areaChanged");
+      $rootScope.closeModal();
     }, 10);
   };
 

@@ -100,10 +100,16 @@ angular.module('shinystreets.MapCtrl', [])
   if(!Config.userConfig().activeArea) {
     $rootScope.openModal('areas');
   } else {
+    $scope.title = 'Issues aus ' + Config.userConfig().activeAreaName;
     $scope.onRefresh();
   }
 
   $rootScope.$on('modalClose', function(){
+    $scope.onRefresh();
+  });
+
+  $scope.$on("areaChanged", function(){
+    $scope.title = 'Issues aus ' + Config.userConfig().activeAreaName;
     $scope.onRefresh();
   });
 });

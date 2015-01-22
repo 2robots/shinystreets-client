@@ -79,4 +79,10 @@ angular.module('shinystreets.IssuesCtrl', [])
     $scope.title = 'Issues aus ' + Config.userConfig().activeAreaName;
     $scope.onRefresh();
   }
+
+  $scope.$on("areaChanged", function(){
+    $scope.title = 'Issues aus ' + Config.userConfig().activeAreaName;
+    $scope.onRefresh();
+  });
+
 });
