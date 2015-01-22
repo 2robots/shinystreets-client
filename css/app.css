@@ -8,6 +8,11 @@
   line-height: 1.1em;
 }
 
+.item-avatar > img:first-child.issues-image, 
+.issues-image {
+  border-radius: 5%;
+}
+
 
 #tab_map .scroll {
   height: 100%;
