@@ -31,64 +31,19 @@ angular.module('shinystreets.IssueCtrl', [])
          */
         $scope.issue.stauts = 'SOLUTIONS';
 
-        $scope.issue.comments = [
-          {
-            creator: {
-              id: '54611d88a8ef065a721b1a1c', 
-              username: 'tina'
-            }, 
-            description: 'Find ich voll arg! Kann ma da nicht eine Rampe dazu bauen? Oder ist die Stufe zu hoch?'
-          }, 
-          {
-            creator: {
-              id: '54611d88a8ef065a721b1a1c', 
-              username: 'Franz'
-            }, 
-            description: ' Es gibt auch so Hebelifte, da kann der Rollstuhl dann eingespannt werden, und fährt dann hoch. Ist aber glaub ich recht teuer.'
-          },
-          {
-            creator: {
-              id: '54611d88a8ef065a721b1a1c', 
-              username: 'Anna'
-            }, 
-            description: 'Ich kenn den Eingang, es ist eigentlich nur eine Stufe.'
-          }, 
-          {
-            creator: {
-              id: '54611d88a8ef065a721b1a1c', 
-              username: 'tina'
-            }, 
-            description: 'Ich find einen Lift nicht so gut, bei einer Rampe könnten auch Kinderwägen raufgeschoben werden. Das geht ja bei einem Lift nicht.'
-          }, 
-          {
-            creator: {
-              id: '54611d88a8ef065a721b1a1c', 
-              username: 'Franz'
-            }, 
-            description: 'Lifte sind meiner Meinung nach für Rollstühle besser geeignet, weil sie sicherer sind, man kann nicht einfach herunterfallen wie bei einer Rampe, da der Rollstuhl einrastet.'
-          }
-        ];
-
-        $scope.issue.infos = [
-          {
-            creator: {
-              id: '54611d88a8ef065a721b1a1c', 
-              username: 'Anna'
-            }, 
-            description: 'Ich kenne den Eingang. Es ist nur eine Stufe.'
-          }
-        ];
-
         $scope.issue.solutions = [
           {
             creator: {
               id: '54611d88a8ef065a721b1a1c', 
-              username: 'tina_solution'
+              username: 'tina'
             }, 
+            id: 1,
             title: 'Rampe', 
             description: 'Mein Vorschlag: Die Bibliothek könnte die Stufe abflachen oder eine Rampe davor bauen. Dann können alle Menschen mit Rollstuhl die Bibliothek benützen.', 
             positive: 26, 
             negative: 3, 
+            liked: true,
+            disliked: false,
             comments: [
               {
                 creator: {
@@ -120,15 +75,23 @@ angular.module('shinystreets.IssueCtrl', [])
               }
             ]
           }, 
+
+
+
+
+
           {
             creator: {
               id: '54611d88a8ef065a721b1a1c', 
               username: 'Franz'
             }, 
+            id: 2,
             title: 'Lift bauen', 
             description: 'Die Bib im 16. soll einen Hebelift bauen. Mit dessen Hilfe können alle Menschen im Rollstuhl einfach und sicher die Bibliothek betreten.', 
             positive: 6, 
             negative: 8, 
+            liked: false,
+            disliked: true,
             comments: [
               {
                 creator: {
@@ -143,6 +106,40 @@ angular.module('shinystreets.IssueCtrl', [])
                   username: 'Anna'
                 }, 
                 description: 'Das zahlt sich überhaupt nicht aus, es geht ja nur um eine Stufe, keine ganze Stiege.'
+              }
+            ]
+          },
+
+
+
+
+
+          {
+            creator: {
+              id: '54611d88a8ef065a721b1a1c', 
+              username: 'Oswald'
+            }, 
+            id: 3,
+            title: 'Hintereinang öffentlich machen', 
+            description: 'Wenn vor den Eingang noch eine Stufe oder Ähnliches gebaut wird, ist auf dem Gehsteig davor kein Platz mehr, und es können erst wieder keine Rollstuhlfahrer vorbeifahren. Deshalb würde ich den Hintereinang, der eh barrierefrei ist, einfach öffentlich zugänglich machen.', 
+            positive: 6, 
+            negative: 8, 
+            liked: false,
+            disliked: false,
+            comments: [
+              {
+                creator: {
+                  id: '54611d88a8ef065a721b1a1c', 
+                  username: 'tina'
+                }, 
+                description: 'Ja, stimmt, das find ich gut.'
+              }, 
+              {
+                creator: {
+                  id: '54611d88a8ef065a721b1a1c', 
+                  username: 'Anna'
+                }, 
+                description: 'Na ob das Personal das gut finden würde...'
               }
             ]
           }

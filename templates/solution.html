@@ -1,0 +1,45 @@
+<ion-view title="{{solution.title}}" hide-back-button="false">
+  <ion-content>
+
+    <div class="error" ng-show="loadError">Fehler beim Laden. Versuch es bitte nichmal.</div>
+
+    <div class="list card">
+      <div class="item">
+        <!--img src="http://2robots.at/logo.png" item-avatar-->
+        <h2 style="white-space:normal;">{{solution.title}}</h2>
+        <!--p>Vor <strong>5 Tagen</strong> in <strong>Wien</strong></p-->
+        <p>Erstellt von {{solution.creator.username}}</p>
+      </div>
+
+      <div class="item item-body">
+        <p>{{solution.description}}</p>
+      </div>
+
+      <div class="item tabs tabs-secondary tabs-icon-left">
+        <a class="tab-item" href="#">
+          <i class="icon ion-android-arrow-up"></i>
+          Gefällt mir
+        </a>
+        <a class="tab-item" href="#">
+          <i class="icon ion-android-arrow-down"></i>
+          Gefällt mir nicht
+        </a>
+        <a class="tab-item" href="#">
+          <i class="icon ion-android-close"></i>
+          Melden
+        </a>
+      </div>
+    </div>
+
+    <div class="list card" >
+
+      <div class="item" ng-repeat="comment in solution.comments">
+      	<p style="white-space:normal;">{{comment.description }}</p>
+      	<p><b>Erstellt von {{comment.creator.username}}</b></p>
+      </div>
+
+    </div>
+
+
+  </ion-content>
+</ion-view>

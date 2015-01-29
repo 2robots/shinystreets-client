@@ -43,6 +43,8 @@
     </div>
 
     <div class="list card" ng-repeat="solution in issue.solutions">
+
+    <a href="#tabs/issues/{{issue.id}}/solutions/{{solution.id}}">
       <div class="item">
         <h2>{{ solution.title }}</h2>
         <p>Erstellt von {{solution.creator.username}}</p>
@@ -51,6 +53,7 @@
       <div class="item item-body">
         <p style="white-space:normal;">{{ solution.description }}</p>
       </div>
+    </a>
 
       <div class="item tabs tabs-secondary tabs-icon-left">
         <a class="tab-item" href="#">
@@ -63,7 +66,7 @@
         </a>
         <a class="tab-item" href="#">
           <i class="icon ion-ios-chatbubble-outline"></i>
-          5 Kommentare
+          {{solution.comments.length}} Kommentare
         </a>
       </div>
     </div>
