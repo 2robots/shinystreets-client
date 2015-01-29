@@ -44,6 +44,13 @@ angular.module('shinystreets.SolutionCtrl', [])
           username: 'Anna'
         }, 
         description: '@ersteller ?!?!'
+      },
+      {
+        creator: {
+          id: '54611d88a8ef065a721b1a1c', 
+          username: 'Oswald'
+        }, 
+        description: 'Ich finde die Lösung schwachsinnig. Der Gehsteig vor der Bibliothek ist nicht so breit, als dass man dort noch eine Rampe hinbauen könnte. Ich hab eine neue Lösung zu der Issue erstellt, in der ich vorgeschlagen habe, einfach den Hintereingang als barrierefreien Zugang zu verwenden.'
       }
     ]
   };

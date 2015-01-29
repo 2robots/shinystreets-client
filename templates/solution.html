@@ -31,18 +31,13 @@
       </div>
     </div>
 
-    <div class="list card" ng-repeat="comment in solution.comments">
+    <div class="list card" >
 
-      <div class="item">
+      <div class="item" ng-repeat="comment in solution.comments">
       	<p style="white-space:normal;">{{comment.description }}</p>
+      	<p><b>Erstellt von {{comment.creator.username}}</b></p>
       </div>
 
-<!--
-      <div class="item item-body">
-        <p>Erstellt von {{solution.creator.username}}</p>
-      </div>
--->
-    </a>
     </div>
 
 
