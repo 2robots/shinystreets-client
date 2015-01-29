@@ -181,7 +181,6 @@ angular.module('shinystreets.IssueCtrl', [])
       }
 
       // init leaflet map
-      console.log($rootScope.maps['issue-detail-map']);
       if($rootScope.maps['issue-detail-map'] != undefined) { 
         $rootScope.maps['issue-detail-map'].remove();
       }
