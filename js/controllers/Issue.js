@@ -71,7 +71,7 @@ angular.module('shinystreets.IssueCtrl', [])
           {
             creator: {
               id: '54611d88a8ef065a721b1a1c', 
-              username: 'tina_solution'
+              username: 'tina'
             }, 
             id: 1,
             title: 'Rampe', 
