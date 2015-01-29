@@ -86,8 +86,8 @@ var shinystreets = angular.module('shinystreets', modules)
       }
     })
 
-    .state('tabs.comments', {
-      url: "/issues/:id/comments",
+    .state('tabs.solution', {
+      url: "/issues/:id/solutions/:sid",
       views: {
         'issues-tab': {
           templateUrl: "templates/comments.html",
