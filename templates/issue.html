@@ -3,35 +3,18 @@
 
     <div class="error" ng-show="loadError">Fehler beim Laden. Versuch es bitte nichmal.</div>
 
-
-    <div class="button-bar">
-      <a class="button button-light">
-        <i class="icon ion-chatbox"></i>
-        Comment
-      </a>
-      <a class="button button-light">
-        <i class="icon ion-lightbulb"></i>
-        Solution
-      </a>
-      <a class="button button-light">
-        <i class="icon ion-information-circled"></i>
-        Info
-      </a>
-      
-    </div>
-
-
     <div class="list card">
       <div class="item">
         <!--img src="http://2robots.at/logo.png" item-avatar-->
         <h2 style="white-space:normal;">{{issue.title}}</h2>
         <!--p>Vor <strong>5 Tagen</strong> in <strong>Wien</strong></p-->
-        <p>Von: {{issue.creator.username}}, {{issue.createdAt | date: 'dd.MM.yyyy HH:mm' }}</p>
+        <p>Erstellt von {{issue.creator.username}} am {{issue.createdAt | date: 'dd.MM.yyyy HH:mm' }}</p>
       </div>
 
       <div class="item item-body">
         <p>{{issue.description}}</p>
         <div id="issue-detail-map" data-tap-disabled="true"></div>
+        <p>Zuletzt bearbeitet am {{issue.updatedAt | date: 'dd.MM.yyyy HH:mm' }}</p>
       </div>
 
       <div class="item item-body" ng-if="issue.photos.length > 0">
@@ -43,23 +26,18 @@
         </div>
       </div>
 
-
-      <!--div class="item item-stauts" style="position:relative;">
-        <div class="item-status-indecator" style="position: absolute; top: 0; left: 0; bottom: 0; right: auto; width: 25%; background:green;"></div>
-      </div-->
-
       <div class="item tabs tabs-secondary tabs-icon-left">
         <a class="tab-item" href="#">
-          <i class="icon ion-thumbsup"></i>
-          Up
+          <i class="icon ion-android-arrow-up"></i>
+          Gefällt mir
         </a>
         <a class="tab-item" href="#">
-          <i class="icon ion-thumbsdown"></i>
-          Down
+          <i class="icon ion-android-arrow-down"></i>
+          Gefällt mir nicht
         </a>
         <a class="tab-item" href="#">
-          <i class="icon ion-chatbox"></i>
-          Comment
+          <i class="icon ion-android-close"></i>
+          Melden
         </a>
       </div>
     </div>
@@ -74,42 +52,29 @@
     <div class="list card" ng-repeat="solution in issue.solutions">
       <div class="item">
         <h2>{{ solution.title }}</h2>
-        <p>{{ solution.description }}</p>
+        <p>Erstellt von {{solution.creator.username}}</p>
+      </div>
+
+      <div class="item item-body">
+        <p style="white-space:normal;">{{ solution.description }}</p>
       </div>
 
       <div class="item tabs tabs-secondary tabs-icon-left">
         <a class="tab-item" href="#">
-          <i class="icon ion-thumbsup"></i>
-          Up
+          <i class="icon ion-android-arrow-up"></i>
+          Gefällt mir
         </a>
         <a class="tab-item" href="#">
-          <i class="icon ion-thumbsdown"></i>
-          Down
+          <i class="icon ion-android-arrow-down"></i>
+          Gefällt mir nicht
         </a>
         <a class="tab-item" href="#">
-          <i class="icon ion-chatbox"></i>
-          Comment
+          <i class="icon ion-ios-chatbubble-outline"></i>
+          5 Kommentare
         </a>
       </div>
     </div>
 
-    <!--div class="list card">
-
-
-      <div class="item item-divider" style="padding: 0;">
-        <div class="button-bar bar-light">
-          <button on-tap="show_comments()", class="button button-calm" style="border: none;">
-            <i class="icon ion-chatbox"></i>
-            Comments
-          </button>
-          <button on-tap="show_solutions()" class="button" style="border: none;">
-            <i class="icon ion-lightbulb"></i>
-            Solutions
-          </button>
-        </div>
-      </div>
-
--->
 
   </ion-content>
 </ion-view>
