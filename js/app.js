@@ -35,7 +35,7 @@ var modules = [
   'shinystreets.IssueCtrl',
   'shinystreets.UserIssuesCtrl',
   'shinystreets.CreateIssueCtrl',
-  'shinystreets.CommentsCtrl',
+  'shinystreets.SolutionCtrl',
 
   'shinystreets.AreasCtrl',
   'shinystreets.LoginCtrl',
@@ -90,8 +90,8 @@ var shinystreets = angular.module('shinystreets', modules)
       url: "/issues/:id/solutions/:sid",
       views: {
         'issues-tab': {
-          templateUrl: "templates/comments.html",
-          controller: 'CommentsCtrl'
+          templateUrl: "templates/solution.html",
+          controller: 'SolutionCtrl'
         }
       }
     })

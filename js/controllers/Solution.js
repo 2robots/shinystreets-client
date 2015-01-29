@@ -1,7 +1,7 @@
 
-angular.module('shinystreets.CommentsCtrl', [])
+angular.module('shinystreets.SolutionCtrl', [])
 
-.controller('CommentsCtrl', function($scope, $rootScope) {
+.controller('SolutionCtrl', function($scope, $rootScope) {
 
 	$scope.solution = {title: 'asdf'};
   
