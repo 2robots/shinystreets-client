@@ -21,22 +21,25 @@ angular.module('shinystreets.CreateIssueCtrl', [])
   // on shown
   $scope.$on('modal.shown', function(e) {
 
+    // init leaflet map
+    if($rootScope.maps['create-issue-map'] != undefined) { 
+      $rootScope.maps['create-issue-map'].remove();
+    }
+
+    $rootScope.maps['create-issue-map'] = L.map('create-issue-map', { zoomControl:false });
+    // create an OpenStreetMap tile layer
+    var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+      detectRetina: true
+    });
+    osmLayer.addTo($rootScope.maps['create-issue-map']);
+
     // create a map and get current position
     if(typeof(navigator.geolocation) != 'undefined') {
       navigator.geolocation.getCurrentPosition(
 
         // on success
         function(position){
-
-          // init leaflet map
-          $scope.map = L.map('create-issue-map', { zoomControl:false });
-
-          // create an OpenStreetMap tile layer
-          var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-            detectRetina: true
-          });
-          osmLayer.addTo($scope.map);
 
           // create icon
           var issueIcon = L.icon({
@@ -52,10 +55,11 @@ angular.module('shinystreets.CreateIssueCtrl', [])
           });
 
           marker = L.marker([position.coords.latitude, position.coords.longitude], {icon: issueIcon, draggable: true});
-          marker.addTo($scope.map);
+          marker.addTo($rootScope.maps['create-issue-map']);
 
           // locate current position
-          $scope.map.setView([position.coords.latitude, position.coords.longitude], 15);
+          $rootScope.maps['create-issue-map'].setView([0, 0], 15);
+          $rootScope.maps['create-issue-map'].setView([position.coords.latitude, position.coords.longitude], 15);
           $scope.coords = position.coords;
         },
 

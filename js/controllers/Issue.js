@@ -1,10 +1,7 @@
 
 angular.module('shinystreets.IssueCtrl', [])
 
-.controller('IssueCtrl', function($scope, $rootScope, $stateParams, $ionicLoading, Issue, $ionicNavBarDelegate) {
-
-  // show loading animation
-  $ionicLoading.show();
+.controller('IssueCtrl', function($scope, $rootScope, $stateParams, Issue, $ionicNavBarDelegate) {
 
   $scope.issue = {
     title: 'Untitled Issue',
@@ -12,39 +9,6 @@ angular.module('shinystreets.IssueCtrl', [])
     solved: false,
     location: undefined
   };
-
-
-
-  // init leaflet map
-  $scope.map = L.map('issue-detail-map', { zoomControl:false });
-
-  // create an OpenStreetMap tile layer
-  var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-    detectRetina: true
-  });
-  osmLayer.addTo($scope.map);
-
-  // create layergroup for this map
-  var layergroup = L.layerGroup([]);
-
-  // add layergroup to map
-  layergroup.addTo($scope.map);
-
-  // create icon
-  var issueIcon = L.icon({
-    iconUrl: 'lib/leaflet/images/marker-icon.png',
-    iconRetinaUrl: 'lib/leaflet/images/marker-icon-2x.png',
-    shadowUrl: 'lib/leaflet/images/marker-shadow.png',
-
-    iconSize:     [25, 41], // size of the icon
-    shadowSize:   [41, 41], // size of the shadow
-    iconAnchor:   [12, 20], // point of the icon which will correspond to marker's location
-    shadowAnchor: [12, 20],  // the same for the shadow
-    popupAnchor:  [-1, -26] // point from which the popup should open relative to the iconAnchor
-  });
-
-
 
   $scope.issue = Issue($stateParams.id).get(
 
@@ -213,11 +177,40 @@ angular.module('shinystreets.IssueCtrl', [])
         ];
       }
 
+      // init leaflet map
+      console.log($rootScope.maps['issue-detail-map']);
+      if($rootScope.maps['issue-detail-map'] != undefined) { 
+        $rootScope.maps['issue-detail-map'].remove();
+      }
+      
+      $rootScope.maps['issue-detail-map'] = L.map('issue-detail-map', { zoomControl:false });
 
-      console.log($scope.issue);
+      // create an OpenStreetMap tile layer
+      var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+        detectRetina: true
+      });
 
+      osmLayer.addTo($rootScope.maps['issue-detail-map']);
 
+      // create layergroup for this map
+      var layergroup = L.layerGroup([]);
 
+      // add layergroup to map
+      layergroup.addTo($rootScope.maps['issue-detail-map']);
+
+      // create icon
+      var issueIcon = L.icon({
+        iconUrl: 'lib/leaflet/images/marker-icon.png',
+        iconRetinaUrl: 'lib/leaflet/images/marker-icon-2x.png',
+        shadowUrl: 'lib/leaflet/images/marker-shadow.png',
+
+        iconSize:     [25, 41], // size of the icon
+        shadowSize:   [41, 41], // size of the shadow
+        iconAnchor:   [12, 20], // point of the icon which will correspond to marker's location
+        shadowAnchor: [12, 20],  // the same for the shadow
+        popupAnchor:  [-1, -26] // point from which the popup should open relative to the iconAnchor
+      });
 
       // remove marker
       layergroup.clearLayers();
@@ -232,9 +225,8 @@ angular.module('shinystreets.IssueCtrl', [])
         .bindPopup('<strong>' + $scope.issue.title + '</strong>')
       );
 
-      $scope.map.setView([$scope.issue.latitude, $scope.issue.longitude], 15);
-      $ionicLoading.hide();
-
+      $rootScope.maps['issue-detail-map'].setView([0, 0], 15);
+      $rootScope.maps['issue-detail-map'].setView([$scope.issue.latitude, $scope.issue.longitude], 15);
 
       // download files
       if(typeof(FileTransfer) != 'undefined') {
@@ -265,15 +257,11 @@ angular.module('shinystreets.IssueCtrl', [])
 
     // on error
     }, function(){
-
-      $ionicLoading.hide();
       $scope.loadError = true;
     }
   );
 
   $scope.openFile = function(url) {
-
-    $ionicLoading.hide();
 
     // if FileViewerPlugin is supported
     if(typeof(FileViewerPlugin) != 'undefined') {
@@ -285,11 +273,9 @@ angular.module('shinystreets.IssueCtrl', [])
 
         // success cb
         function(){
-          $ionicLoading.hide();
 
         // error cb
         }, function(){
-          $ionicLoading.hide();
           //alert("There was an error, opening the file.");
         });
     } else {

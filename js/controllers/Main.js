@@ -3,6 +3,9 @@ angular.module('shinystreets.MainCtrl', [])
 
 .controller('MainCtrl', function($scope, $rootScope, $ionicModal, $ionicActionSheet, Authentication, Config, storage, $state) {
 
+  // create empty maps has. We need to define maps globaly so we can reload them
+  $rootScope.maps = {};
+
   // bind user config to rootScope
   storage.bind(
     $rootScope,
