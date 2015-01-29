@@ -1,6 +1,6 @@
 
 angular.module('shinystreets.ProfileCtrl', [])
-.controller('ProfileCtrl', function($scope, $rootScope, Authentication, $ionicLoading, User, Config) {
+.controller('ProfileCtrl', function($scope, $rootScope, Authentication, User, Config) {
 
   $scope.user = {};
   $scope.loadError = false;
@@ -17,14 +17,10 @@ angular.module('shinystreets.ProfileCtrl', [])
   // On pull to refresh
   $scope.onRefresh = function() {
 
-    $ionicLoading.show();
-
     $scope.user = User().me(
 
       // success
       function() {
-
-        $ionicLoading.hide();
         $scope.$broadcast('scroll.refreshComplete');
 
         // save user id + user name
@@ -35,10 +31,8 @@ angular.module('shinystreets.ProfileCtrl', [])
 
       // error
       function() {
-
         $scope.loadError = true;
         $scope.$broadcast('scroll.refreshComplete');
-        $ionicLoading.hide();
       }
     );
   };

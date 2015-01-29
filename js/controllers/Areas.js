@@ -1,28 +1,23 @@
 
 angular.module('shinystreets.AreasCtrl', [])
 
-.controller('AreasCtrl', function($rootScope, $scope, Area, $ionicLoading, Config) {
+.controller('AreasCtrl', function($rootScope, $scope, Area, Config) {
 
   $scope.loadError = false;
 
   // On pull to refresh
   $scope.onRefresh = function() {
 
-    // show loading
-    $ionicLoading.show();
-
     $scope.areas = Area().query(
       // on success
       function(){
         $scope.loadError = false;
         $scope.$broadcast('scroll.refreshComplete');
-        $ionicLoading.hide();
 
       // on error
       }, function(){
         $scope.loadError = true;
         $scope.$broadcast('scroll.refreshComplete');
-        $ionicLoading.hide();
       }
     );
   };

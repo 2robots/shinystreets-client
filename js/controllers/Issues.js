@@ -1,7 +1,7 @@
 
 angular.module('shinystreets.IssuesCtrl', [])
 
-.controller('IssuesCtrl', function($scope, $rootScope, $ionicLoading, Area, File, Config) {
+.controller('IssuesCtrl', function($scope, $rootScope, Area, File, Config) {
 
   $scope.title = 'Issues';
   $scope.issues = [];
@@ -15,8 +15,6 @@ angular.module('shinystreets.IssuesCtrl', [])
 
   // On pull to refresh
   $scope.onRefresh = function() {
-
-    $scope.loading = $ionicLoading.show();
 
     $scope.loadError = false;
     $scope.issues = Area().issues(
@@ -52,7 +50,6 @@ angular.module('shinystreets.IssuesCtrl', [])
           } else {
 
             $scope.$broadcast('scroll.refreshComplete');
-            $ionicLoading.hide();
 
             return true;
           }
@@ -64,7 +61,6 @@ angular.module('shinystreets.IssuesCtrl', [])
       }, function(){
         $scope.loadError = true;
         $scope.$broadcast('scroll.refreshComplete');
-        $ionicLoading.hide();
       }
     );
   };

@@ -1,7 +1,7 @@
 
 angular.module('shinystreets.MainCtrl', [])
 
-.controller('MainCtrl', function($scope, $rootScope, $ionicModal, Authentication, Config, storage, $state) {
+.controller('MainCtrl', function($scope, $rootScope, $ionicModal, $ionicActionSheet, Authentication, Config, storage, $state) {
 
   // bind user config to rootScope
   storage.bind(
@@ -43,12 +43,37 @@ angular.module('shinystreets.MainCtrl', [])
     return Authentication().loggedin();
   };
 
-  /**
-   * Define all Modals. Modals must be named [NAME]Modal, so the generic open
-   * and close methods will work. They can be called by openModal([NAME]) and
-   * closeModal().
-   */
 
+  $rootScope.openCreateMenu = function(){
+
+    // default buttons
+    var buttons = [
+      { text: 'Issue', modal: 'createIssue' }
+    ];
+
+    // buttons for issue detail view
+    if($state.current.name == 'tabs.issue') {
+      buttons.push({ text: 'Lösung', modal: 'createSolution' });
+    }
+
+    // buttons for solution detail view
+    if($state.current.name == 'tabs.solution') {
+      buttons.push({ text: 'Lösung', modal: 'createSolution' });
+      buttons.push({ text: 'Kommentar', modal: 'createComment' });
+    }
+
+    // show sheet
+    var hideSheet = $ionicActionSheet.show({
+      buttons: buttons, 
+      titleText: 'Erstellen',
+      cancelText: 'Abbrechen',
+      cancel: function(){}, 
+      buttonClicked: function(index){
+        hideSheet();
+        $rootScope.openModal(buttons[index].modal);
+      }
+    });
+  };
 
   /**
    * Open Modal with [name]. Will close any open Modal as well.
