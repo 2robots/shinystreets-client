@@ -44,14 +44,14 @@
 
     <div class="list card" ng-repeat="solution in issue.solutions">
 
-    <a href="#tabs/issues/{{issue.id}}/solutions/{{solution.id}}">
+    <a href="#tabs/issues/{{issue.id}}/solutions/{{solution.id}}" style="text-decoration: none;">
       <div class="item">
         <h2>{{ solution.title }}</h2>
         <p>Erstellt von {{solution.creator.username}}</p>
       </div>
 
       <div class="item item-body">
-        <p style="white-space:normal;">{{ solution.description }}</p>
+        <p style="white-space:normal;">{{solution.description}}</p>
       </div>
     </a>
 
@@ -64,7 +64,7 @@
           <i class="icon ion-android-arrow-down"></i>
           Gefällt mir nicht
         </a>
-        <a class="tab-item" href="#">
+        <a class="tab-item" href="#tabs/issues/{{issue.id}}/solutions/{{solution.id}}">
           <i class="icon ion-ios-chatbubble-outline"></i>
           {{solution.comments.length}} Kommentare
         </a>
