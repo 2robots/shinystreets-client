@@ -35,9 +35,13 @@
           <i class="icon ion-android-arrow-down"></i>
           Gefällt mir nicht
         </a>
-        <a class="tab-item" href="#">
+        <a class="tab-item" href="#" ng-if="!issue.mine">
           <i class="icon ion-android-close"></i>
           Melden
+        </a>
+        <a class="tab-item" href="#" ng-if="issue.mine" style="color:#4F8EF7;">
+          <i class="icon ion-edit"></i>
+          Bearbeiten
         </a>
       </div>
     </div>

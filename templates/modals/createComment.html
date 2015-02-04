@@ -8,7 +8,7 @@
   </ion-header-bar>
 
   <ion-content>
-    <form name="createSolutionForm">
+    <form name="createCommentForm">
 
       <p class="padding">Erstelle ein neues <strong>Kommentar</strong> zur Lösung <strong>{{ currentSolution.title }}</strong>.</p>
 
@@ -16,7 +16,7 @@
 
         <div class="item item-divider">Dein Kommentar</div>
         <label class="item item-input">
-          <textarea style="min-height: 80px;" required ng-model="solution.description" placeholder="Beschreibung"></textarea>
+          <textarea style="min-height: 80px;" required ng-model="solution.description" placeholder="Beschreibung*"></textarea>
         </label>
       </div>
 
