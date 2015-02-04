@@ -16,7 +16,7 @@ angular.module('shinystreets.IssueCtrl', [])
     function(){
 
       /**
-       * MOC ISSUE ATTRIBUTES. 
+       * MOCK ISSUE ATTRIBUTES. 
        */
 
       // BIB
@@ -42,7 +42,8 @@ angular.module('shinystreets.IssueCtrl', [])
             title: 'Rampe', 
             description: 'Mein Vorschlag: Die Bibliothek könnte die Stufe abflachen oder eine Rampe davor bauen. Dann können alle Menschen mit Rollstuhl die Bibliothek benützen.', 
             positive: 26, 
-            negative: 3, 
+            negative: 3,
+            ratio: 10.34, 
             liked: true,
             disliked: false,
             comments: [
@@ -91,6 +92,7 @@ angular.module('shinystreets.IssueCtrl', [])
             description: 'Die Bib im 16. soll einen Hebelift bauen. Mit dessen Hilfe können alle Menschen im Rollstuhl einfach und sicher die Bibliothek betreten.', 
             positive: 6, 
             negative: 8, 
+            ratio: 57.14,
             liked: false,
             disliked: true,
             comments: [
@@ -125,6 +127,7 @@ angular.module('shinystreets.IssueCtrl', [])
             description: 'Wenn vor den Eingang noch eine Stufe oder Ähnliches gebaut wird, ist auf dem Gehsteig davor kein Platz mehr, und es können erst wieder keine Rollstuhlfahrer vorbeifahren. Deshalb würde ich den Hintereinang, der eh barrierefrei ist, einfach öffentlich zugänglich machen.', 
             positive: 6, 
             negative: 8, 
+            ratio: 57.14,
             liked: false,
             disliked: false,
             comments: [
