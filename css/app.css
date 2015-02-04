@@ -84,6 +84,26 @@
   height: 101px;
 }
 
+.issue-list-item .issues-image-wrapper {
+  width: 80px;
+  height: 80px;
+  background: #eee;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 5%;
+  line-height: 0;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.issue-list-item .issues-image-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 0;
+}
+
+
 .create-issue-photos-item {
   white-space: normal;
 }
@@ -202,4 +222,16 @@ button.button-add-photo {
   height: 3px;
   background-color: #ef4e3a;
   border-right: 1px solid white;
+}
+
+.bg-positive {
+  background: #66cc33;
+  color: white;
+  opacity: 1;
+}
+
+.bg-negative {
+  background: #ef4e3a;
+  color: white;
+  opacity: 1;
 }

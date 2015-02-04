@@ -7,7 +7,7 @@
 
     <div class="list">
       <a
-        class="item item-avatar issue-list-item"
+        class="item item-avatar issue-list-item item-thumbnail-left"
         ng-class="{'item-thumbnail-left': issue.photos.length > 0}"
         collection-repeat="issue in issues"
         collection-item-width="'100%'"
@@ -15,8 +15,9 @@
         ng-style="{height: 100}"
         href="#tabs{{detailLinkPrefix}}/{{issue.id}}">
 
-
-          <img class="issues-image" ng-src="{{issue.photos[0].url}}" ng-if="issue.photos.length > 0" />
+          <div class="issues-image-wrapper">
+            <img class="issues-image" ng-src="{{issue.photos[0].url}}" ng-if="issue.photos.length > 0" />
+          </div>
 
           <h2 ng-bind="issue.title"> </h2>
           <p ng-bind="issue.description" ng-if="issue.description != ''"> </p>
