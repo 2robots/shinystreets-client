@@ -3,6 +3,7 @@ angular.module('shinystreets.IssueCtrl', [])
 
 .controller('IssueCtrl', function($scope, $rootScope, $stateParams, Issue, $ionicNavBarDelegate) {
 
+  $scope.title = 'Issue';
   $scope.issue = {
     title: 'Untitled Issue',
     description: '',
