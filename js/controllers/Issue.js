@@ -227,6 +227,9 @@ angular.module('shinystreets.IssueCtrl', [])
       $rootScope.maps['issue-detail-map'].setView([0, 0], 15);
       $rootScope.maps['issue-detail-map'].setView([$scope.issue.latitude, $scope.issue.longitude], 15);
 
+      // save reference to current issue
+      $rootScope.currentIssue = $scope.issue;
+
       // download files
       if(typeof(FileTransfer) != 'undefined') {
 
