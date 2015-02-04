@@ -203,3 +203,13 @@ button.button-add-photo {
   background-color: #ef4e3a;
   border-right: 1px solid white;
 }
+
+.split {
+  display: block;
+}
+
+.split span {
+  display: block;
+  float: right;
+  width: 50%;
+}
