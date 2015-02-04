@@ -34,11 +34,24 @@
     <div class="list card" >
 
       <div class="item" ng-repeat="comment in solution.comments">
-      	<p style="white-space:normal;">{{comment.description }}</p>
+      	<p style="white-space:normal;">{{comment.description}}</p>
       	<p><b>Erstellt von {{comment.creator.username}}</b></p>
       </div>
 
     </div>
+
+    <div class="list">
+
+    <div class="item item-input-inset">
+      <label class="item-input-wrapper">
+        <input type="text" placeholder="Kommentar">
+      </label>
+      <button class="button button-small">
+        <i class="icon ion-ios-arrow-thin-right"></i>
+      </button>
+    </div>
+
+</div>
 
 
   </ion-content>
