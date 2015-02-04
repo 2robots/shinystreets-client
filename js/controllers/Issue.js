@@ -282,10 +282,4 @@ angular.module('shinystreets.IssueCtrl', [])
     }
   };
 
-$scope.show_solutions = function(){
-};
-
-$scope.show_comments = function(){
-};
-
 });
