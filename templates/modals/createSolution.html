@@ -1,0 +1,32 @@
+<div class="modal" ng-controller="CreateSolutionCtrl" ng-focus="init()">
+
+  <ion-header-bar class="bar-stable">
+    <h1 class="title">Lösung erstellen</h1>
+    <div class="buttons">
+      <button class="button button-clear icon ion-android-close" ng-click="closeCreateSolution()"> </button>
+    </div>
+  </ion-header-bar>
+
+  <ion-content>
+    <form name="createSolutionForm">
+
+      <p class="padding">Erstelle ein neue <strong>Lösung</strong> zum Issue <strong>{{ currentIssue.title }}.</strong></p>
+
+      <div class="list list-inset">
+
+        <div class="item item-divider">Deine Lösung</div>
+
+        <label class="item item-input">
+          <input ng-model="solution.title" type="text" placeholder="Titel*" required>
+        </label>
+        <label class="item item-input">
+          <textarea style="min-height: 80px;" required ng-model="solution.description" placeholder="Beschreibung*"></textarea>
+        </label>
+      </div>
+
+      <div class="padding">
+        <button class="button button-block button-energized" ng-disabled="createSolutionForm.$invalid" ng-click="create()">Erstellen</button>
+      </div>
+    </form>
+  </ion-content>
+</div>

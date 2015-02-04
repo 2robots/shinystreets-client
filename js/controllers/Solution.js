@@ -54,4 +54,7 @@ angular.module('shinystreets.SolutionCtrl', [])
       }
     ]
   };
+
+  // save reference to current issue
+  $rootScope.currentSolution = $scope.solution;
 });

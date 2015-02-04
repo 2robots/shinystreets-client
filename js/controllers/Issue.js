@@ -30,6 +30,7 @@ angular.module('shinystreets.IssueCtrl', [])
          * CLOSED
          */
         $scope.issue.stauts = 'SOLUTIONS';
+        $scope.issue.mine = false;
 
         $scope.issue.solutions = [
           {
@@ -158,6 +159,7 @@ angular.module('shinystreets.IssueCtrl', [])
          * CLOSED
          */
         $scope.issue.stauts = 'NEW';
+        $scope.issue.mine = true;
 
         $scope.issue.comments = [
           {
@@ -226,6 +228,9 @@ angular.module('shinystreets.IssueCtrl', [])
 
       $rootScope.maps['issue-detail-map'].setView([0, 0], 15);
       $rootScope.maps['issue-detail-map'].setView([$scope.issue.latitude, $scope.issue.longitude], 15);
+
+      // save reference to current issue
+      $rootScope.currentIssue = $scope.issue;
 
       // download files
       if(typeof(FileTransfer) != 'undefined') {

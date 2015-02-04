@@ -6,6 +6,10 @@ angular.module('shinystreets.MainCtrl', [])
   // create empty maps has. We need to define maps globaly so we can reload them
   $rootScope.maps = {};
 
+  // save current solution and current issue
+  $rootScope.currentIssue = null;
+  $rootScope.currentSolution = null;
+
   // bind user config to rootScope
   storage.bind(
     $rootScope,
@@ -51,18 +55,18 @@ angular.module('shinystreets.MainCtrl', [])
 
     // default buttons
     var buttons = [
-      { text: 'Issue', modal: 'createIssue' }
+      { text: 'Issue erstellen', modal: 'createIssue' }
     ];
 
     // buttons for issue detail view
     if($state.current.name == 'tabs.issue') {
-      buttons.push({ text: 'Lösung', modal: 'createSolution' });
+      buttons.push({ text: 'Lösung erstellen', modal: 'createSolution' });
     }
 
     // buttons for solution detail view
     if($state.current.name == 'tabs.solution') {
-      buttons.push({ text: 'Lösung', modal: 'createSolution' });
-      buttons.push({ text: 'Kommentar', modal: 'createComment' });
+      buttons.push({ text: 'Lösung erstellen', modal: 'createSolution' });
+      buttons.push({ text: 'Kommentar erstellen', modal: 'createComment' });
     }
 
     // show sheet
