@@ -29,11 +29,11 @@
       </div>
 
       <div class="item tabs tabs-secondary tabs-icon-left">
-        <a class="tab-item" href="#">
+        <a class="tab-item" href="#" ng-class="{ 'bg-positive': issue.i_voted_positive }" ng-click="voteUpIssue()">
           <i class="icon ion-android-arrow-up"></i>
           Gefällt mir
         </a>
-        <a class="tab-item" href="#">
+        <a class="tab-item" href="#" ng-class="{ 'bg-negative': issue.i_voted_negative }" ng-click="voteDownIssue()">
           <i class="icon ion-android-arrow-down"></i>
           Gefällt mir nicht
         </a>
