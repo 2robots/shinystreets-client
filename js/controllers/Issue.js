@@ -3,6 +3,7 @@ angular.module('shinystreets.IssueCtrl', [])
 
 .controller('IssueCtrl', function($scope, $rootScope, $stateParams, Issue, $ionicNavBarDelegate) {
 
+  $scope.loadError = false;
   $scope.title = 'Issue';
   $scope.issue = {
     title: 'Untitled Issue',
@@ -35,6 +36,10 @@ angular.module('shinystreets.IssueCtrl', [])
            */
           $scope.issue.stauts = 'SOLUTIONS';
           $scope.issue.mine = false;
+          $scope.issue.positive = 26;
+          $scope.issue.negative = 3;
+          $scope.issue.i_voted_positive = false;
+          $scope.issue.i_voted_negative = false; 
 
           $scope.issue.solutions = [
             {
@@ -311,6 +316,30 @@ angular.module('shinystreets.IssueCtrl', [])
         }
       }
     });
+  };
+
+  $scope.voteUpIssue = function() {
+    if($scope.issue.i_voted_positive == false) {
+      $scope.issue.positive = $scope.issue.positive + 1;
+      $scope.issue.i_voted_positive = true;
+
+      if($scope.issue.i_voted_negative == true) {
+        $scope.issue.negative = $scope.issue.negative - 1;
+        $scope.issue.i_voted_negative = false;
+      }
+    }
+  };
+
+  $scope.voteDownIssue = function() {
+    if($scope.issue.i_voted_negative == false) {
+      $scope.issue.negative = $scope.issue.negative + 1;
+      $scope.issue.i_voted_negative = true;
+
+      if($scope.issue.i_voted_positive == true) {
+        $scope.issue.positive = $scope.issue.positive - 1;
+        $scope.issue.i_voted_positive = false;
+      }
+    }
   };
 
   $scope.openFile = function(url) {
