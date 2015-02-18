@@ -66,6 +66,9 @@
       <a href="#tabs/issues/{{issue.id}}/solutions/{{solution.id}}" style="text-decoration: none;">
         <p style="white-space:normal;">{{solution.description}}</p>
       </a>
+      <button class="button button-block button-energized" ng-if="solution.accepted">
+        Lösung übernehmen
+      </button>
       </div>
     
 
