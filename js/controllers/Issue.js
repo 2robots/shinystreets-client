@@ -19,6 +19,7 @@ angular.module('shinystreets.IssueCtrl', [])
 
       // on success
       function(){
+        console.log($scope.issue.id);
 
         /**
          * MOCK ISSUE ATTRIBUTES. 
@@ -34,7 +35,7 @@ angular.module('shinystreets.IssueCtrl', [])
            * IMPLEMENTING
            * CLOSED
            */
-          $scope.issue.stauts = 'SOLUTIONS';
+          $scope.issue.status = 'SOLUTIONS';
           $scope.issue.mine = false;
           $scope.issue.positive = 26;
           $scope.issue.negative = 3;
@@ -176,26 +177,60 @@ angular.module('shinystreets.IssueCtrl', [])
            * IMPLEMENTING
            * CLOSED
            */
-          $scope.issue.stauts = 'NEW';
+          $scope.issue.status = 'NEW';
           $scope.issue.mine = true;
+        }
 
-          $scope.issue.comments = [
+        // SCHNEE
+        if($scope.issue.id == '54e4f266a4de45d16b528be2') {
+           /**
+           * NEW
+           * SOLUTIONS
+           * SOLVED
+           * IMPLEMENTING
+           * CLOSED
+           */
+          $scope.issue.status = 'SOLUTIONS';
+          $scope.issue.mine = false;
+          $scope.issue.positive = 36;
+          $scope.issue.negative = 4;
+          $scope.issue.i_voted_positive = false;
+          $scope.issue.i_voted_negative = false; 
+          $scope.issue.solutions = [
             {
               creator: {
                 id: '54611d88a8ef065a721b1a1c', 
                 username: 'tina'
               }, 
-              description: 'Ich glaube, die Baustelle selber ist nicht so das Problem, sondern, dass die Leute nicht informiert darüber sind...'
-            }, 
-            {
-              creator: {
-                id: '54611d88a8ef065a721b1a1c', 
-                username: 'Franz'
-              }, 
-              description: 'Stimmt! Vielleicht sollte es ein Umleitungsschild oder so geben?'
-            }
-          ];
-        }
+              id: 1,
+              title: 'Mit Bauhof abklären', 
+              description: 'Die Schneeräumung macht in kleineren Ortschaften üblicherweise der Bauhof. Dort sollte man evl. darum bitten, deine Straße zeitiger zu räumen.', 
+              positive: 5, 
+              negative: 3,
+              i_voted_positive: false, 
+              i_voted_negative: false, 
+              ratio: 60.0, 
+              liked: true,
+              disliked: false,
+              comments: [
+                {
+                  creator: {
+                    id: '54611d88a8ef065a721b1a1c', 
+                    username: 'Anna'
+                  }, 
+                  description: 'Naja, wieso sollte die Straße wichtiger sein als alle anderen... Die werden das schon nicht absichtlich nicht räumen.'
+                }, 
+                {
+                  creator: {
+                    id: '54611d88a8ef065a721b1a1c', 
+                    username: 'tina'
+                  }, 
+                  description: '@Anna stimmt schon, aber fragen kann man ja.'
+                }, 
+              ]
+          }
+        ]
+      }
 
         // init leaflet map
         if($rootScope.maps['issue-detail-map'] != undefined) { 

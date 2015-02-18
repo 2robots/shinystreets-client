@@ -238,3 +238,11 @@ button.button-add-photo {
   color: white;
   opacity: 1;
 }
+
+.check_solution {
+  position: absolute;
+  padding-top: 5px;
+  padding-left: 92%;
+  font-size: 200%;
+  color: grey;
+}
