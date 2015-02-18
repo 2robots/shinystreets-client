@@ -19,8 +19,6 @@ angular.module('shinystreets.IssueCtrl', [])
 
       // on success
       function(){
-        console.log($scope.issue.id);
-
         /**
          * MOCK ISSUE ATTRIBUTES. 
          */
@@ -58,6 +56,7 @@ angular.module('shinystreets.IssueCtrl', [])
               ratio: 10.34, 
               liked: true,
               disliked: false,
+              accepted: false,
               comments: [
                 {
                   creator: {
@@ -109,6 +108,7 @@ angular.module('shinystreets.IssueCtrl', [])
               ratio: 57.14,
               liked: false,
               disliked: true,
+              accepted: true,
               comments: [
                 {
                   creator: {
@@ -146,6 +146,7 @@ angular.module('shinystreets.IssueCtrl', [])
               ratio: 57.14,
               liked: false,
               disliked: false,
+              accepted: false,
               comments: [
                 {
                   creator: {
@@ -212,6 +213,7 @@ angular.module('shinystreets.IssueCtrl', [])
               ratio: 60.0, 
               liked: true,
               disliked: false,
+              accepted: false,
               comments: [
                 {
                   creator: {
@@ -375,6 +377,17 @@ angular.module('shinystreets.IssueCtrl', [])
         $scope.issue.i_voted_positive = false;
       }
     }
+  };
+
+  $scope.selectSolution = function(id){
+    console.log('yep');
+    $scope.issue.solutions.forEach(function(solution, key){
+      if(solution.id == id){
+        solution.accepted = true;
+      } else {
+        solution.accepted = false;
+      }
+    });
   };
 
   $scope.openFile = function(url) {

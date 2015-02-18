@@ -50,10 +50,10 @@
 
     <div class="list card" ng-repeat="solution in issue.solutions">
 
-    <a href="#tabs/issues/{{issue.id}}/solutions/{{solution.id}}" style="text-decoration: none;">
+    
       <div class="item">
-        <div class="check_solution" ng-if="issue.mine">
-          <i class="icon ion-checkmark"></i>
+        <div class="solution-checkmark-negative" ng-if="!issue.mine" ng-class="{ 'solution-checkmark-positive': solution.accepted }">
+          <i class="icon ion-checkmark" ng-click="selectSolution(solution.id)"></i>
         </div>
         <div class="voting-green">
           <div class="voting-red" ng-style="{width: ratioPercent(solution)}"></div>
@@ -63,9 +63,11 @@
       </div>
 
       <div class="item item-body">
+      <a href="#tabs/issues/{{issue.id}}/solutions/{{solution.id}}" style="text-decoration: none;">
         <p style="white-space:normal;">{{solution.description}}</p>
+      </a>
       </div>
-    </a>
+    
 
       <div class="item tabs tabs-secondary tabs-icon-left">
         <a class="tab-item" href="#" ng-class="{ 'bg-positive': solution.i_voted_positive }" ng-click="voteUp(solution.id)">
