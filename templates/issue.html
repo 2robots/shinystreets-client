@@ -8,6 +8,9 @@
 <div class="list card">
   <div class="item">
     <!--img src="http://2robots.at/logo.png" item-avatar-->
+    <div class="voting-green">
+      <div class="voting-red" ng-style="{width: ratioPercent(issue)}"></div>
+    </div>
     <h2 style="white-space:normal;">{{issue.title}}</h2>
     <!--p>Vor <strong>5 Tagen</strong> in <strong>Wien</strong></p-->
     <p>Erstellt von {{issue.creator.username}} am {{issue.createdAt | date: 'dd.MM.yyyy HH:mm' }}</p>
@@ -71,30 +74,31 @@
       <a href="#tabs/issues/{{issue.id}}/solutions/{{solution.id}}" style="text-decoration: none;">
         <p style="white-space:normal;">{{solution.description}}</p>
       </a>
-      <button class="button button-block button-energized" ng-if="solution.accepted">
-        Lösung übernehmen
-      </button>
+      <a href="#tabs/issues/{{issue.id}}/solutions/{{solution.id}}" style="text-decoration: none;">
+        <button class="button button-block button-energized" ng-if="solution.accepted">
+          Lösung übernehmen
+        </button>
+      </div>
+
+
+
+
+      <div class="item tabs tabs-secondary tabs-icon-left">
+        <a class="tab-item" href="#" ng-class="{ 'bg-positive': solution.i_voted_positive }" ng-click="voteUp(solution.id)">
+          <i class="icon ion-android-arrow-up"></i>
+          {{solution.positive}}
+        </a>
+        <a class="tab-item" href="#" ng-class="{ 'bg-negative': solution.i_voted_negative }" ng-click="voteDown(solution.id)">
+          <i class="icon ion-android-arrow-down"></i>
+          {{solution.negative}}
+        </a>
+        <a class="tab-item" href="#tabs/issues/{{issue.id}}/solutions/{{solution.id}}">
+          <i class="icon ion-ios-chatbubble-outline"></i>
+          {{solution.comments.length}}
+        </a>
+      </div>
     </div>
 
 
-
-
-    <div class="item tabs tabs-secondary tabs-icon-left">
-      <a class="tab-item" href="#" ng-class="{ 'bg-positive': solution.i_voted_positive }" ng-click="voteUp(solution.id)">
-        <i class="icon ion-android-arrow-up"></i>
-        {{solution.positive}}
-      </a>
-      <a class="tab-item" href="#" ng-class="{ 'bg-negative': solution.i_voted_negative }" ng-click="voteDown(solution.id)">
-        <i class="icon ion-android-arrow-down"></i>
-        {{solution.negative}}
-      </a>
-      <a class="tab-item" href="#tabs/issues/{{issue.id}}/solutions/{{solution.id}}">
-        <i class="icon ion-ios-chatbubble-outline"></i>
-        {{solution.comments.length}}
-      </a>
-    </div>
-  </div>
-
-
-</ion-content>
+  </ion-content>
 </ion-view>
