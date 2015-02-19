@@ -7,6 +7,9 @@
 
     <div class="list card">
       <div class="item">
+        <div class="voting-green">
+          <div class="voting-red" ng-style="{width: ratioPercent(issue)}"></div>
+        </div>
         <!--img src="http://2robots.at/logo.png" item-avatar-->
         <h2 style="white-space:normal;">{{issue.title}}</h2>
         <!--p>Vor <strong>5 Tagen</strong> in <strong>Wien</strong></p-->
@@ -31,11 +34,11 @@
       <div class="item tabs tabs-secondary tabs-icon-left">
         <a class="tab-item" href="#" ng-class="{ 'bg-positive': issue.i_voted_positive }" ng-click="voteUpIssue()">
           <i class="icon ion-android-arrow-up"></i>
-          Gefällt mir
+          {{issue.positive}}
         </a>
         <a class="tab-item" href="#" ng-class="{ 'bg-negative': issue.i_voted_negative }" ng-click="voteDownIssue()">
           <i class="icon ion-android-arrow-down"></i>
-          Gefällt mir nicht
+          {{issue.negative}}
         </a>
         <a class="tab-item" href="#" ng-if="!issue.mine">
           <i class="icon ion-android-close"></i>
