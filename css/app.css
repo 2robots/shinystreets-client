@@ -254,3 +254,16 @@ button.button-add-photo {
   font-size: 200%;
   color: #66cc33;
 }
+
+.issue-header-item {
+  padding-right: 50px;
+}
+
+.issue-header-bookmark {
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+}
+
+

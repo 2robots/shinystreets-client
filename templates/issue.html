@@ -6,7 +6,7 @@
     <div class="error" ng-show="loadError">Fehler beim Laden. Versuch es bitte nichmal.</div>
 
     <div class="list card">
-      <div class="item">
+      <div class="item issue-header-item">
         <div class="voting-green">
           <div class="voting-red" ng-style="{width: ratioPercent(issue)}"></div>
         </div>
@@ -14,6 +14,9 @@
         <h2 style="white-space:normal;">{{issue.title}}</h2>
         <!--p>Vor <strong>5 Tagen</strong> in <strong>Wien</strong></p-->
         <p>Erstellt von {{issue.creator.username}} am {{issue.createdAt | date: 'dd.MM.yyyy HH:mm' }}</p>
+
+        <button class="button button-clear icon ion-bookmark issue-header-bookmark" ng-class="{ 'button-assertive': issue.bookmark, 'button-dark': !issue.bookmark }" ng-click="addBookMark()">
+        </button>
       </div>
 
       <div class="item item-body">

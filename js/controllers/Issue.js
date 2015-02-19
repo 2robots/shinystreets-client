@@ -1,7 +1,7 @@
 
 angular.module('shinystreets.IssueCtrl', [])
 
-.controller('IssueCtrl', function($scope, $rootScope, $stateParams, Issue, $ionicNavBarDelegate) {
+.controller('IssueCtrl', function($scope, $rootScope, $stateParams, $ionicPopup, Issue, $ionicNavBarDelegate) {
 
   $scope.loadError = false;
   $scope.title = 'Issue';
@@ -35,6 +35,7 @@ angular.module('shinystreets.IssueCtrl', [])
            */
           $scope.issue.status = 'SOLUTIONS';
           $scope.issue.mine = false;
+          $scope.issue.bookmark = false;
           $scope.issue.positive = 26;
           $scope.issue.negative = 3;
           $scope.issue.i_voted_positive = false;
@@ -337,6 +338,20 @@ angular.module('shinystreets.IssueCtrl', [])
         }
       }
     });
+  };
+
+  $scope.addBookMark = function() {
+    if($scope.issue.bookmark) {
+      $ionicPopup.alert({
+      title: 'Lesezeichen entfernt!'
+    });
+    } else {
+      $ionicPopup.alert({
+      title: 'Lesezeichen hinzugefügt!'
+    });
+    }
+
+    $scope.issue.bookmark = !$scope.issue.bookmark;
   };
 
   $scope.voteDown = function(id) {
