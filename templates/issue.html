@@ -1,93 +1,100 @@
 <ion-view view-title="{{title}}">
-  <ion-content>
+<ion-content>
 
-    <!-- for pull to refresh -->
-    <ion-refresher on-refresh="onRefresh()"></ion-refresher>
-    <div class="error" ng-show="loadError">Fehler beim Laden. Versuch es bitte nichmal.</div>
+<!-- for pull to refresh -->
+<ion-refresher on-refresh="onRefresh()"></ion-refresher>
+<div class="error" ng-show="loadError">Fehler beim Laden. Versuch es bitte nichmal.</div>
 
-    <div class="list card">
-      <div class="item">
-        <!--img src="http://2robots.at/logo.png" item-avatar-->
-        <h2 style="white-space:normal;">{{issue.title}}</h2>
-        <!--p>Vor <strong>5 Tagen</strong> in <strong>Wien</strong></p-->
-        <p>Erstellt von {{issue.creator.username}} am {{issue.createdAt | date: 'dd.MM.yyyy HH:mm' }}</p>
-      </div>
+<div class="list card">
+  <div class="item">
+    <!--img src="http://2robots.at/logo.png" item-avatar-->
+    <h2 style="white-space:normal;">{{issue.title}}</h2>
+    <!--p>Vor <strong>5 Tagen</strong> in <strong>Wien</strong></p-->
+    <p>Erstellt von {{issue.creator.username}} am {{issue.createdAt | date: 'dd.MM.yyyy HH:mm' }}</p>
+  </div>
 
-      <div class="item item-body">
-        <p>{{issue.description}}</p>
-        <div id="issue-detail-map" data-tap-disabled="true"></div>
-        <p>Zuletzt bearbeitet am {{issue.updatedAt | date: 'dd.MM.yyyy HH:mm' }}</p>
-      </div>
+  <div class="item item-body">
+    <p>{{issue.description}}</p>
+    <div id="issue-detail-map" data-tap-disabled="true"></div>
+    <p>Zuletzt bearbeitet am {{issue.updatedAt | date: 'dd.MM.yyyy HH:mm' }}</p>
+  </div>
 
-      <div class="item item-body" ng-if="issue.photos.length > 0">
-        <div style="overflow: auto;">
-          <div style="white-space:nowrap">
+  <div class="item item-body" ng-if="issue.photos.length > 0">
+    <div style="overflow: auto;">
+      <div style="white-space:nowrap">
 
-            <img class="issues-image" ng-src="{{photo.url}}" style="height: 50px;" ng-repeat="photo in issue.photos" ng-click="openFile(photo.nativeURL)" />
-          </div>
-        </div>
-      </div>
-
-      <div class="item tabs tabs-secondary tabs-icon-left">
-        <a class="tab-item" href="#" ng-class="{ 'bg-positive': issue.i_voted_positive }" ng-click="voteUpIssue()">
-          <i class="icon ion-android-arrow-up"></i>
-          Gefällt mir
-        </a>
-        <a class="tab-item" href="#" ng-class="{ 'bg-negative': issue.i_voted_negative }" ng-click="voteDownIssue()">
-          <i class="icon ion-android-arrow-down"></i>
-          Gefällt mir nicht
-        </a>
-        <a class="tab-item" href="#" ng-if="!issue.mine">
-          <i class="icon ion-android-close"></i>
-          Melden
-        </a>
-        <a class="tab-item" href="#" ng-if="issue.mine" style="color:#4F8EF7;">
-          <i class="icon ion-edit"></i>
-          Bearbeiten
-        </a>
+        <img class="issues-image" ng-src="{{photo.url}}" style="height: 50px;" ng-repeat="photo in issue.photos" ng-click="openFile(photo.nativeURL)" />
       </div>
     </div>
+  </div>
 
-    <div class="list card" ng-repeat="solution in issue.solutions">
+  <div class="item tabs tabs-secondary tabs-icon-left">
+    <a class="tab-item" href="#" ng-class="{ 'bg-positive': issue.i_voted_positive }" ng-click="voteUpIssue()">
+      <i class="icon ion-android-arrow-up"></i>
+      Gefällt mir
+    </a>
+    <a class="tab-item" href="#" ng-class="{ 'bg-negative': issue.i_voted_negative }" ng-click="voteDownIssue()">
+      <i class="icon ion-android-arrow-down"></i>
+      Gefällt mir nicht
+    </a>
+    <a class="tab-item" href="#" ng-if="!issue.mine">
+      <i class="icon ion-android-close"></i>
+      Melden
+    </a>
+    <a class="tab-item" href="#" ng-if="issue.mine" style="color:#4F8EF7;">
+      <i class="icon ion-edit"></i>
+      Bearbeiten
+    </a>
+  </div>
+</div>
 
-    
-      <div class="item">
-        <div class="solution-checkmark-negative" ng-if="issue.mine" ng-class="{ 'solution-checkmark-positive': solution.accepted }">
-          <i class="icon ion-checkmark" ng-click="selectSolution(solution.id)"></i>
-        </div>
-        <div class="voting-green">
-          <div class="voting-red" ng-style="{width: ratioPercent(solution)}"></div>
-        </div>
-        <h2>{{ solution.title }}</h2>
-        <p>Von {{solution.creator.username}} am 26.11. 13:19</p>
+<div class="list card" ng-repeat="solution in issue.solutions">
+
+
+  <div class="item">
+    <div class="solution-checkmark-negative" ng-if="!issue.mine" ng-class="{ 'solution-checkmark-positive': solution.accepted }">
+      <i class="icon ion-checkmark" ng-click="selectSolution(solution.id)"></i>
+    </div>
+    <a href="#tabs/issues/{{issue.id}}/solutions/{{solution.id}}" style="text-decoration: none;">
+      <div class="voting-green">
+        <div class="voting-red" ng-style="{width: ratioPercent(solution)}"></div>
       </div>
+      <a href="#tabs/issues/{{issue.id}}/solutions/{{solution.id}}" style="text-decoration: none;">
+        <h2>{{ solution.title }}</h2>
+      </a>
+      <a href="#tabs/issues/{{issue.id}}/solutions/{{solution.id}}" style="text-decoration: none;">
+        <p>Von {{solution.creator.username}} am 26.11. 13:19</p>
+      </a>
+    </div>
 
-      <div class="item item-body">
+    <div class="item item-body">
       <a href="#tabs/issues/{{issue.id}}/solutions/{{solution.id}}" style="text-decoration: none;">
         <p style="white-space:normal;">{{solution.description}}</p>
       </a>
       <button class="button button-block button-energized" ng-if="solution.accepted">
         Lösung übernehmen
       </button>
-      </div>
-    
-
-      <div class="item tabs tabs-secondary tabs-icon-left">
-        <a class="tab-item" href="#" ng-class="{ 'bg-positive': solution.i_voted_positive }" ng-click="voteUp(solution.id)">
-          <i class="icon ion-android-arrow-up"></i>
-          {{solution.positive}}
-        </a>
-        <a class="tab-item" href="#" ng-class="{ 'bg-negative': solution.i_voted_negative }" ng-click="voteDown(solution.id)">
-          <i class="icon ion-android-arrow-down"></i>
-          {{solution.negative}}
-        </a>
-        <a class="tab-item" href="#tabs/issues/{{issue.id}}/solutions/{{solution.id}}">
-          <i class="icon ion-ios-chatbubble-outline"></i>
-          {{solution.comments.length}}
-        </a>
-      </div>
     </div>
 
 
-  </ion-content>
+
+
+    <div class="item tabs tabs-secondary tabs-icon-left">
+      <a class="tab-item" href="#" ng-class="{ 'bg-positive': solution.i_voted_positive }" ng-click="voteUp(solution.id)">
+        <i class="icon ion-android-arrow-up"></i>
+        {{solution.positive}}
+      </a>
+      <a class="tab-item" href="#" ng-class="{ 'bg-negative': solution.i_voted_negative }" ng-click="voteDown(solution.id)">
+        <i class="icon ion-android-arrow-down"></i>
+        {{solution.negative}}
+      </a>
+      <a class="tab-item" href="#tabs/issues/{{issue.id}}/solutions/{{solution.id}}">
+        <i class="icon ion-ios-chatbubble-outline"></i>
+        {{solution.comments.length}}
+      </a>
+    </div>
+  </div>
+
+
+</ion-content>
 </ion-view>
