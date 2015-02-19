@@ -241,8 +241,8 @@ button.button-add-photo {
 
 .solution-checkmark-negative {
   position: absolute;
+  left: 90%;
   padding-top: 5px;
-  padding-left: 92%;
   font-size: 200%;
   color: grey;
 }
@@ -250,7 +250,7 @@ button.button-add-photo {
 .solution-checkmark-positive {
   position: absolute;
   padding-top: 5px;
-  padding-left: 92%;
+  left: 90%;
   font-size: 200%;
   color: #66cc33;
 }
