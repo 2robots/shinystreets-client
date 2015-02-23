@@ -394,13 +394,14 @@ angular.module('shinystreets.IssueCtrl', [])
     }
   };
 
-  $scope.selectSolution = function(id){
-    console.log('yep');
+  $scope.acceptSolution = function(id){
     $scope.issue.solutions.forEach(function(solution, key){
       if(solution.id == id){
         solution.accepted = true;
+        //console.log(solution.accepted);
       } else {
         solution.accepted = false;
+        //console.log(solution.accepted);
       }
     });
   };

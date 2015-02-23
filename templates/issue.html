@@ -57,8 +57,9 @@
 <div class="list card" ng-repeat="solution in issue.solutions">
 
   <div class="item">
-    <div class="solution-checkmark-negative" ng-if="!issue.mine" ng-class="{ 'solution-checkmark-positive': solution.accepted }">
-      <i class="icon ion-checkmark" ng-click="selectSolution(solution.id)"></i>
+    <div class="" ng-if="!issue.mine">
+    <button class="button button-clear icon ion-checkmark issue-header-bookmark" ng-class="{ 'button-balanced': solution.accepted, 'button-dark': !solution.accepted }" ng-click="acceptSolution(solution.id)">
+      </button>
     </div>
     <a href="#tabs/issues/{{issue.id}}/solutions/{{solution.id}}" style="text-decoration: none;">
       <div class="voting-green">

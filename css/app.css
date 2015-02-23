@@ -239,22 +239,6 @@ button.button-add-photo {
   opacity: 1;
 }
 
-.solution-checkmark-negative {
-  position: absolute;
-  left: 90%;
-  padding-top: 5px;
-  font-size: 200%;
-  color: grey;
-}
-
-.solution-checkmark-positive {
-  position: absolute;
-  padding-top: 5px;
-  left: 90%;
-  font-size: 200%;
-  color: #66cc33;
-}
-
 .issue-header-item {
   padding-right: 50px;
 }
