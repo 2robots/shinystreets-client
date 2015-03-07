@@ -26,14 +26,7 @@ angular.module('shinystreets.IssueCtrl', [])
         // BIB
         if($scope.issue.id == '5475c54b3bec3d392918fe07') {
 
-          /**
-           * NEW
-           * SOLUTIONS
-           * SOLVED
-           * IMPLEMENTING
-           * CLOSED
-           */
-          $scope.issue.status = 'SOLUTIONS';
+          $scope.issue.status = 0;
           $scope.issue.mine = false;
           $scope.issue.bookmark = false;
           $scope.issue.positive = 26;
@@ -179,7 +172,7 @@ angular.module('shinystreets.IssueCtrl', [])
            * IMPLEMENTING
            * CLOSED
            */
-          $scope.issue.status = 'NEW';
+          $scope.issue.status = 2;
           $scope.issue.mine = true;
         }
 
@@ -192,7 +185,7 @@ angular.module('shinystreets.IssueCtrl', [])
            * IMPLEMENTING
            * CLOSED
            */
-          $scope.issue.status = 'SOLUTIONS';
+          $scope.issue.status = 4;
           $scope.issue.mine = false;
           $scope.issue.positive = 36;
           $scope.issue.negative = 4;

@@ -20,6 +20,14 @@
   </div>
 
   <div class="item item-body">
+
+    <div class="issue-status-bar" ng-click="openModal('status-help')">
+
+      <div class="issue-status-item" ng-class="{active: issue.status >= i, arrow: issue.status == i}" ng-repeat="i in [0,1,2,3,4,5]"></div>
+      <div class="issue-status-bg-active active-{{issue.status}}"></div>
+      <div class="issue-status-bg"></div>
+    </div>
+
     <p>{{issue.description}}</p>
     <div id="issue-detail-map" data-tap-disabled="true"></div>
     <p>Zuletzt bearbeitet am {{issue.updatedAt | date: 'dd.MM.yyyy HH:mm' }}</p>

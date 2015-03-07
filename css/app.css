@@ -241,7 +241,98 @@ button.button-add-photo {
 
 .issue-header-item {
   padding-right: 50px;
+  border-bottom: none;
+  padding-bottom: 0;
 }
+
+.issue-header-item + .item {
+  border-top: none;
+  padding-top: 0;
+}
+
+.issue-status-bar {
+  margin-right: 20px;
+  margin-top: 20px;
+  height: 20px;
+  line-height: 0;
+  margin-bottom: 2px;
+  position: relative;
+  cursor: pointer;
+}
+
+.issue-status-bg {
+  height: 4px;
+  position: absolute;
+  top: 50%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-top: -2px;
+  background: #DCDCDC;
+  z-index: 1;
+}
+
+.issue-status-bg-active {
+  height: 4px;
+  position: absolute;
+  top: 50%;
+  bottom: 0;
+  left: 0;
+  right: auto;
+  padding-left: 14px;
+  box-sizing: content-box;
+  margin-top: -2px;
+  background: #13C0F4;
+  z-index: 5;
+}
+
+.issue-status-bg-active:after {
+  content: "";
+  position: absolute;
+  transform:rotate(45deg);
+  right: 0;
+  top: 50%;
+  margin-top: -8px;
+  width: 16px;
+  height: 16px;
+  border-top: 4px solid #13C0F4;
+  border-right: 4px solid #13C0F4;
+}
+
+.issue-status-item {
+  position: absolute;
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  border-radius: 10px;
+  background: white;
+  border: 2px solid #DCDCDC;
+  z-index: 10;
+  left: auto;
+  right: auto;
+}
+
+.issue-status-item.active {
+  background: #13C0F4;
+  border-color: #13C0F4;
+}
+
+.issue-status-item:nth-child(1) { left: 0; }
+.issue-status-item:nth-child(2) { left: 20%; }
+.issue-status-item:nth-child(3) { left: 40%; }
+.issue-status-item:nth-child(4) { left: 60%; }
+.issue-status-item:nth-child(5) { left: 80%; }
+.issue-status-item:nth-child(6) { left: 100%; }
+
+.issue-status-bg-active.active-0 { width: 10%; }
+.issue-status-bg-active.active-1 { width: 30%; }
+.issue-status-bg-active.active-2 { width: 50%; }
+.issue-status-bg-active.active-3 { width: 70%; }
+.issue-status-bg-active.active-4 { width: 90%; }
+.issue-status-bg-active.active-5 { width: 100%; }
+.issue-status-bg-active.active-5:after { display: none }
+
+
 
 .issue-header-bookmark {
   position: absolute;
