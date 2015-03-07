@@ -342,3 +342,47 @@ button.button-add-photo {
 }
 
 
+.issue-status-bar-help {
+  position: relative;
+}
+
+.issue-status-bar-help .issue-status-bg {
+  display: none;
+}
+
+.issue-status-bar-help .issue-status-item {
+  position: relative;
+  top: auto;
+  left: auto;
+  display: block;
+  margin-left: 10px;
+  padding: 2px 0 20px 20px;
+  border: none;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  border-left: 4px solid #DCDCDC;
+}
+
+.issue-status-bar-help .issue-status-item:last-child {
+  border: none;
+  margin-left: 14px;
+}
+
+.issue-status-bar-help .issue-status-item:before {
+  position: absolute;
+  content: "";
+  display: block;
+  top: 0;
+  left: -12px;
+  height: 20px;
+  width: 20px;
+  border-radius: 10px;
+  background: white;
+  border: 2px solid #DCDCDC;
+}
+
+
+
+
+
