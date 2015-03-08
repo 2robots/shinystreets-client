@@ -26,13 +26,6 @@ angular.module('shinystreets.IssueCtrl', [])
         // BIB
         if($scope.issue.id == '5475c54b3bec3d392918fe07') {
 
-          $scope.issue.status = 0;
-          $scope.issue.mine = false;
-          $scope.issue.bookmark = false;
-          $scope.issue.positive = 26;
-          $scope.issue.negative = 3;
-          $scope.issue.i_voted_positive = false;
-          $scope.issue.i_voted_negative = false; 
 
           $scope.issue.solutions = [
             {
@@ -43,10 +36,6 @@ angular.module('shinystreets.IssueCtrl', [])
               id: 1,
               title: 'Rampe', 
               description: 'Mein Vorschlag: Die Bibliothek könnte die Stufe abflachen oder eine Rampe davor bauen. Dann können alle Menschen mit Rollstuhl die Bibliothek benützen.', 
-              positive: 26, 
-              negative: 3,
-              i_voted_positive: true, 
-              i_voted_negative: false, 
               ratio: 10.34, 
               liked: true,
               disliked: false,
@@ -95,10 +84,6 @@ angular.module('shinystreets.IssueCtrl', [])
               id: 2,
               title: 'Lift bauen', 
               description: 'Die Bib im 16. soll einen Hebelift bauen. Mit dessen Hilfe können alle Menschen im Rollstuhl einfach und sicher die Bibliothek betreten.', 
-              positive: 6, 
-              negative: 8, 
-              i_voted_positive: false, 
-              i_voted_negative: false, 
               ratio: 57.14,
               liked: false,
               disliked: true,
@@ -133,10 +118,6 @@ angular.module('shinystreets.IssueCtrl', [])
               id: 3,
               title: 'Hintereinang öffentlich machen', 
               description: 'Wenn vor den Eingang noch eine Stufe oder Ähnliches gebaut wird, ist auf dem Gehsteig davor kein Platz mehr, und es können erst wieder keine Rollstuhlfahrer vorbeifahren. Deshalb würde ich den Hintereinang, der eh barrierefrei ist, einfach öffentlich zugänglich machen.', 
-              positive: 6, 
-              negative: 8, 
-              i_voted_positive: false, 
-              i_voted_negative: true, 
               ratio: 57.14,
               liked: false,
               disliked: false,
@@ -164,33 +145,11 @@ angular.module('shinystreets.IssueCtrl', [])
 
         // BAUSTELLE
         if($scope.issue.id == '547f28b833649d4b754e1b8f') {
-
-          /**
-           * NEW
-           * SOLUTIONS
-           * SOLVED
-           * IMPLEMENTING
-           * CLOSED
-           */
-          $scope.issue.status = 2;
-          $scope.issue.mine = true;
         }
 
         // SCHNEE
         if($scope.issue.id == '54e4f266a4de45d16b528be2') {
-           /**
-           * NEW
-           * SOLUTIONS
-           * SOLVED
-           * IMPLEMENTING
-           * CLOSED
-           */
-          $scope.issue.status = 4;
-          $scope.issue.mine = false;
-          $scope.issue.positive = 36;
-          $scope.issue.negative = 4;
-          $scope.issue.i_voted_positive = false;
-          $scope.issue.i_voted_negative = false; 
+           
           $scope.issue.solutions = [
             {
               creator: {
@@ -200,10 +159,6 @@ angular.module('shinystreets.IssueCtrl', [])
               id: 1,
               title: 'Mit Bauhof abklären', 
               description: 'Die Schneeräumung macht in kleineren Ortschaften üblicherweise der Bauhof. Dort sollte man evl. darum bitten, deine Straße zeitiger zu räumen.', 
-              positive: 5, 
-              negative: 3,
-              i_voted_positive: false, 
-              i_voted_negative: false, 
               ratio: 60.0, 
               liked: true,
               disliked: false,
