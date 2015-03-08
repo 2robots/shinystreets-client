@@ -46,8 +46,8 @@ angular.module('shinystreets.MapCtrl', [])
           // on success
           function(position){
             // locate current position
-            $rootScope.maps['map'].setView([0, 0], 15);
-            $rootScope.maps['map'].setView([position.coords.latitude, position.coords.longitude], 15);
+            $rootScope.maps['map'].setView([0, 0], 12);
+            $rootScope.maps['map'].setView([position.coords.latitude, position.coords.longitude], 12);
           }
         );
       }
