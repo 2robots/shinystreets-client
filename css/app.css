@@ -290,6 +290,7 @@ button.button-add-photo {
 .issue-status-bg-active:after {
   content: "";
   position: absolute;
+  -webkit-transform: rotate(45deg);
   transform:rotate(45deg);
   right: 0;
   top: 50%;
