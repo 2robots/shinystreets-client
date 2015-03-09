@@ -38,6 +38,10 @@ angular.module('shinystreets.IssueCtrl', [])
               description: 'Mein Vorschlag: Die Bibliothek könnte die Stufe abflachen oder eine Rampe davor bauen. Dann können alle Menschen mit Rollstuhl die Bibliothek benützen.', 
               ratio: 10.34, 
               liked: true,
+              positive: 26, 
+              negative: 3,
+              i_voted_positive: true, 
+              i_voted_negative: false, 
               disliked: false,
               accepted: false,
               comments: [
@@ -86,6 +90,10 @@ angular.module('shinystreets.IssueCtrl', [])
               description: 'Die Bib im 16. soll einen Hebelift bauen. Mit dessen Hilfe können alle Menschen im Rollstuhl einfach und sicher die Bibliothek betreten.', 
               ratio: 57.14,
               liked: false,
+              positive: 6, 
+              negative: 8, 
+              i_voted_positive: false, 
+              i_voted_negative: false,
               disliked: true,
               accepted: true,
               comments: [
@@ -120,6 +128,10 @@ angular.module('shinystreets.IssueCtrl', [])
               description: 'Wenn vor den Eingang noch eine Stufe oder Ähnliches gebaut wird, ist auf dem Gehsteig davor kein Platz mehr, und es können erst wieder keine Rollstuhlfahrer vorbeifahren. Deshalb würde ich den Hintereinang, der eh barrierefrei ist, einfach öffentlich zugänglich machen.', 
               ratio: 57.14,
               liked: false,
+              positive: 6, 
+              negative: 8, 
+              i_voted_positive: false, 
+              i_voted_negative: true, 
               disliked: false,
               accepted: false,
               comments: [
@@ -145,6 +157,8 @@ angular.module('shinystreets.IssueCtrl', [])
 
         // BAUSTELLE
         if($scope.issue.id == '547f28b833649d4b754e1b8f') {
+          $scope.issue.status = 2;
+          $scope.issue.mine = true;
         }
 
         // SCHNEE
@@ -161,6 +175,10 @@ angular.module('shinystreets.IssueCtrl', [])
               description: 'Die Schneeräumung macht in kleineren Ortschaften üblicherweise der Bauhof. Dort sollte man evl. darum bitten, deine Straße zeitiger zu räumen.', 
               ratio: 60.0, 
               liked: true,
+              positive: 5, 
+              negative: 3, 
+              i_voted_positive: false, 
+              i_voted_negative: false, 
               disliked: false,
               accepted: false,
               comments: [
