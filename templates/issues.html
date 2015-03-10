@@ -22,14 +22,14 @@
           <h2 ng-bind="issue.title"> </h2>
           <p ng-bind="issue.description" ng-if="issue.description != ''"> </p>
           <p>
-            von franz am 26.11.2014 </br>
+            von {{issue.creator.username}} am {{issue.createdAt | date: 'dd.MM.yyyy HH:mm' }} </br>
             <span style="color: #66cc33">
             <i class="icon ion-android-arrow-up"></i>
-            402
+            {{issue.positive}}
             </span>
             <span style="color: #ef4e3a">
             <i class="icon ion-android-arrow-down"></i>
-            21
+            {{issue.negative}}
             </span>
           </p>
 
