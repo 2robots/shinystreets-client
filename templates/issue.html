@@ -62,7 +62,7 @@
   </div>
 </div>
 
-<div class="list card" ng-repeat="solution in issue.solutions">
+<div class="list card" ng-repeat="solution in issue.solutions" ng-class="{ 'accepted': solution.accepted }">
 
   <div class="item">
     <div class="" ng-if="!issue.mine">

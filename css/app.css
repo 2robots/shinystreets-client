@@ -384,7 +384,9 @@ button.button-add-photo {
   border: 2px solid #DCDCDC;
 }
 
-
+.card.accepted {
+  box-shadow: 0 1px 5px #66cc33;
+}
 
 
 
